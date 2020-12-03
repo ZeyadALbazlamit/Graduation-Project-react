@@ -1,0 +1,52 @@
+
+@keyframes inOut{
+  
+    25% {transform:scale(.9);}
+    50% {transform:scale(1);}
+    75% {transform:scale(1.2);}
+    100% {transform:scale(1);}
+  }
+  .Post:hover {
+    animation-name: inOut;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    text-decoration: none;
+    }
+    .Post{
+      margin: 20px;
+      color: #ff9642;
+      background:#f3d5b223;
+      box-shadow:50px;
+      
+    }
+
+    .bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-left: 70px;
+    }
+    .footerBackground{
+      background-color: #88b4e7;
+    }
+    .Btn{
+     left: 0;
+    }
+  .icons{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+  right: 0;
+  }
+  .price{
+   margin-left: -150px;
+  }
+  .icon{
+    margin-top: 5px;
+    margin-right: -150px;
+  }
+  Link:hover{
+    text-decoration: none;
+    }
