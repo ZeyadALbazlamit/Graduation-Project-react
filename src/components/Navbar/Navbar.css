@@ -340,7 +340,7 @@
     
     height: 200%;
     position: fixed; 
-    margin-top: -70px;
+    margin-top: -40px;
     background-color: #ff9642;
     box-shadow: 0px 0px 20px 1px #cacaca;
     width: 0;
@@ -363,7 +363,6 @@
   }
   .sidebar__navbar.active {
     width: 250px !important;
-    
     left: 0;
   }
   @media screen and (max-width: 768px) {
@@ -380,17 +379,14 @@
   }
   .sidebar__content {
     transition: 0.5s ease;
-    
   }
   .sidebar__side {
-    
     background-color: #ffcfa8;
     box-shadow: 0px 0px 20px 1px #cacaca;
     border-bottom: 1px solid #b1b1b1;
   }
   .sidebar__list--menu {
     list-style: none;
-    
     margin: 0;
     padding: 0;
   }
@@ -398,10 +394,9 @@
   .sidebar__list--menu li {
     margin-bottom: 10px;
     font-size: 15px;
-    margin-top: -5px;
   }
   .sidebar__list--menu li a {
-    padding: 5px 5px;
+    padding: 6px 6px;
     color: white;
     display: inline-block;
     width: 100%;

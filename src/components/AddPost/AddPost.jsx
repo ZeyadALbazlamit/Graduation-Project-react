@@ -18,13 +18,16 @@ const AddPost = () => {
   const subCategories = useSelector(state => state.subCategories)
   const [id , setId] = useState()
   const dispatch = useDispatch()
+ 
 
   useEffect(() => {
     dispatch(getCategoriesOf(id))
   },[id])
 
-  const idChanged = (e) => {
-    setId(e.id);  
+  const idChanged = (e,index) => {
+    const selectedIndex =document.getElementById("cat").selectedIndex;
+    setId(selectedIndex+1);
+    console.log(id);
   };
 
   function handleChangRow(e){  setRow( e.target.value)   }
@@ -42,18 +45,15 @@ const AddPost = () => {
           <Modal.Title id="example-custom-modal-styling-title"></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-    
           <h5 className="h51">ما اللذي تود بيعه او الإعلان عنه؟ </h5>
             <div className="tableDiv">
               <form onSubmit={handleSubmit(Submit)}>
                 <div className="select-items">
-                  <div Class
-                  Name="Row">
+                  <div ClassName="Row">
                       <div>
                         <label className="label1" > القسم الرئيسي</label>
                         <select name="القسم الرئيسي" className="select1" placeholder=" إختر " onChange={idChanged}
-                        
-                        ref={register}>
+                        ref={register} id="cat">
                         {categories.map((el)=><option value={el.value} >{el.label}</option>)}
                         </select>  
                       </div>
