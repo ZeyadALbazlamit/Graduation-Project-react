@@ -49,6 +49,7 @@ const AddPost = () => {
                 <div className="select-items">
                   <div Class
                   Name="Row">
+                    
                       <div>
                         <label className="label1" > القسم الرئيسي</label>
                         <select name="القسم الرئيسي" className="select1" placeholder=" إختر " onChange={idChanged}
@@ -73,6 +74,17 @@ const AddPost = () => {
                         </div>
                       :''))}
                   </div> 
+
+                  <div>
+                        <label className="label1" >الوصف</label>
+                        <textarea   type="text-area" name="Description" ref={register}>
+                          </textarea>
+                      </div>
+                      <div>
+                        <label className="label1" > القسم الرئيسي</label>
+                        <input  type="file" name="image" ref={register}  multiple/>
+
+                      </div>
                 </div> {/*the end of input  */}
                 <br />
                 <br />
