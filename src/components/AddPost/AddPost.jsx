@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 import React ,{useState , useEffect} from 'react'
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
@@ -9,8 +9,14 @@ import { getCategoriesOf } from '../Store/actions/actions'
 const AddPost = () => {
   const [row,setRow]=useState("");
   const { register, handleSubmit, watch, errors } = useForm();
+//const [data,setData]=useState({});
+  function Submit(data){
+ console.log(data);
+   axios.post("http://127.0.0.1:8000/api/Post", data  )
+.then(res => { console.log(res);});
+console.log(data);
 
-  function Submit(data){console.log(data)}
+  }
   function printValue(e){console.log(e.target.value)}
 
   const [show, setShow] = useState(false); 
@@ -48,19 +54,23 @@ const AddPost = () => {
     
           <h5 className="h51">ما اللذي تود بيعه او الإعلان عنه؟ </h5>
             <div className="tableDiv">
-              <form onSubmit={handleSubmit(Submit)}>
+              <form onSubmit={handleSubmit(Submit)} >
                 <div className="select-items">
                   <div ClassName="Row">
                       <div>
+                        <input name="user_id" value="1"  ref={register} />
+                      </div>
+                      <div>
+
                         <label className="label1" > القسم الرئيسي</label>
-                        <select name="القسم الرئيسي" className="select1" placeholder=" إختر " onChange={idChanged}
+                        <select name="category_id" className="select1" placeholder=" إختر " onChange={idChanged}
                         ref={register} id="cat">
-                        {categories.map((el)=><option value={el.value} >{el.label}</option>)}
+                        {categories.map((el)=><option value={el.id} >{el.label}</option>)}
                         </select>  
                       </div>
                       <div>
                         <label className="label1"> القسم الفرعي</label>
-                        <select id="select2" name="القسم الفرعي" ref={register} onChange={printValue} onChange={handleChangRow}
+                        <select id="select2" name="Sub_Category_name" ref={register} onChange={printValue} onChange={handleChangRow}
                           className="select1" placeholder=" إختر" >
                           {subCategories.map((el)=><option value={el.value} >{el.label}</option>)}
                         </select>
@@ -75,9 +85,20 @@ const AddPost = () => {
                       :''))}
                   </div> 
                   <div>
+                   
+                  </div>
+                  <div>
                    <label className="label1">الوصف</label>
                     <textarea name="Description" ref={register}  >
                     </textarea>
+                   </div>
+                   <div>
+                   <label className="label1">السعر</label>
+                    <input type="number" name="price" ref={register}  />
+                   </div>
+                   <div>
+                   <label className="label1">المكان</label>
+                    <input name="location" ref={register}  />
                    </div>
   <div class="input-group mb-3">
   <div class="input-group-prepend">
@@ -85,7 +106,7 @@ const AddPost = () => {
   </div>
   <div class="custom-file">
     <input type="file" class="custom-file-input"
-    name="images" ref={register} multiple  
+    name="images" ref={register}  multiple
     id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"/>
     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
   </div>
@@ -102,4 +123,4 @@ const AddPost = () => {
     )
 }
 
-export default AddPost
+export default AddPost;

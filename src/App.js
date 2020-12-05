@@ -7,6 +7,7 @@ import AddPost from './components/AddPost/AddPost'
 import Comment from './components/comment';
 import Login from './components/Login/Login';
 import Register from './components/register/register';
+import Apload from "./components/DB/insert";
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,7 @@ function App() {
       </Router>
 
 <div>
+  <Apload/>
 <Login /> 
 <Register/>
     
