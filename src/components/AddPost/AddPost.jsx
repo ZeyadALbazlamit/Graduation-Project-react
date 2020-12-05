@@ -74,6 +74,22 @@ const AddPost = () => {
                         </div>
                       :''))}
                   </div> 
+                  <div>
+                   <label className="label1">الوصف</label>
+                    <textarea name="Description" ref={register}  >
+                    </textarea>
+                   </div>
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+  </div>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input"
+    name="images" ref={register} multiple  
+    id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"/>
+    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+  </div>
+</div>
                 </div> {/*the end of input  */}
                 <br />
                 <br />
