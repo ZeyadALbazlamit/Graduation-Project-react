@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './login.css'
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import {  useDispatch } from "react-redux";
+import { setUserInfo } from '../Store/actions/actions';
 
 const Login = () => {
+
+    const dispatch = useDispatch();
 	const { register, handleSubmit} = useForm();
 
   function Submit(data){console.log(data);
@@ -11,7 +15,8 @@ const Login = () => {
      data,
      {headers: {'Accept': 'application/json',
     }
-	  }).then(res => { console.log(res);});
+      }).then(res => { dispatch(setUserInfo(res.userId , res.userName ,res.userEmail , res.userPhoneNo 
+        ,res.userRate ,res.userImg  ,res.userPostsId ,res.userIntrest ,res.userFavoritesPostsId ,res.userLoged  ,res.userType)) });
 }
 return (
 

@@ -7,11 +7,30 @@ export const UserInfoReducer = (state =[{
     userImg : "/images/6.png",
     userPostsId :[1,2,3,4],
     userIntrest : ["cars","mobiles"],
-    userFavoritesPostsId :[1,2,3]
+    userFavoritesPostsId :[1,2,3],
+    userLoged : false ,
+    userType : "seller"
 }], action) => {
             switch (action.type){
                 case "GET_USER_INFO":
                         return state;
+                case "SET_USER_INFO":
+                        return [
+                            ...state,
+                            {
+                                userId : action.payload.userId,
+                                userName :action.payload.userName,
+                                userEmail : action.payload.userEmail,
+                                userPhoneNo :action.payload.userPhoneNo,
+                                userRate : action.payload.userRate,
+                                userImg :action.payload.userImg,
+                                userPostsId : action.payload.userPostsId,
+                                userIntrest :action.payload.userIntrest,
+                                userFavoritesPostsId :action.payload.userFavoritesPostsId,
+                                userLoged : action.payload.userId,
+                                userType : action.payload.userType
+                            }
+                        ];
                 default : return state;  
             }
 }

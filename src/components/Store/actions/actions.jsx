@@ -15,3 +15,23 @@ export  function getUserInfo  (id) {
         type: "GET_USER_INFO"+id
     };
 };
+
+export function setUserInfo  (userId , userName ,userEmail , userPhoneNo ,userRate ,
+     userImg ,userPostsId ,userIntrest ,userFavoritesPostsId ,userLoged  ,userType ) {
+    return {
+        type: "SET_USER_IFO",
+        payload: {
+            userId : userId,
+            userName : userName,
+            userEmail : userEmail,
+            userPhoneNo : userPhoneNo,
+            userRate : userRate,
+            userImg : userImg ,
+            userPostsId :userPostsId,
+            userIntrest : userIntrest,
+            userFavoritesPostsId :userFavoritesPostsId,
+            userLoged : userLoged ,
+            userType : userType
+        }
+    };
+};
