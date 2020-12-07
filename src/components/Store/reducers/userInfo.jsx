@@ -16,7 +16,7 @@ export const UserInfoReducer = (state =[{
                         return state;
                 case "SET_USER_INFO":
                         return [
-                            ...state,
+                            
                             {
                                 userId : action.payload.userId,
                                 userName :action.payload.userName,

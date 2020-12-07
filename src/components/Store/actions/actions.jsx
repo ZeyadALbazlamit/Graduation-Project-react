@@ -19,7 +19,7 @@ export  function getUserInfo  (id) {
 export function setUserInfo  (userId , userName ,userEmail , userPhoneNo ,userRate ,
      userImg ,userPostsId ,userIntrest ,userFavoritesPostsId ,userLoged  ,userType ) {
     return {
-        type: "SET_USER_IFO",
+        type: "SET_USER_INFO",
         payload: {
             userId : userId,
             userName : userName,

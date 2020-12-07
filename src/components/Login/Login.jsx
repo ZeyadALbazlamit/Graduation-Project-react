@@ -15,9 +15,16 @@ const Login = () => {
      data,
      {headers: {'Accept': 'application/json',
     }
-      }).then(res => { dispatch(setUserInfo(res.userId , res.userName ,res.userEmail , res.userPhoneNo 
-        ,res.userRate ,res.userImg  ,res.userPostsId ,res.userIntrest ,res.userFavoritesPostsId ,res.userLoged  ,res.userType)) });
-}
+      }).then(res => {
+          console.log(res.data.user);
+        dispatch(setUserInfo(res.data.user.id , res.data.user.name ,res.data.user.email , res.data.user.phone
+        ,0 ,"" ,[] ,[] ,[97,55] ,true  ,"seller")) });
+    /*
+        { dispatch(setUserInfo(258, "mohammed" ,"mo@gmail.com" , "0999999999" 
+        ,0 ,"love"  ,[11,88] ,["الاكل"] ,[97,55] ,true  ,"seller")) }
+    */
+       
+    }
 return (
 
 <div class="container">
