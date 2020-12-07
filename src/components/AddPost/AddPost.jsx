@@ -12,7 +12,7 @@ const AddPost = () => {
 //const [data,setData]=useState({});
   function Submit(data){
  console.log(data);
-   axios.post("http://127.0.0.1:8000/api/Post", data  )
+   axios.post("http://127.0.0.1:8000/api/Post", data )
 .then(res => { console.log(res);});
 console.log(data);
 
