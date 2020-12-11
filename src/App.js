@@ -8,9 +8,12 @@ import Comment from './components/comment';
 import Apload from "./components/DB/insert";
 import Login from "./components/Login/login";
 import Register from "./components/register/register";
+import Up from "./components/AddPost/upimg";
 function App() {
+function handlesumbet(e){e.preventDefault();}
   return (
     <div className="App">
+      
       <Router >
     <Navbar />
    
@@ -25,6 +28,18 @@ function App() {
 
 <Login />
 <Register />
+
+
+<div>
+<form action="http://127.0.0.1:8000/api/Post" method="POST"  enctype='multipart/form-data' >
+
+  <input  type="file" name="images" />
+
+<button>  submit</button>
+</form>
+
+
+</div>
 </div>
   );
 }

@@ -7,14 +7,91 @@ import './AddPost.css'
 import { useSelector, useDispatch } from "react-redux";
 import { getCategoriesOf } from '../Store/actions/actions'
 const AddPost = () => {
+  
+  const [str,setStr]= useState([]);
+const [img,setImg]=useState({});
   const [row,setRow]=useState("");
   const { register, handleSubmit, watch, errors } = useForm();
-//const [data,setData]=useState({});
+const [user_id,userSetId]=useState(0);
+function handleFile(e){ 
+  
+  setImg(e.target.files[0]);
+console.log(e.target.files[0])
+/*
+  const fd = new FormData();
+  fd.append("image",img,img.name)
+  axios.post("http://127.0.0.1:8000/api/Post",fd)
+.then(res => {
+  console.log(res);
+
+});*/
+}
+ 
+function convertImage(F){
+
+  Array.from(F).forEach((f)=>{
+    let fr= new FileReader();
+    fr.readAsDataURL(f);
+    fr.onload=function(){
+  console.log(fr.result.length);
+  setStr([...str,fr.result]);
+  
+  }
+  
+  })
+  
+    }
   function Submit(data){
- console.log(data);
-   axios.post("http://127.0.0.1:8000/api/Post", data )
-.then(res => { console.log(res);});
-console.log(data);
+    console.log(data);  
+
+  const pro=  Object.entries(data).filter(([key, value]) =>{  
+    if (key==="user_id"||  key ==="category_id" ||  key ==="price" ||  key ==="location" ||  key ==="Description" ||  key ==="images" ||  key ==="Sub_Category_name")
+      return false;
+  else
+  return true;
+}); 
+const Const=Object.entries(data).filter(([key, value]) =>{   
+  if (key==="user_id"||  key ==="category_id" ||  key ==="price" ||  key ==="location" ||  key ==="Description" ||   key ==="Sub_Category_name")
+    return true;
+else
+return false;}); 
+if(localStorage.getItem('user_id'))
+{
+  userSetId(localStorage.getItem('user_id'))
+  
+} else userSetId(0)
+//const imag=Object.entries(data).filter(([key, value]) => key ==="images"); 
+//console.log(Object.fromEntries(imag).images);
+
+
+
+/*
+const fd = new FormData();
+console.log(fd);
+fd.append("image",imag[0][1][0]/* images file  *//*,imag[0][0]*//* images name *///)/*
+
+const Data={
+  pro:Object.fromEntries(pro),
+  contant:Object.fromEntries(Const),
+  image:55,
+  user_id
+
+};
+
+/*
+const Data={
+  name:"zeyad",
+  image:fd,
+
+};*/
+console.log(Data);  
+  console.log('GO to DataBase '+ user_id);
+   axios.post("http://127.0.0.1:8000/api/Post",Data   , {  'Content-Type': 'application/json','Content-Type': `multipart/form-data; ` })
+.then(res => {
+  console.log(res);
+
+});
+
 
   }
   function printValue(e){console.log(e.target.value)}
@@ -24,8 +101,6 @@ console.log(data);
   const subCategories = useSelector(state => state.subCategories)
   const [id , setId] = useState()
   const dispatch = useDispatch()
- 
-
   useEffect(() => {
     dispatch(getCategoriesOf(id))
   },[id])
@@ -54,12 +129,10 @@ console.log(data);
     
           <h5 className="h51">ما اللذي تود بيعه او الإعلان عنه؟ </h5>
             <div className="tableDiv">
-              <form onSubmit={handleSubmit(Submit)} >
+              <form onSubmit={handleSubmit(Submit)} enctype='multipart/form-data' >
                 <div className="select-items">
                   <div ClassName="Row">
-                      <div>
-                        <input name="user_id" value="1"  ref={register} />
-                      </div>
+                     
                       <div>
 
                         <label className="label1" > القسم الرئيسي</label>
@@ -106,11 +179,17 @@ console.log(data);
   </div>
   <div class="custom-file">
     <input type="file" class="custom-file-input"
-    name="images" ref={register}  multiple
-    id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"/>
+    name="images"  
+    onChange={(e)=>convertImage(e.target.files) }
+      ref={register}
+  />
     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
   </div>
 </div>
+{str.map((el)=><img    className="image"  src={el}/> )
+
+}
+
                 </div> {/*the end of input  */}
                 <br />
                 <br />

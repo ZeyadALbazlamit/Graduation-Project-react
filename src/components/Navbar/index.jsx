@@ -87,7 +87,7 @@ function resizeWindow() {
                       <SearchInput placeholder="إبحـث" text-align="right"></SearchInput>
                         <SearchIcon><FaSearch /></SearchIcon>
                       </SearchBox>
-                      <NavLogo to='/'>لقــاء </NavLogo>
+                      <NavLogo to='/'>logo </NavLogo>
                   </NavbarContainer>
                 </Nav>
                   <SearchNav>
