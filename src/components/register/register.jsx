@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
+import _ from "lodash/fp";
+import "./register.css"
 import axios from 'axios';
 import {  useDispatch } from "react-redux";
 import { setUserInfo } from '../Store/actions/actions';
 
 const Register = () => {
-
+const [Erorr,setErorr]=useState('');
     const dispatch = useDispatch();
-	const { register, handleSubmit,setValue} = useForm();
+    const { register, handleSubmit, watch, errors } = useForm();
 
   function Submit(data){console.log(data);
     axios.post('http://127.0.0.1:8000/api/register', 
@@ -15,10 +17,20 @@ const Register = () => {
      {headers: {'Accept': 'application/json',
     }
       }).then(res => {
+    
           console.log(res.data.user);
           localStorage.setItem("user_id",res.data.user.id);
           console.log(  localStorage.getItem("user_id")); 
-        });
+          setErorr("")
+
+        }).catch(function(error) {
+            console.log(error);
+            if (error.response) {
+                setErorr(error.response.data.message)
+            console.log(error.response.data);
+            }
+            
+          })
     
        
     }
@@ -31,6 +43,7 @@ return (
                 <div class="card-header">Register</div>
                 <div class="card-body">
                     <form onSubmit={handleSubmit(Submit)}>
+                  { Erorr !="" ? <div class="alert alert-danger" role="alert"> {Erorr}</div>:<p></p> }
                         <div class="form-group row">
                             <label  class="col-md-4 col-form-label text-md-right">Name</label>
                             <div class="col-md-6">
@@ -48,13 +61,15 @@ return (
                             <label  class="col-md-4 col-form-label text-md-right ">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" setValue={7} ref={register} name="password" required autocomplete="new-password"/>
+                                <input id="password" type="password" class="form-control" setValue={7} ref={register({minLength:6})} name="password" required autocomplete="new-password"/>
+                                {_.get("password.type", errors) === "minLength" && (
+                                  <p className="error">This field is required</p> )}
                             </div>
                         </div>
                         <div class="form-group row">
                             <label  class="col-md-4 col-form-label text-md-right">Confirm Password</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" ref={register} name="password_confirmation" required autocomplete="new-password"/>
+                                <input id="password-confirm" type="password" class="form-control" ref={register({ min: 6, max: 99 })} name="password_confirmation" required autocomplete="new-password"/>
                             </div>
                         </div>
                         <div class="form-group row mb-0">

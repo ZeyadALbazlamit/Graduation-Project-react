@@ -1,12 +1,9 @@
 import React from 'react'
 import "./Navbar.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Profile from '../Account/Profile'
 import $ from "jquery"
-import { BrowserRouter as Router, Rout, Route} from 'react-router-dom'
-import { FaBars, FaUser, FaShoppingCart, FaSearch } from 'react-icons/fa'
-import { IoIosArrowDown } from 'react-icons/io'
-import { BsHeartFill, BsList } from 'react-icons/bs'
+import { FaUser, FaShoppingCart, FaSearch } from 'react-icons/fa'
+import { BsHeartFill } from 'react-icons/bs'
 import {
   Nav,
   NavbarContainer,
@@ -28,25 +25,14 @@ import {
 } from './NavbarElement'
 
 const Navbar = () => {
-   
-function resizeWindow() {
-    let widthsidebar = $(window).width();
-  
-    if (widthsidebar >= 768) {
-      $(".sidebar__navbar").addClass("active");
-    } else {
-      $(".sidebar__navbar").removeClass("active");
-    }
-  }
-  
-  function a () {
-    $(".sidebar__navbar").toggleClass("active");
-  }
-  function b () {
-    $(".sidebar__navbar").toggleClass("active");
-  }
 
-      
+    function a () {
+      $(".sidebar__navbar").toggleClass("active");
+    }
+    function b () {
+      $(".sidebar__navbar").toggleClass("active");
+    }
+
     return (
         <>
           <div class="navabar__grub">
@@ -72,37 +58,30 @@ function resizeWindow() {
               </div>
             </div>
             <div class="sidebar__content">
-              <nav class="navbar navbar-expand-md sidebar__side p-3">
+              <nav class="navbar navbar-expand-md sidebar__side p-3 ">
                 <a class="navabar__menu position-relative d-inline-block" href="#" onClick={a}>
                   <i class="fa fa-bars" aria-hidden="true"></i>
                 </a>
                 <Nav>
-                  <NavbarContainer>
+                  <NavbarContainer >
                     <NavMenu>
                       <NavItem><NavLinks to='about'> <BsHeartFill /></NavLinks> </NavItem>
                       <NavItem><NavLinks to='about'><FaShoppingCart /></NavLinks></NavItem>
                       <NavItem><NavLinks to='/Profile' ><FaUser /></NavLinks></NavItem>
                     </NavMenu>
                     <SearchBox>
-                      <SearchInput placeholder="إبحـث" text-align="right"></SearchInput>
+                      <SearchInput className="Input" placeholder="إبحـث" text-align="right"></SearchInput>
                         <SearchIcon><FaSearch /></SearchIcon>
                       </SearchBox>
-                      <NavLogo to='/'>logo </NavLogo>
+                      <NavLogo to='/index'>لقــاء </NavLogo>
                   </NavbarContainer>
                 </Nav>
-                  <SearchNav>
-                    <SearchNavBox>
-                      <SearchNavIcon><FaSearch /></SearchNavIcon>
-                      <SearchNavInput placeholder="إبحـث" text-align="right"></SearchNavInput> 
-                    </SearchNavBox>
-                  </SearchNav>
               </nav>   
             </div>
           </div>    
-    </>
+        </>
     )
 }
-
 
 
 export default Navbar

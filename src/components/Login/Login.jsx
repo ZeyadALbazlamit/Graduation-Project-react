@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+
 const Login = () => {
     const { register, handleSubmit, watch, errors } = useForm();
+    const [Erorr,setErorr]=useState('');
 
   function Submit(data){
     console.log(data);
 	axios.post('http://127.0.0.1:8000/api/login', data, {headers: {'Accept': 'application/json'}
-      }).then(res => {console.log(res);
+      }).then(res => {
+        setErorr("")
+        console.log(res);
     localStorage.setItem("user_id",res.data.user.id);
    console.log(  localStorage.getItem("user_id")); 
 
-      });
+      }).catch(function(error) {
+        console.log(error);
+        if (error.response) {
+            setErorr(error.response.data.message)
+        console.log(error.response.data);
+        }
+        
+      })
+
       
 
 
@@ -22,10 +34,10 @@ const Login = () => {
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">Login</div>
+                        { Erorr !="" ? <div class="alert alert-danger" role="alert"> {Erorr}</div>:<p></p> }
+
                         <div class="card-body">
                             <form onSubmit={handleSubmit(Submit)}>
-                              
-        
                                 <div class="form-group row">
                                     <label  class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
         

@@ -1,5 +1,5 @@
 import React from 'react'
-import Post from '../CarsPage/Post'
+import Post from '../Posts/post'
 
 const UserPost = () => {
     return (

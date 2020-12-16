@@ -1,0 +1,121 @@
+
+@keyframes inOut{
+  
+    25% {transform:scale(.9);}
+    50% {transform:scale(1);}
+    75% {transform:scale(1.2);}
+    100% {transform:scale(1);}
+  }
+  .Post:hover {
+    animation-name: inOut;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    text-decoration: none;
+    }
+    .Post{
+      margin: 20px;
+      color: #ff9642;
+      background:#f3d5b223;
+      box-shadow:50px;
+      text-decoration:none;
+    }
+
+    .bar {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-left: 70px;
+    }
+    .footerBackground{
+      background-color: #88b4e7;
+    }
+    .Btn{
+     left: 0;
+    }
+  .icons{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+  right: 0;
+  }
+  .price{
+   margin-left: -150px;
+  }
+  .icon{
+    margin-top: 5px;
+    margin-right: -150px;
+  }
+  Link:hover{
+    text-decoration: none;
+  }
+  
+  /*////////////////////////////////////Details///////////////////////////////////////////*/
+  .containerPostDetails{
+    justify-content: center;
+    justify-items: center;
+    margin: 30px;
+    width: 55%;
+    float: right;
+    border: thin;
+    background-color: #fffcd7;
+    padding: 30px;
+    border-radius: 10px;
+  } 
+  @media (max-width: 957px){
+    .containerPostDetails{
+      width: 90%;
+    }
+    .containerUserInfo{
+      margin-top: 20px;
+    }
+  }
+  @media (min-width: 768px){
+    .angleIcon{
+      font-size: 5rem;
+    }
+  }
+  .containerUserInfo{
+    justify-content: right;
+    justify-items: right;
+    margin: 30px;
+    margin-top: 60px;
+    float: right;
+    background-color: #fffcd7;
+    padding: 30px;
+    border-radius: 10px;
+
+  }
+
+ 
+.p{
+  text-align: right;
+  margin: 20px;
+}
+
+.rounded-circle{
+  float: right;
+}
+.Info{
+  margin: 5px;
+  float: left;
+  text-align: right;
+}
+.carousel{
+  width: 90%;
+  float: right;
+  margin: 15px;
+  margin-bottom: 30px;
+}
+.detailsPrice{
+  justify-content: right;
+    justify-items: right;
+    margin-top: 60px;
+    float: right;
+    border: thin;
+    border-color: #ff9642;
+    border-style: solid;
+    padding: 30px;
+    float: inline-start;
+}

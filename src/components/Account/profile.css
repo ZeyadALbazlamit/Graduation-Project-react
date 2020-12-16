@@ -3,16 +3,17 @@
     padding: 15px;
     flex-wrap: wrap-reverse;
 }
+.container{
+    flex-wrap: wrap-reverse;
+}
 .card {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-    
 }
 
 .card {
     position: relative;
     display: flex;
     flex-direction: column;
-    
     min-width: 0;
     word-wrap: break-word;
     background-color: #fff;
@@ -22,12 +23,12 @@
 }
 
 .card-body {
-    flex: 1 1 auto;
+    flex-wrap: wrap-reverse;
     min-height: 1px;
     padding: 1rem;
 }
 
-.gutters-sm {
+.gutters-lg {
     margin-right: -8px;
     margin-left: -8px;
 }
@@ -48,4 +49,49 @@
 }
 .shadow-none {
     box-shadow: none!important;
+}
+
+ion-avatar img  {
+    width:100% !important;
+    height : 100% !important;
+    max-width: 150px !important;  
+    max-height: 150px !important; 
+    margin: auto;
+    }
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 2.2rem;
+    color: #ff9642;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
 }
