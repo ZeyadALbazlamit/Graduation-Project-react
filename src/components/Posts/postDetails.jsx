@@ -1,14 +1,22 @@
-import React ,{useState} from 'react'
+import React ,{useEffect, useState} from 'react'
 import './posts.css'
 import {FaAngleRight ,FaAngleLeft} from 'react-icons/fa'
 import {IoMdChatbubbles} from 'react-icons/io'
 import Post from './post'
 
-const PostDetails = () => {
-    const [userInfo , setUserInfo] = useState(
-        {id:1 ,name :"لقاء" ,email : "leqaa@gmail.com" ,phoneNo : "078888888",img : "/images/4.png" ,rate : "4" })
-    
-    
+const PostDetails = (Props) => {
+    const [userInfo , setUserInfo] = useState([{id:1 ,name :"لقاء" ,email : "leqaa@gmail.com" ,phoneNo : "078888888",img : "/images/4.png" ,rate : "4" }])
+  useEffect(()=>{
+    axios.get("http://127.0.0.1:8000/api/Post"   )
+    .then(res => {
+      console.log(res.data);
+      setUserInfo(res.data)
+    }).catch(function(error) {
+      console.log(error);
+    })
+
+},[])
+   
     return (
     <div>
         <div>
@@ -64,9 +72,9 @@ const PostDetails = () => {
             <div class="containerUserInfo" >
                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="60"/>
                 <span className="Info">
-                <p>الأسم : {userInfo.name} </p>
-                <p class="text-secondary mb-1"> {userInfo.email} : الايميل  </p>
-                <p class="text-muted font-size-sm">{userInfo.phoneNo} : رقم الهاتف</p>
+                <p>الأسم :  </p>
+                <p class="text-secondary mb-1"> : الايميل  </p>
+                <p class="text-muted font-size-sm"> : رقم الهاتف</p>
                 <button className="btn btn-outline-dark text-right pull-right " > ارسل رسالة <IoMdChatbubbles /></button>
                 </span>
             </div>

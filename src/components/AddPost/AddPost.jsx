@@ -91,12 +91,9 @@ console.log(Data);
    axios.post("http://127.0.0.1:8000/api/Post",Data   )
 .then(res => {
   console.log(res);
-
 }).catch(function(error) {
   console.log(error);
 })
-
-
   }
   function printValue(e){console.log(e.target.value)}
 
@@ -132,9 +129,6 @@ console.log(Data);
             <form onSubmit={handleSubmit(Submit)} >
               <div className="select-items">
                 <div ClassName="Row">
-                    <div>
-                      <input className="addPostInput" name="user_id" value="1"  ref={register} />
-                    </div>
                     <div>
                       <label className="label1" > القسم الرئيسي</label>
                       <select class="scrollbar"  name="category_id"  placeholder=" إختر " onChange={idChanged}

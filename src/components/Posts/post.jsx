@@ -2,7 +2,6 @@ import React from "react";
 import './posts.css'
 import {Card,Button} from 'react-bootstrap'
 import { BsHeartFill, BsList } from 'react-icons/bs'
-
 const Post = () => {
   return (
     <Card style={{ width: '18rem' }} className="Post col-md-11 mb-3" >
