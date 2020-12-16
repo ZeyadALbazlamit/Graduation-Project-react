@@ -8,16 +8,16 @@ const Posts = () => {
         <div>
           <div class="bar">
             <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" to="/postDetails" ><Post value="Post" /> </Link>
-            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><Post value=" Post" /></Link>
-            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" ><Post value="Post" /> </Link>
+            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4"  to="/postDetails"><Post value=" Post" /></Link>
+            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4"  to="/postDetails" ><Post value="Post" /> </Link>
         
-            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" ><Post value="Post" /> </Link>
-            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><Post value=" Post" /></Link>
-            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" ><Post value="Post" /> </Link>
+            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" to="/postDetails" ><Post value="Post" /> </Link>
+            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" to="/postDetails"><Post value=" Post" /></Link>
+            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" to="/postDetails" ><Post value="Post" /> </Link>
           
-            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" ><Post value="Post" /> </Link>
-            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><Post value=" Post" /></Link>
-            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" ><Post value="Post" /> </Link>
+            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4"  to="/postDetails"><Post value="Post" /> </Link>
+            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" to="/postDetails"><Post value=" Post" /></Link>
+            <Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" to="/postDetails" ><Post value="Post" /> </Link>
           </div>
         </div>
     )
