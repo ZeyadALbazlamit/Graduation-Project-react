@@ -14,28 +14,13 @@ const AddPost = () => {
 const [img,setImg]=useState({});
   const [row,setRow]=useState("");
   const { register, handleSubmit, watch, errors } = useForm();
-const [user_id,userSetId]=useState(0);
-function handleFile(e){ 
-  
-  setImg(e.target.files[0]);
-console.log(e.target.files[0])
-/*
-  const fd = new FormData();
-  fd.append("image",img,img.name)
-  axios.post("http://127.0.0.1:8000/api/Post",fd)
-.then(res => {
-  console.log(res);
-
-});*/
-}
  
 function convertImage(F){
-
   Array.from(F).forEach((f)=>{
     let fr= new FileReader();
     fr.readAsDataURL(f);
     fr.onload=function(){
-  console.log(fr.result.length);
+  console.log(fr.result);
   setStr([...str,fr.result]);
   
   }
@@ -47,47 +32,26 @@ function convertImage(F){
     console.log(data);  
 
   const pro=  Object.entries(data).filter(([key, value]) =>{  
-    if (key==="user_id"||  key ==="category_id" ||  key ==="price" ||  key ==="location" ||  key ==="Description" ||  key ==="images" ||  key ==="Sub_Category_name")
+    if (key==="user_id"||  key ==="category_id" ||  key ==="price" ||  key ==="location" ||  key ==="Description" ||  key ==="images" ||  key ==="Sub_Category_name"||key ==="title")
       return false;
   else
   return true;
 }); 
 const Const=Object.entries(data).filter(([key, value]) =>{   
-  if (key==="user_id"||  key ==="category_id" ||  key ==="price" ||  key ==="location" ||  key ==="Description" ||   key ==="Sub_Category_name")
+  if (key==="user_id"||  key ==="category_id" ||  key ==="price" ||  key ==="location" ||  key ==="Description" ||   key ==="Sub_Category_name" ||key ==="title")
     return true;
 else
 return false;}); 
-if(localStorage.getItem('user_id'))
-{
-  userSetId(localStorage.getItem('user_id'))
-  
-} else userSetId(0)
-//const imag=Object.entries(data).filter(([key, value]) => key ==="images"); 
-//console.log(Object.fromEntries(imag).images);
-
-
-
-/*
-const fd = new FormData();
-console.log(fd);
-fd.append("image",imag[0][1][0]/* images file  *//*,imag[0][0]*//* images name *///)/*
-
 const Data=[
   Object.fromEntries(pro),
   Object.fromEntries(Const),
   str,
-  user_id
-
+  localStorage.getItem('user_id')
 ];
-
-/*
-const Data={
-  name:"zeyad",
-  image:fd,
-
-};*/
 console.log(Data);  
-  console.log('GO to DataBase '+ user_id);
+if(Data.user_id !=0){
+  console.log('GO to DataBase '+   localStorage.getItem('user_id')
+  );
    axios.post("http://127.0.0.1:8000/api/Post",Data   )
 .then(res => {
   console.log(res);
@@ -95,6 +59,7 @@ console.log(Data);
   console.log(error);
 })
   }
+  }//endif
   function printValue(e){console.log(e.target.value)}
 
   const [show, setShow] = useState(false); 
@@ -129,6 +94,7 @@ console.log(Data);
             <form onSubmit={handleSubmit(Submit)} >
               <div className="select-items">
                 <div ClassName="Row">
+ <h3>{localStorage.getItem('user_id')}</h3>
                     <div>
                       <label className="label1" > القسم الرئيسي</label>
                       <select class="scrollbar"  name="category_id"  placeholder=" إختر " onChange={idChanged}
@@ -148,7 +114,7 @@ console.log(Data);
                     {subCategories.filter((e)=>e.label==row ).map((e)=> e.properties.map((el)=>el[0]?
                       <div>
                         <label className="label1">{el[0].kind}</label>
-                        <select class="scrollbar" placeholder=" إختر " name={el[0].name} id="select2"  ref={register} >
+                        <select class="scrollbar" placeholder=" إختر " name={el[0].kind} id="select2"  ref={register} >
                             {el.map((el)=><option value={el.value} >{el.label}</option>)}
                         </select>
                       </div>
@@ -157,7 +123,7 @@ console.log(Data);
                 {/*///////////////////new//////////////////////*/}
                 <div>
                   <label  className="label1" > اسم الإعلان</label>
-                  <input className="addPostInput" className="addPostInput" placeholder="اسم الإعلان " name="price"  />
+                  <input className="addPostInput" className="addPostInput" placeholder="اسم الإعلان " name="title" ref={register} />
                 </div>
                 <div>
                   <label className="label1">الوصف</label>
@@ -193,7 +159,7 @@ console.log(Data);
                     <label  class="custom-file-label"  for="inputGroupFile01"><RiImageAddFill  /> حمل الصور </label>
                   </div>
                 </div>
-                { str.map((el)=><img className="image" src={el}/> )}
+                { str.map((el)=><img className="image"   src={el}/> )}
               </div> {/*the end of input  */}
               <br />
               <button className="btn btn-outline-dark text-right pull-right " >تم</button>

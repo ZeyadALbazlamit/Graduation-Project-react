@@ -73,7 +73,7 @@ const Navbar = () => {
                       <SearchInput className="Input" placeholder="إبحـث" text-align="right"></SearchInput>
                         <SearchIcon><FaSearch /></SearchIcon>
                       </SearchBox>
-                      <NavLogo to='/index'>لقــاء </NavLogo>
+                      <NavLogo to='/index'>logo </NavLogo>
                   </NavbarContainer>
                 </Nav>
               </nav>   

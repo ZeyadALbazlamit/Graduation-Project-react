@@ -6,25 +6,29 @@ import ReactHtmlParser from 'react-html-parser';
 import Pusher from 'pusher-js';
 
 import { TextEditor } from './textEditor';
-const Comment = () => {
+const Comment = (Props) => {
     const [comments, setComments] = useState([{}]);
     function addComment(e) {//add Comment and make comment() event
         if (e){
         const data = e;
+        const userId= localStorage.getItem("user_id"); 
         setComments([...comments, {
-            "post_id": "1",
+            "post_id": Props.post_id,
             "body": data,
-            "user_id": 1
+            "user_id":userId
         }]);
-        axios.post(`http://127.0.0.1:8000/api/Message`, { "data":data }).then(res => { console.log(res);})//event
+        axios.post(`http://127.0.0.1:8000/api/Message`, { "data":data }).then(res => { console.log(res);})// pusher event
     }
     }
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/Comment/1`)
+        
+        axios.get(`http://127.0.0.1:8000/api/Comment/`+ Props.post_id)
             .then(res => {
-                setComments(() => [...res.data]);
-                console.log("Firt request");
+                setComments(() => [res.data]);
+                console.log(res);
+                console.log("post id->"+ Props.post_id);
             })
+        
     }, []);
 
     var pusher = new Pusher('8626767e4a961d9424bb',
@@ -32,11 +36,13 @@ const Comment = () => {
     var channel = pusher.subscribe('puplic-channel');
     useEffect(() => {
         //  Pusher.logToConsole = true;
+        const user_id=localStorage.getItem("user_id")? localStorage.getItem("user_id"):"0";
+        
         channel.bind('comment', function (data) {
-            axios.post(`http://127.0.0.1:8000/api/Comment`, { //use comment store after listin from addComment
-                "post_id": "1",
+            axios.post(`http://127.0.0.1:8000/api/Comment`, { //store in data base 
+                "post_id": Props.post_id,
                 "body": data.comment,
-                "user_id": 1
+                "user_id": user_id
             })
                 .then(res => {
                     if (comments[comments.length - 1].hasOwnProperty('created_at')) {

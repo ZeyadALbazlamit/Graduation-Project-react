@@ -6,7 +6,7 @@ import index from './components/Home'
 import PostDetails from './components/Posts/postDetails'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import AddPost from './components/AddPost/AddPost'
-import Comment from './components/comment';
+import Comment from './components/comment/comment';
 import Apload from "./components/DB/insert";
 import Login from "./components/Login/login";
 import Register from "./components/register/register";
@@ -16,7 +16,6 @@ function App() {
     <Router >
       <div className="App">
         <Navbar />
-        <AddPost />
         <Switch>
           <Route path="/index" component={index} /> 
           <Route path="/Profile" component={Profile} />  
