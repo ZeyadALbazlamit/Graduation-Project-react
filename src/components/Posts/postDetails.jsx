@@ -8,7 +8,7 @@ import Comment from "../comment/comment"
 import { BsPersonPlusFill } from 'react-icons/bs'
 
 const PostDetails = (Props) => {
-    const [postInfo , setPostInfo] = useState({post:{id:0} ,img :[{img:""}] ,comment:[]}  )
+    const [postInfo , setPostInfo] = useState({post:{id:0} ,image :[{img:""}] ,comment:[]}  )
   useEffect(()=>{
   console.log(Props.location.post_id);
     axios.get("http://127.0.0.1:8000/api/Post/"+Props.location.post_id   )
@@ -32,7 +32,7 @@ const PostDetails = (Props) => {
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="..." class="d-block w-100" alt="..."/>
+      <img src={postInfo.image[0].img} class="d-block w-100" alt="..."/>
     </div>
     {postInfo.image?postInfo.image.map((el)=>
        <div class="carousel-item">
@@ -41,6 +41,7 @@ const PostDetails = (Props) => {
      )  :" "  }
   
   </div>
+
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>

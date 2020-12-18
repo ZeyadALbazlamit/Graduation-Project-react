@@ -95,3 +95,7 @@ ion-avatar img  {
 .rating:hover>input:checked~label:before {
     opacity: 0.4
 }
+.cursor{
+    pointer:cursor;
+    
+}
