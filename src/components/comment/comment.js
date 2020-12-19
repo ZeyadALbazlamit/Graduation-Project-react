@@ -17,15 +17,15 @@ const Comment = (Props) => {
             "body": data,
             "user_id":userId
         }]);
-        axios.post(`http://127.0.0.1:8000/api/Message`, { "data":data }).then(res => { console.log(res);})// pusher event
+        axios.post(`http://127.0.0.1:8000/api/Message`, { "data":data }).then(res => { console.log(res.data);})// pusher event
     }
     }
     useEffect(() => {
         
         axios.get(`http://127.0.0.1:8000/api/Comment/`+ Props.post_id)
             .then(res => {
-                setComments(() => [res.data]);
-                console.log(res);
+                setComments(() => [...res.data]);
+                console.log(res.data);
                 console.log("post id->"+ Props.post_id);
             })
         
@@ -66,12 +66,12 @@ const Comment = (Props) => {
                 {comments.map((text, index) =>
                     <div className="main-comment-div"
                         key={text.id} >
-                        <a  ><img src={text.id % 2 == 0 ? img[0] : text.id % 3 == 0 ? img[1] : img[2]} className="avatar" /></a>
+                        <a  ><img src={text.img} className="avatar" /></a>
                         <div className="comment comment_bubble">
-                            <p className="mt-3">{text.id}{text.UserName}</p>
+                            <p className="mt-3">{text.name}</p>
                             <p>{ReactHtmlParser(text.body)}</p>
                             <p className=" timeBorder">
-                                {text.created_at}
+                                {text.date}
                             </p>
                         </div>
                     </div>

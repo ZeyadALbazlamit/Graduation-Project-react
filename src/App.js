@@ -16,6 +16,8 @@ function App() {
     <Router >
       <div className="App">
         <Navbar />
+
+        <AddPost/>
         <Switch>
           <Route path="/index" component={index} /> 
           <Route path="/Profile" component={Profile} />  
@@ -25,6 +27,7 @@ function App() {
           <Route path="/PostDetails" component={PostDetails} /> 
         </Switch>
       </div>
+      <Register />
     </Router>
   );
 }
