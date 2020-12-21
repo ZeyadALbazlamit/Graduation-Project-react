@@ -1,0 +1,22 @@
+
+
+.Bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0px 15px 0px 15px;
+  }
+.Row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0px 130px 130px 130px;
+
+}
+.Link{
+    box-shadow: 1px 5px 20px 3px #1111116c;
+    margin: 10px;
+}
+

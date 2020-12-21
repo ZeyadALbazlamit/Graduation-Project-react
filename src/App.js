@@ -16,7 +16,11 @@ function App() {
     <Router >
       <div className="App">
         <Navbar />
-
+<button onClick={()=>{
+                       console.log('2020-12-20 11:41:31'.slice(11, 16))
+                     }
+                    }>
+2020-12-20 11:41:31</button>
         <AddPost/>
         <Switch>
           <Route path="/index" component={index} /> 

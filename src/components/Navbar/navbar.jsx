@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Navbar.css"
+import LoginForm from './loginForm'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from "jquery"
 import { FaUser, FaShoppingCart, FaSearch } from 'react-icons/fa'
@@ -67,7 +68,7 @@ const Navbar = () => {
                     <NavMenu>
                       <NavItem><NavLinks to='about'> <BsHeartFill /></NavLinks> </NavItem>
                       <NavItem><NavLinks to='about'><FaShoppingCart /></NavLinks></NavItem>
-                      <NavItem><NavLinks to='/Profile' ><FaUser /></NavLinks></NavItem>
+                      <NavItem><NavLinks to='/Profile' > <LoginForm /> </NavLinks></NavItem>
                     </NavMenu>
                     <SearchBox>
                       <SearchInput className="Input" placeholder="إبحـث" text-align="right"></SearchInput>

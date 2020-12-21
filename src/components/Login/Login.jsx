@@ -13,6 +13,8 @@ const Login = () => {
         setErorr("")
         console.log(res);
     localStorage.setItem("user_id",res.data.user.id);
+    localStorage.setItem("user_name",res.data.user.name);
+
    console.log(  localStorage.getItem("user_id")); 
 
       }).catch(function(error) {

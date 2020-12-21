@@ -99,7 +99,7 @@ if(Data.user_id !=0){
                       <label className="label1" > القسم الرئيسي</label>
                       <select class="scrollbar"  name="category_id"  placeholder=" إختر " onChange={idChanged}
                       ref={register} id="cat">
-                      {categories.map((el)=><option class="Option" value={el.id} >{el.label}</option>)}
+                      {categories.map((el)=><option class="Option" key={el.id}value={el.id} >{el.label}</option>)}
                       </select>  
                     </div>
                     <div>
@@ -107,7 +107,7 @@ if(Data.user_id !=0){
                       <select class="scrollbar" id="select2" name="Sub_Category_name" ref={register} onChange={printValue} onChange={handleChangRow}
                          placeholder=" إختر" >
                         {subCategories.map((el)=>
-                            <option value={el.value} >{el.label}</option>
+                            <option value={el.value}  key={el.value}>{el.label}</option>
                           )}
                       </select>
                     </div>
@@ -115,7 +115,7 @@ if(Data.user_id !=0){
                       <div>
                         <label className="label1">{el[0].kind}</label>
                         <select class="scrollbar" placeholder=" إختر " name={el[0].kind} id="select2"  ref={register} >
-                            {el.map((el)=><option value={el.value} >{el.label}</option>)}
+                            {el.map((el)=><option value={el.value} key={el.value}>{el.label}</option>)}
                         </select>
                       </div>
                     :''))}

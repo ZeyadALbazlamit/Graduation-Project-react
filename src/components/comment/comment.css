@@ -23,7 +23,7 @@ padding: 20px;
     min-width:240px;
     max-width:300px;
     border-radius: 25% 10%;
-     min-height: 120px;
+     min-height: 50px;
     background: #e3eef1;
     padding: 20px;
     position: relative;
@@ -42,7 +42,17 @@ padding: 20px;
 }
 .timeBorder
 {
-color: rgb(247 161 0);}
+    /* FONT-WEIGHT: 100; */
+    color: rgb(247 161 0);
+    /* background-color: blanchedalmond; */
+    /* text-align: center; */
+    width: 60px;
+    padding-left: 25%;
+    margin-top: -15px;
+    font-size: 13px;
+
+
+}
 .avatar{
     margin-top: 5px;
 height:60px ;
@@ -55,4 +65,10 @@ border: 1px solid rgba(39, 39, 39, 0.233);
 }
 body{
     background-color:rgb(240, 242, 245);
+}
+.user_name{
+text-align: left;
+margin-left: 5px;;
+
+
 }

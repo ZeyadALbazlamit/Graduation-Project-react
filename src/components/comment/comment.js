@@ -5,27 +5,28 @@ import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
 import Pusher from 'pusher-js';
 
-import { TextEditor } from './textEditor';
+//import { TextEditor } from './textEditor';
 const Comment = (Props) => {
+    const [comment,setComment]=useState('');//value of text area 
     const [comments, setComments] = useState([{}]);
-    function addComment(e) {//add Comment and make comment() event
-        if (e){
-        const data = e;
+    function addComment() {//add Comment and make comment() event
+       
+        if (comment){
+            console.log('comment'+ comment)
         const userId= localStorage.getItem("user_id"); 
         setComments([...comments, {
             "post_id": Props.post_id,
-            "body": data,
+            "body": comment,
             "user_id":userId
         }]);
-        axios.post(`http://127.0.0.1:8000/api/Message`, { "data":data }).then(res => { console.log(res.data);})// pusher event
+        axios.post(`http://127.0.0.1:8000/api/Message`, { "data":comment }).then(res => { console.log(res.data);})// pusher event
     }
     }
     useEffect(() => {
-        
         axios.get(`http://127.0.0.1:8000/api/Comment/`+ Props.post_id)
             .then(res => {
+                console.log(res);
                 setComments(() => [...res.data]);
-                console.log(res.data);
                 console.log("post id->"+ Props.post_id);
             })
         
@@ -45,40 +46,40 @@ const Comment = (Props) => {
                 "user_id": user_id
             })
                 .then(res => {
+                    console.log(res.data);
+
                     if (comments[comments.length - 1].hasOwnProperty('created_at')) {
                         setComments((comments) => [...comments, res.data]);
                     } else {
                         setComments((comments) => [...comments.filter((el) => el != comments[comments.length - 1]), res.data]);
                     }
-                    console.log(res.data);
                 })
         });
     }, []);
-    const img = [
-        "https://www.flaticon.com/premium-icon/icons/svg/2202/2202112.svg",
-        "https://www.flaticon.com/svg/static/icons/svg/3658/3658958.svg",
-        "https://www.flaticon.com/svg/static/icons/svg/3532/3532381.svg"
-    ]
     return (
         <div className="comment-component">
-
             <div className="color-comment">
-                {comments.map((text, index) =>
-                    <div className="main-comment-div"
-                        key={text.id} >
-                        <a  ><img src={text.img} className="avatar" /></a>
-                        <div className="comment comment_bubble">
-                            <p className="mt-3">{text.name}</p>
-                            <p>{ReactHtmlParser(text.body)}</p>
-                            <p className=" timeBorder">
-                                {text.date}
-                            </p>
+                 {comments.map((text, index) =>
+                       <div>
+                            <div className="main-comment-div"
+                                key={text.id} >
+                                  <a  ><img src={text.img ? text.img :localStorage.getItem("user_img")} className="avatar" /></a>
+                                    <div className="comment comment_bubble">
+                                        <p className="mt-2 user_name">{text.name ?text.name : localStorage.getItem("user_name")}</p>
+                                        <p>{ReactHtmlParser(text.body)}</p>
+                                    </div>
+                             </div>
+                                        <p className=" timeBorder">
+                                                    { text.created_at ?
+                                                    text.created_at.slice(11, 16):' '
+                                                    }
+                                        </p>
                         </div>
+                 )}
+                    <div class="input-group">
+                    <span class="input-group-text" className="btn btn-warning" onClick={addComment}> Comment..</span>
+                    <textarea class="form-control" aria-label="With textarea" onChange={(e)=>setComment(e.target.value)}></textarea>
                     </div>
-                )}
-                <TextEditor
-                    addComment={(count) => addComment(count)}
-                />
             </div>
         </div>
     );

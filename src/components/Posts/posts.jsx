@@ -18,14 +18,14 @@ const Posts = (Props) => {
 },[])
 
     return (
-        <div>
-          <div class="bar">
-
-          {
-          userInfo.map((info)=><Link class="col-xs-12 col-sm-6 col-md-6 col-lg-4" 
-           to={{pathname:"/postDetails" ,post_id:info.id}} ><Post value="Post"   info={info} /> </Link>
-         )}
-
+        <div  className="postsCol" >
+          <div class="postsRow">
+                {
+                userInfo.map((info)=>
+                <div>
+                <Post value="Post" post_id={info.id}  className="item" info={info} />
+                </div>
+                  )}
           </div>
         </div>
     )

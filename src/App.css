@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background: #ffffe7;
+  /*background: #ffffe7;*/
+  justify-content: center;
 }
 *{
   font-family: 'DroidArabicNaskhRegular';
