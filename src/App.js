@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar/navbar'
-import OwnerProfile from './components/Account/OwnerProfile'
+import UserProfile from './components/Account/UserProfile'
 import Profile from './components/Account/Profile'
 
 import Posts from './components/Posts/posts'
@@ -26,7 +26,8 @@ function App() {
         <AddPost />
         <Switch>
           <Route path="/index" component={index} />
-          <Route path="/Profile" component={OwnerProfile} />
+          <Route path="/Profile" component={Profile} />
+          <Route path="/UserProfile" component={UserProfile} />
           <Route path="/Login" component={Login} />
           <Route path="/Register" component={Register} />
           <Route path="/Posts" component={Posts} />

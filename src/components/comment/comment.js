@@ -20,7 +20,7 @@ const Comment = (Props) => {
                 "body": comment,
                 "user_id": userId
             }]);
-            axios.post(`http://127.0.0.1:8000/api/Message`, { "data": comment }).then(res => { console.log(res.data); })// pusher event
+            axios.post(`http://127.0.0.1:8000/api/Message`, { "data": comment }).then(res => { console.log(res); })// pusher event
         }
     }
     useEffect(() => {
@@ -47,7 +47,7 @@ const Comment = (Props) => {
                 "user_id": user_id
             })
                 .then(res => {
-                    console.log(res.data);
+                    console.log(res);
 
                     if (comments[comments.length - 1].hasOwnProperty('created_at')) {
                         setComments((comments) => [...comments, res.data]);
@@ -64,7 +64,7 @@ const Comment = (Props) => {
                     <div>
                         <div className="main-comment-div"
                             key={text.id} >
-                            <Link to="/Profile"><img src={text.img ? text.img : localStorage.getItem("user_img")} className="avatar" /></Link>
+                            <Link to={{pathname:"/UserProfile",id:text.user_id}}><img src={text.img ? text.img : localStorage.getItem("user_img")} className="avatar" /></Link>
                             <div className="comment comment_bubble">
                                 <p className="mt-2 user_name">{text.name ? text.name : localStorage.getItem("user_name")}</p>
                                 <p>{ReactHtmlParser(text.body)}</p>

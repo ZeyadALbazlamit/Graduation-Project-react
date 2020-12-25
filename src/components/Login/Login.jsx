@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import './login.css'
+import {FaUser} from 'react-icons/fa'
 
 const Login = () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -31,46 +33,29 @@ const Login = () => {
 
 }
     return (
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">Login</div>
-                        { Erorr !="" ? <div class="alert alert-danger" role="alert"> {Erorr}</div>:<p></p> }
-
-                        <div class="card-body">
-                            <form onSubmit={handleSubmit(Submit)}>
-                                <div class="form-group row">
-                                    <label  class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-        
-                                    <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control " name="email"  ref={register}/>
-                                    
-                                    </div>
-                                </div>
-        
-                                <div class="form-group row">
-                                    <label  class="col-md-4 col-form-label text-md-right ">Password</label>
-        
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control"  ref={register} name="password" required autocomplete="new-password"/>
-                                    </div>
-                                </div>
-        
-        
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            Login
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  );
+        <div class="nav-item dropdown">
+			<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4"><FaUser /></a>
+			<div class="dropdown-menu action-form">
+				<form action="/examples/actions/confirmation.php" method="post" onSubmit={handleSubmit(Submit)}>
+					<p class="hint-text">تسجيل الدخول بإستخدام    </p>
+					<div class="form-group social-btn clearfix">
+						<a href="#" class=" btn btn-secondary btn-circle facebook-btn float-left"><i class="fa fa-facebook"></i></a>
+						<a href="#" class=" btn btn-secondary btn-circle google-btn float-right"><i class="fa fa-google"></i></a>
+					</div>
+					<div class="or-seperator"><b>أو</b></div>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="اسم المستخدم" required="required" name="email"  ref={register}/>
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="كلمة المرور" ref={register} name="password" required autocomplete="new-password" required="required"/>
+					</div>
+					<input type="submit" class="btn btn-secondary btn-block" value="دخول"/>
+					<div class="text-center mt-3">
+						<span class="text-secondary">انشاء حساب جديد؟</span> <a href="#">تسجل دخول</a>
+					</div>
+				</form>
+			</div>
+		</div>  );
 }
  
 export default Login;

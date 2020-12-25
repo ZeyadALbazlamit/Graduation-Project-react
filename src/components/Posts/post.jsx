@@ -1,33 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './posts.css'
-import {Card,Button} from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { BsHeartFill, BsList } from 'react-icons/bs'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import $ from 'jquery'
+import axios from 'axios';
 
 const Post = (Props) => {
-  function fav(){
-    $(".heart.fa").click(function() {
-      $(this).toggleClass("fa-heart fa-heart-o");
-    });
+  const [bool, setB] = useState(Props.fill);  
+  function fav() {
+    console.log(Props.fill)
+    const d=Props.info.id 
+    axios.post("http://127.0.0.1:8000/api/favorite", { user_id: localStorage.getItem("user_id"), post_id: Props.info.id }).then((res) => {
+      console.log(res.data);
+      if(res.data=='deleted')
+        Props.deleteFav(d)
+         else
+        Props.handleFillChange(res.data.post_id)
+    })
   }
+
   return (
-    <Card style={{ width: '18rem', height : '18rem' }} className="Post col-md-11 mb-3" >
-    <Link to={{pathname:"/postDetails" ,post_id:Props.info.id }}>
-      <Card.Img variant="top" src={Props.info.main_img  } />
+    <Card style={{ width: '18rem', height: '18rem' }} className="Post col-md-11 mb-3" >
+      <h1> {Props.info.id}</h1>
+      <Link to={{ pathname: "/postDetails", post_id: Props.info.id }}>
+        <Card.Img className="postImg" variant="top" src={Props.info.main_img} />
       </Link>
       <Card.Body>
-      <Link to={{pathname:"/postDetails" ,post_id:Props.info.id }}>
+        <Link to={{ pathname: "/postDetails", post_id: Props.info.id }}>
 
-        <Card.Title>{Props.info.title }</Card.Title>
+          <Card.Title className="postTitle">{Props.info.title}</Card.Title>
         </Link>
 
-        <hr/>
-        <div className="icons"><span className="price">{Props.info.price}$</span> 
-        <i class="heart icon fa fa-heart-o" onClick={fav}></i>
+        <hr />
+        <div className="icons"><span className="price">{Props.info.price}$</span>
+          <i className={Props.fill ? "heart icon fa fa-heart" : "heart icon fa fa-heart-o"} onClick={fav}></i>
 
         </div>
-          </Card.Body>
+      </Card.Body>
     </Card>
   );
 }
