@@ -93,15 +93,7 @@ export const NavMenu = styled.ul`
 
 export const NavItem = styled.li`
     height: 80px;
-    margin-left:15px;
-    margin-right:15px;
-    margin-top:10px;
-   @media screen and (max-width : 700px) {
-        margin:-5px;
-    }
-`
-
-export const NavLinks = styled(Link)`
+    margin-top:30px;
     color : #ff9642;
     display:flex;
     align-items: center;
@@ -110,7 +102,6 @@ export const NavLinks = styled(Link)`
     height: 100%;
     cursor : pointer;
     font-size: 1.5rem;
-    margin-top:10px;
     &.active{
         border-bottom: 3px solid #fff;
     }
@@ -120,12 +111,19 @@ export const NavLinks = styled(Link)`
     @media screen and (max-width : 700px) {
         font-size:1.4rem;
     }
+   @media screen and (max-width : 700px) {
+        margin:-5px;
+    }
+`
+
+export const NavLinks = styled(Link)`
+    
 `
 export const ItemLable = styled.h6 `
     color:#ff9642;
-    margin-top: -20px;
     font-style:normal;
     font-size:.8rem;
+    margin-right:-15px;
     cursor: pointer;
     @media screen and (max-width : 700px) {
         display:none;

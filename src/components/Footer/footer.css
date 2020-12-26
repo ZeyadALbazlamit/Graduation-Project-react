@@ -1,0 +1,10 @@
+.footerContainer{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    padding: 50px 30px 50px 30px;
+    border-top: 9px double #ff9642;
+    border-radius: 7px;
+    background-color: #ff974213;
+    margin-top: 200px;
+}

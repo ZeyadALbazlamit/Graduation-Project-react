@@ -22,7 +22,7 @@ const Post = (Props) => {
 
   return (
     <Card style={{ width: '18rem', height: '18rem' }} className="Post col-md-11 mb-3" >
-      <h1> {Props.info.id}</h1>
+      
       <Link to={{ pathname: "/postDetails", post_id: Props.info.id }}>
         <Card.Img className="postImg" variant="top" src={Props.info.main_img} />
       </Link>

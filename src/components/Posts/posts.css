@@ -153,3 +153,11 @@ justify-content: right;
   float: inline-start;
 }
 
+element.style {
+}
+.page-item:not(:first-child) .page-link {
+    margin-left: -1px;
+}
+.k{
+  color: #ff9642;
+}

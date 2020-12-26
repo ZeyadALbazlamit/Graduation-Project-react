@@ -11,12 +11,105 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 0px 130px 130px 130px;
+    justify-content: center;
+    margin: 35px 250px 130px 250px;
 
+}
+@media (max-width : 1293px){
+    .Row{
+        margin: 35px 210px 130px 210px;
+    }
+}
+@media (max-width : 1239px){
+    .Row{
+        margin: 35px 150px 130px 150px;
+    }
 }
 .Link{
     box-shadow: 1px 5px 20px 3px #1111116c;
+    margin: 7px;
+    border-radius: 40px;
+    transition : 0.5s all ease;
+}
+.Link:hover{
+    padding: 10px;
+    
+}
+.mobileIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #fc1703;
     margin: 10px;
 }
-
+.homeIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #fc3d03;
+    margin: 10px;
+}
+.dressIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #fc9803;
+    margin: 10px;
+}
+.shirtIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #fcc603;
+    margin: 10px;
+}
+.potIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #aed63e;
+    margin: 10px;
+}
+.carIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #3ed682;
+    margin: 10px;
+}
+.sofaIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #3ed6c7;
+    margin: 10px;
+}
+.gamesIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #3eb8d6;
+    margin: 10px;
+}
+.bookIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #3eabd6;
+    margin: 10px;
+}
+.catIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #3e9cd6;
+    margin: 10px;
+}
+.laptopIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #3e57d6;
+    margin: 10px;
+}
+.babyIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #7d3ed6;
+    margin: 10px;
+}
+.workerIcon{
+    width: 10rem;
+    height: 10rem;
+    color: #d63eb5 !important;
+    margin: 10px;
+}

@@ -34,7 +34,7 @@ const Login = () => {
 }
     return (
         <div class="nav-item dropdown">
-			<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4"><FaUser /></a>
+			<a href="#" data-toggle="dropdown" class="nav-link toggle mr-4"><FaUser /></a>
 			<div class="dropdown-menu action-form">
 				<form action="/examples/actions/confirmation.php" method="post" onSubmit={handleSubmit(Submit)}>
 					<p class="hint-text">تسجيل الدخول بإستخدام    </p>
