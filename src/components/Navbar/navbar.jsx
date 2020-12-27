@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Navbar.css"
 import LoginForm from '../Login/Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -43,7 +43,7 @@ const Navbar = () => {
   function b() {
     $(".sidebar__navbar").toggleClass("active");
   }
-
+const [text,setText]=useState("");
   return (
     <> 
       <div class="navabar__grub">
@@ -80,8 +80,12 @@ const Navbar = () => {
                   <NavItem><AddPost /></NavItem>
                 </NavMenu>
                 <SearchBox>
-                  <SearchInput className="Input" placeholder="إبحـث" text-align="right"></SearchInput>
-                  <SearchIcon><FaSearch /></SearchIcon>
+                  <SearchInput className="Input" placeholder="إبحـث" text-align="right" onChange={(e)=>{setText(e.target.value)}}></SearchInput>
+
+                  <Link to={{pathname:"/Posts",type:"text" , text:text}} ><SearchIcon><FaSearch   /></SearchIcon> </Link>
+
+
+
                 </SearchBox>
                 <NavLogo to='/index'>logo </NavLogo>
               </NavbarContainer>
