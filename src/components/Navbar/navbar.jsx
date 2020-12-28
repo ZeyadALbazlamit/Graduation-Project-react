@@ -15,6 +15,8 @@ import { RiShirtFill } from "react-icons/ri";
 import { IoGameController } from "@react-icons/all-files/io5/IoGameController";
 import { IoCarSportSharp } from "@react-icons/all-files/io5/IoCarSportSharp";
 import { Link } from 'react-router-dom'
+import Fade from 'react-reveal/Fade';
+
 import {
   Nav,
   NavbarContainer,
@@ -51,7 +53,7 @@ const [text,setText]=useState("");
           <span onClick={b}></span>
           <div class="px-3 py-4 position-relative">
             <ul class="sidebar__list--menu mt-5">
-              <li><Link to={{pathname:"",category:""}} class="active">سيارات - مركبات <IoCarSportSharp /></Link></li>
+              <li><Link to={{pathname:"",categ6ory:""}} class="active">سيارات - مركبات <IoCarSportSharp /></Link></li>
               <li><Link to={{pathname:"",category:""}}>موبايل - تابليت <ImMobile2 /></Link></li>
               <li><Link to={{pathname:"",category:""}}>العاب فيديو وملحقاتها<IoGameController /> </Link></li>
               <li><Link to={{pathname:"",category:""}}>اجهزة - الكترونيات <FaLaptop /></Link></li>
@@ -85,18 +87,20 @@ const [text,setText]=useState("");
                   <Link to={{pathname:"/Posts",type:"text" , text:text}} ><SearchIcon><FaSearch   /></SearchIcon> </Link>
 
 
-
+                 
+  
                 </SearchBox>
-                <NavLogo to='/index'>logo </NavLogo>
+                <NavLogo to='/index'>Nova </NavLogo>
               </NavbarContainer>
             </Nav>
           </nav>
           <div className="nav2">
             <ul className="navUl">
-              <Link to={{pathname:"/Posts",type:"product"}}><li>سلع</li></Link>
-              <Link to={{pathname:"/Posts",type:"service"}}><li>خدمات</li></Link>
-              <Link to={{pathname:"/Posts",type:"company"}}> <li>شركات</li></Link>
-              <Link to={{pathname:"/Posts",type:"search"}}> <li>تصفح</li> </Link>
+            
+            <Fade left big> <Link to={{pathname:"/Posts",type:"product"}}><li>سلع</li></Link ></Fade>
+            <Fade bottom big > <Link to={{pathname:"/Posts",type:"service"}}><li>خدمات</li></Link></Fade>
+              <Fade top big><Link to={{pathname:"/",type:"company"}}> <li>شركات</li></Link></Fade>
+              <Fade right big>  <Link to={{pathname:"/Posts",type:"search"}}> <li>تصفح</li> </Link></Fade>
             </ul>
           </div>
         </div>

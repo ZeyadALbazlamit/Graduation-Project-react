@@ -15,12 +15,11 @@ const PostDetails = (Props) => {
       .then(res => {
         console.log(res.data)
         setPostInfo(res.data)
-        // console.log(Props.location.post_id);
-
-      }).catch(function (error) {
-        console.log(error);
+if(localStorage.getItem('user_id')){
+  axios.post("http://127.0.0.1:8000/api/intrests" ,{user_id:Props.location.post_id,category_id:res.data.post.id})
+  .then((res)=>console.log(res))
+}
       })
-
   }, [])
 
   return (
@@ -78,7 +77,7 @@ const PostDetails = (Props) => {
         </div>
       </div>
       <div>
-        {postInfo.post.id != "0" ? <Comment post_id={postInfo.post.id} /> : ""}
+        {postInfo.post.id != "0" ? <Comment  key={postInfo.post.id}  post_id={postInfo.post.id} /> : ""}
       </div>
     </div>
   )

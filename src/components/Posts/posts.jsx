@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Post from './post'
 import './posts.css'
 import axios from 'axios';
+import Zoom from 'react-reveal/Zoom';
+
+import Filterbox from './filterbox'
+import SubCatFilter from './subCatFilter'
 const Posts = (Props) => {
   const [fill, setFill] = useState(false);
   const [pages, setPages] = useState([1, 2, 3, 4]);
@@ -11,69 +15,84 @@ const Posts = (Props) => {
   const [userInfo, setUserInfo] = useState({ posts: [{ id: 1, name: "لقاء", email: "leqaa@gmail.com", phoneNo: "078888888", img: "/images/4.png", rate: "4" }], fav: [], count: 0 })
   const [posts, setPosts] = useState(userInfo.posts)
   const [fav, setFav] = useState([{ user_id: 0, post_id: 0 }])
+  const [orderBy, setOrderBy] = useState("id desc");
+  const [location, setLocation] = useState("is not null");
+  function handleOrderChange(type) {
+    console.log("type=>" + type);
+     setOrderBy(type);
+    console.log("orderBy=>" + orderBy);
+  }
+  function handleLocationChange(loc) {
+    console.log("location=>" + loc);
+    setLocation(loc)
+
+
+  }
   function catId(p, c) {
-    axios.post("http://127.0.0.1:8000/api/Post/byCategory/" + Props.location.category_id, { user_id: localStorage.getItem("user_id"), page: p, count: c ,order_by:"price"})
+    axios.post("http://127.0.0.1:8000/api/Post/byCategory/" + Props.location.category_id, { user_id: localStorage.getItem("user_id"), page: p, count: c, order_by: orderBy,location:location })
       .then(res => {
         console.log(res.data)
         setPosts(res.data.posts)
         setUserInfo(res.data)
         setFav(res.data.fav)
+
+        let arr = [];
+        for (let i = 1; i <= Math.ceil(res.data.count / postCount); i++)
+          arr[i] = i;
+        setPages(arr);
+    
       })
   }
-  
-  function searchByText(p, c){
-    axios.post("http://127.0.0.1:8000/api/Post/search", { type: Props.location.type,text: Props.location.text ,user_id: localStorage.getItem("user_id"), page: p, count: c ,order_by:"price"})
-    .then(res => {
-      console.log(res.data)
-      setPosts(res.data.posts)
-      setUserInfo(res.data)
-      setFav(res.data.fav)
-    })
 
-    
-  }
-  function postsType(p, c) {
-    axios.post("http://127.0.0.1:8000/api/Post/search", { type: Props.location.type, user_id: localStorage.getItem("user_id"), page: p, count: c ,order_by:"price_desc"})
+  function searchByText(p, c) {
+    axios.post("http://127.0.0.1:8000/api/Post/search", { type: Props.location.type, text: Props.location.text, user_id: localStorage.getItem("user_id"), page: p, count: c, order_by: orderBy,location:location })
       .then(res => {
         console.log(res.data)
         setPosts(res.data.posts)
         setUserInfo(res.data)
         setFav(res.data.fav)
+      
+      
+        let arr = [];
+        for (let i = 1; i <= Math.ceil(res.data.count / postCount); i++)
+          arr[i] = i;
+        setPages(arr);
+    
+      })
+
+
+  }
+  function postsType(p, c) {
+    axios.post("http://127.0.0.1:8000/api/Post/search", { type: Props.location.type, user_id: localStorage.getItem("user_id"), page: p, count: c, order_by: orderBy,location:location })
+      .then(res => {
+        console.log(res.data)
+        setPosts(res.data.posts)
+        setUserInfo(res.data)
+        setFav(res.data.fav)
+    
+        let arr = [];
+        for (let i = 1; i <= Math.ceil(res.data.count / postCount); i++)
+          arr[i] = i;
+        setPages(arr);
+    
       })
 
   }
   useEffect(() => {
-    //console.log(Props.location.category_id  );
-    console.log(Props.location)
+    console.log("render")
     if (Props.location.hasOwnProperty("category_id"))
       catId(page, postCount)
     else
       if (Props.location.hasOwnProperty("type"))
-        
-      if(Props.location.hasOwnProperty("text"))
-       searchByText(page,postCount)
+
+        if (Props.location.hasOwnProperty("text"))
+          searchByText(page, postCount)
         else
-         postsType(1, postCount)
+          postsType(page, postCount)
+    
 
+  }, [Props.location,orderBy,location,page,postCount])
 
-
-    let arr = [];
-    for (let i = 1; i <= Math.ceil(userInfo.count / postCount); i++)
-      arr[i] = i;
-  
-      console.log(arr)
-      setPages(arr);
-
-
-
-    console.log("fin")
-
-  }, [Props.location])
-
-  function filterByPrice() {
-
-    setPosts(posts.filter((el) => el.price < 300))
-  }
   function handleFillChange(postId) {
     setFav([...fav, { post_id: postId }])
     console.log("++++")
@@ -87,39 +106,19 @@ const Posts = (Props) => {
   function goToPage(p) {
     console.log(p)
     setPage(p)
-    if (Props.location.hasOwnProperty("category_id"))
-      catId(p, postCount)
-    else
-      if (Props.location.hasOwnProperty("type"))
-        postsType(p, postCount)
 
   }
   function goToNextPage() {
     if (page != pages[pages.length - 1]) {
-
-      if (Props.location.hasOwnProperty("category_id"))
-        catId(page + 1, postCount)
-      else
-        if (Props.location.hasOwnProperty("type"))
-          postsType(page + 1, postCount)
-
-
-      setPage(page + 1)
+      setPage(page+1);
     } else {
       console.log("this is last page")
     }
   }
 
   function goToPreviousPage() {
-    if (page != 1) {
+    if (page != 1) {       setPage(page-1);
 
-      if (Props.location.hasOwnProperty("category_id"))
-        catId(page - 1, postCount)
-      else
-        if (Props.location.hasOwnProperty("type"))
-          postsType(page - 1, postCount)
-
-      setPage(page - 1)
     } else {
       console.log("this is first page")
     }
@@ -127,36 +126,23 @@ const Posts = (Props) => {
   function handlePostCount(c) {
     console.log(c)
     setPostCount(c)
-    if (Props.location.hasOwnProperty("category_id"))
-      catId(page, c)
-    else
-      if (Props.location.hasOwnProperty("type"))
-        postsType(page, c)
-    let arr = [];
-    for (let i = 1; i <= Math.ceil(userInfo.count / postCount); i++)
-      arr[i] = i;
-    setPages(arr);
+
   }
   return (
-    <div className="postsCol" >
-      <div>
-        <input type="number" placeholder={postCount} onChange={(e) => handlePostCount(e.target.value)} />
-        <button onClick={filterByPrice}>price</button>
-
-        <button onClick={() => console.log(fav)}>loggggggggggg</button>
-
-        <button></button>
-      </div>
+    <div className="postsCol " >
+      <Filterbox handleOrderChange={handleOrderChange} handleLocationChange={handleLocationChange}  handlePostCount={handlePostCount}postCount={postCount} />
+      <SubCatFilter />
       <div class="postsRow">
         {
           posts.map((info) =>
             <div>
+               <Zoom right big>
               <Post value="Post" post_id={info.id}
                 className="item" info={info}
                 handleFillChange={handleFillChange}
                 deleteFav={deleteFav}
                 fill={fav.filter((el) => el.post_id == info.id).length > 0 ? true : false}
-              /> 
+              /></Zoom>
             </div>
           )}
       </div>

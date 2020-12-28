@@ -80,8 +80,8 @@ if(Data.user_id !=0){
   function handleChangRow(e){  setRow( e.target.value)   }
   return (
     <>
-    <Button variant="primary" onClick={() => setShow(true)} >
-      Custom Width Modal
+    <Button variant="" onClick={() => setShow(true)} >
+      أضف إعلانك 
     </Button>
     <Modal
       show={show}
