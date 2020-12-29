@@ -6,12 +6,13 @@ import axios from 'axios';
 import {  useDispatch } from "react-redux";
 import { setUserInfo } from '../Store/actions/actions';
 
-const Register = () => {
+const Register = (Props) => {
 const [Erorr,setErorr]=useState('');
     const dispatch = useDispatch();
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, reset, errors } = useForm();
 
-  function Submit(data){console.log(data);
+  function Submit(data,e){
+      console.log(data);
     axios.post('http://127.0.0.1:8000/api/register', 
      data,
      {headers: {'Accept': 'application/json',
@@ -22,17 +23,19 @@ const [Erorr,setErorr]=useState('');
           localStorage.setItem("user_id",res.data.user.id);
           console.log(  localStorage.getItem("user_id")); 
           setErorr("")
+          Props.setIsLog(true)
 
         }).catch(function(error) {
             console.log(error);
             if (error.response) {
-                setErorr(error.response.data.message)
+                setErorr("error")
             console.log(error.response.data);
             }
             
           })
     
-       
+    
+e.target.reset()
     }
 return (
 
@@ -74,9 +77,11 @@ return (
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
+                                <input type="submit" class="btn btn-secondary btn-block" value="انشاء حساب"/>
+                               
+                                <input type="button"onClick={()=>Props.setHasAcount(true)}  class="btn btn-warning  text-white btn-block" value="الرجوع الى تسجيل الدخول" />
+                                    
+                                
                             </div>
                         </div>
                     </form>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Navbar.css"
 import LoginForm from '../Login/Login'
+import Register from "../register/register";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddPost from "../AddPost/AddPost";
 import $ from "jquery"
@@ -46,13 +47,17 @@ const Navbar = () => {
     $(".sidebar__navbar").toggleClass("active");
   }
 const [text,setText]=useState("");
+const [isLog,setIsLog]=useState(false);
+const [hasAcount,setHasAcount]=useState(true);
+
 function handleLogOut(){
 localStorage['user_id']=0;
-localStorage['user_id']="https://thumbs.dreamstime.com/z/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144849704.jpg";
+localStorage['user_img']="https://thumbs.dreamstime.com/z/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144849704.jpg";
 
 console.log(localStorage.getItem("user_id"))
-console.log(localStorage.getItem("user_img"))
+//console.log(localStorage.getItem("user_img"))
 
+setIsLog(false);
 }
   return (
     <> 
@@ -86,7 +91,28 @@ console.log(localStorage.getItem("user_img"))
             <Nav>
               <NavbarContainer >
                 <NavMenu>
-                  <NavItem><ItemLable>الصفحة الشخصية</ItemLable><LoginForm /> </NavItem>
+                <NavItem>
+                <div class="nav-item dropdown">
+
+  <a href="#" data-toggle="dropdown" class="nav-link toggle "><FaUser /></a>
+  <div class="dropdown-menu action-form">   
+                {  isLog ? 
+
+                 <li><a class="dropdown-item" onClick={handleLogOut}>Log Out</a></li>
+                  :
+                  hasAcount ?
+                  <LoginForm setIsLog={setIsLog} setHasAcount={setHasAcount} />
+                  :
+                  <Register setIsLog={setIsLog} setHasAcount={setHasAcount} />
+
+                  
+              }
+              
+            
+                  
+                   </div>
+                   </div>
+                   </NavItem>
                   <NavItem><AddPost /></NavItem>
                 </NavMenu>
                 <SearchBox>
@@ -95,8 +121,6 @@ console.log(localStorage.getItem("user_img"))
                   <Link to={{pathname:"/Posts",type:"text" , text:text}} ><SearchIcon><FaSearch   /></SearchIcon> </Link>
 
 
-                 
-                  <button type="button" class="btn btn-danger" onClick={handleLogOut}>log out</button>
 
                 </SearchBox>
                 <NavLogo to='/index'>Nova </NavLogo>

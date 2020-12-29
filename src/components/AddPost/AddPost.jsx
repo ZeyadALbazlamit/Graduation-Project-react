@@ -7,14 +7,15 @@ import './AddPost.css'
 import { useSelector, useDispatch } from "react-redux";
 import { getCategoriesOf } from '../Store/actions/actions'
 import { RiImageAddFill } from 'react-icons/ri'
+import { Alert } from 'react-bootstrap';
 
 const AddPost = () => {
   
   const [str,setStr]= useState([]);
 const [img,setImg]=useState({});
   const [row,setRow]=useState("");
-  const { register, handleSubmit, watch, errors } = useForm();
- 
+  const { register, handleSubmit, reset, errors } = useForm();
+ const [price,setPrice]=useState(10);
 function convertImage(F){
   Array.from(F).forEach((f)=>{
     let fr= new FileReader();
@@ -28,9 +29,9 @@ function convertImage(F){
   })
   
     }
-  function Submit(data){
-    console.log(data);  
+  function Submit(data,e){
 
+    console.log(data);  
   const pro=  Object.entries(data).filter(([key, value]) =>{  
     if (key==="user_id"||  key ==="category_id" ||  key ==="price" ||  key ==="location" ||  key ==="Description" ||  key ==="images" ||  key ==="Sub_Category_name"||key ==="title")
       return false;
@@ -59,8 +60,10 @@ if(Data.user_id !=0){
   console.log(error);
 })
   }
-  }//endif
+  setStr([])
+}
   function printValue(e){console.log(e.target.value)}
+  const [x, setX] = useState(true); 
 
   const [show, setShow] = useState(false); 
   const categories = useSelector(state => state.categories)
@@ -78,6 +81,11 @@ if(Data.user_id !=0){
   };
 
   function handleChangRow(e){  setRow( e.target.value)   }
+function deleteImage(e){
+  setStr( str.filter((el)=>el===e) )
+  e.target.reset(); // reset after form submit
+
+}
   return (
     <>
     <Button variant="" onClick={() => setShow(true)} >
@@ -126,12 +134,13 @@ if(Data.user_id !=0){
                   <input className="addPostInput" className="addPostInput" placeholder="اسم الإعلان " name="title" ref={register} />
                 </div>
                 <div>
-                  <label className="label1">الوصف</label>
+                  <label className="label1" >الوصف</label>
                   <textarea name="Description" ref={register} placeholder="وصف الإعلان"></textarea>
                 </div>
+            
                 <div>
                   <label  className="label1" > السعر</label>
-                  <input className="addPostInput" className="addPostInput" placeholder="السعر المطلوب بالدينار" name="price" ref={register} />
+                  <input type="number" className="addPostInput" className="addPostInput" placeholder="السعر المطلوب بالدينار" name="price" ref={register} />
                 </div>
                 <div>
                   <label className="label1" > المدينة</label>
@@ -159,10 +168,22 @@ if(Data.user_id !=0){
                     <label  class="custom-file-label"  for="inputGroupFile01"><RiImageAddFill  /> حمل الصور </label>
                   </div>
                 </div>
-                { str.map((el)=><img className="image"   src={el}/> )}
+                <div style={{display:"flex"}}>
+                {  str.length>0 ? <Alert    onClick={ ()=>setStr([])  } dismissible >
+                { str.map((el)=>
+                 
+
+                <img className="image"   src={el}/>
+              
+
+               )}
+</Alert >:" "
+}
+</div>
               </div> {/*the end of input  */}
               <br />
               <button className="btn btn-outline-dark text-right pull-right " >تم</button>
+
             </form>
           </div>
       </Modal.Body>
