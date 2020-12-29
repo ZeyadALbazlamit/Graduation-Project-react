@@ -42,7 +42,6 @@ function Filterbox(Props) {
                         <option value={"id desc"}>التاريخ الاحدث</option>
                         <option value={"price desc"} >السعر الأعلى</option>
                         <option value={"price"}>السعر الأقل</option>
-
                         <option value={"rate"}>الأكثر اعجاب</option>
                     </select>
                 </div>

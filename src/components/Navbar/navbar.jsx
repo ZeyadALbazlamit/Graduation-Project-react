@@ -46,6 +46,14 @@ const Navbar = () => {
     $(".sidebar__navbar").toggleClass("active");
   }
 const [text,setText]=useState("");
+function handleLogOut(){
+localStorage['user_id']=0;
+localStorage['user_id']="https://thumbs.dreamstime.com/z/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144849704.jpg";
+
+console.log(localStorage.getItem("user_id"))
+console.log(localStorage.getItem("user_img"))
+
+}
   return (
     <> 
       <div class="navabar__grub">
@@ -88,7 +96,8 @@ const [text,setText]=useState("");
 
 
                  
-  
+                  <button type="button" class="btn btn-danger" onClick={handleLogOut}>log out</button>
+
                 </SearchBox>
                 <NavLogo to='/index'>Nova </NavLogo>
               </NavbarContainer>
@@ -100,7 +109,7 @@ const [text,setText]=useState("");
             <Fade left big> <Link to={{pathname:"/Posts",type:"product"}}><li>سلع</li></Link ></Fade>
             <Fade bottom big > <Link to={{pathname:"/Posts",type:"service"}}><li>خدمات</li></Link></Fade>
               <Fade top big><Link to={{pathname:"/",type:"company"}}> <li>شركات</li></Link></Fade>
-              <Fade right big>  <Link to={{pathname:"/Posts",type:"search"}}> <li>تصفح</li> </Link></Fade>
+            { localStorage.getItem("user_id") === 0 ? " ":<Fade right big>  <Link to={{pathname:"/Posts",type:"Recommended"}}> <li>تصفح</li> </Link></Fade>}
             </ul>
           </div>
         </div>

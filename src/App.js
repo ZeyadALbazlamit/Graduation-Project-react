@@ -23,6 +23,8 @@ function App() {
           <Route path="/Posts" component={Posts} /> 
           <Route path="/PostDetails" component={PostDetails} /> 
         </Switch>
+        <Register />
+        <Login/>
         <Footer/>
       </div>
     </Router>

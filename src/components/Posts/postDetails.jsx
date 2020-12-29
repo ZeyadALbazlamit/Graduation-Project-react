@@ -16,7 +16,7 @@ const PostDetails = (Props) => {
         console.log(res.data)
         setPostInfo(res.data)
 if(localStorage.getItem('user_id')){
-  axios.post("http://127.0.0.1:8000/api/intrests" ,{user_id:Props.location.post_id,category_id:res.data.post.id})
+  axios.post("http://127.0.0.1:8000/api/intrests" ,{user_id:localStorage.getItem("user_id"),category_id:res.data.post.category_id})
   .then((res)=>console.log(res))
 }
       })
