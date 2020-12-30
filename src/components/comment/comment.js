@@ -58,31 +58,30 @@ const Comment = (Props) => {
         });
     }, []);
     return (
-        <div className="comment-component">
             <div className="color-comment">
                 {comments.map((text, index) =>
                     <div>
                         <div className="main-comment-div"
                             key={text.id} >
-                            <Link to={{pathname:"/UserProfile",id:text.user_id}}><img src={text.img ? text.img : localStorage.getItem("user_img")} className="avatar" /></Link>
-                            <div className="comment comment_bubble">
-                                <p className="mt-2 user_name">{text.name ? text.name : localStorage.getItem("user_name")}</p>
-                                <p>{ReactHtmlParser(text.body)}</p>
+                            <div className=" comment_bubble">
+                                <h5 className="mt-1 user_name">{text.name ? text.name : localStorage.getItem("user_name")}</h5>
+                                <p   className="comment-body">{ReactHtmlParser(text.body)}</p>
                             </div>
+                            <Link to={{pathname:"/UserProfile",id:text.user_id}}><img src={text.img ? text.img : localStorage.getItem("user_img")} className="avatar" /></Link>
+
                         </div>
                         <p className=" timeBorder">
-                            {text.created_at ?
-                                text.created_at.slice(11, 16) : ' '
-                            }
+                            {text.created_at ?text.created_at.slice(11, 16) : ' '}
                         </p>
                     </div>
                 )}
                 <div class="input-group">
+                <textarea class="form-control " disabled= { Props.isLoged ? "":"disabled"} aria-label="With textarea" onChange={(e) => setComment(e.target.value)}></textarea>
+
                     <span class="input-group-text" className="btn btn-warning"  onClick={addComment}> Comment..</span>
-                    <textarea class="form-control " disabled= { Props.isLoged ? "":"disabled"} aria-label="With textarea" onChange={(e) => setComment(e.target.value)}></textarea>
                 </div>
             </div>
-        </div>
+        
     );
 }
 export default Comment;
