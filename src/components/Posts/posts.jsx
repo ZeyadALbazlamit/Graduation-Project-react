@@ -80,6 +80,8 @@ const Posts = (Props) => {
   }
   useEffect(() => {
     console.log("render")
+  
+    
     if (Props.location.hasOwnProperty("category_id"))
       catId(page, postCount)
     else
@@ -138,6 +140,7 @@ const Posts = (Props) => {
             <div>
                <Zoom right big>
               <Post value="Post" post_id={info.id}
+              isLoged={Props.location.isLoged}
                 className="item" info={info}
                 handleFillChange={handleFillChange}
                 deleteFav={deleteFav}

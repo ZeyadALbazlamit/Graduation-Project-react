@@ -7,6 +7,7 @@ import $ from 'jquery'
 import axios from 'axios';
 
 const Post = (Props) => {
+
   const [bool, setB] = useState(Props.fill);  
   function fav() {
     console.log(Props.fill)
@@ -23,7 +24,7 @@ const Post = (Props) => {
   return (
     <Card style={{ width: '18rem', height: '18rem' }} className="Post col-md-11 mb-3" >
       
-      <Link to={{ pathname: "/postDetails", post_id: Props.info.id }}>
+      <Link to={{ pathname: "/postDetails", post_id: Props.info.id ,isLoged:Props.isLoged}}>
         <Card.Img className="postImg" variant="top" src={Props.info.main_img} />
       </Link>
       <Card.Body>

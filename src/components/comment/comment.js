@@ -78,8 +78,8 @@ const Comment = (Props) => {
                     </div>
                 )}
                 <div class="input-group">
-                    <span class="input-group-text" className="btn btn-warning" onClick={addComment}> Comment..</span>
-                    <textarea class="form-control" aria-label="With textarea" onChange={(e) => setComment(e.target.value)}></textarea>
+                    <span class="input-group-text" className="btn btn-warning"  onClick={addComment}> Comment..</span>
+                    <textarea class="form-control " disabled= { Props.isLoged ? "":"disabled"} aria-label="With textarea" onChange={(e) => setComment(e.target.value)}></textarea>
                 </div>
             </div>
         </div>

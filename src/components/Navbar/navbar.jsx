@@ -38,7 +38,7 @@ import {
 
 } from './NavbarElement'
 
-const Navbar = () => {
+const Navbar = (Props) => {
 
   function a() {
     $(".sidebar__navbar").toggleClass("active");
@@ -46,40 +46,38 @@ const Navbar = () => {
   function b() {
     $(".sidebar__navbar").toggleClass("active");
   }
-const [text,setText]=useState("");
-const [isLog,setIsLog]=useState(false);
-const [hasAcount,setHasAcount]=useState(true);
+  const [text, setText] = useState("");
+  const [hasAcount, setHasAcount] = useState(true);
 
-function handleLogOut(){
-localStorage['user_id']=0;
-localStorage['user_img']="https://thumbs.dreamstime.com/z/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144849704.jpg";
+  function handleLogOut() {
+    localStorage['user_id'] = 0;
+    localStorage['user_img'] = "https://thumbs.dreamstime.com/z/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144849704.jpg";
+    console.log(localStorage.getItem("user_id"))
+    //console.log(localStorage.getItem("user_img"))
 
-console.log(localStorage.getItem("user_id"))
-//console.log(localStorage.getItem("user_img"))
-
-setIsLog(false);
-}
+    Props.setIsLoged(false);
+  }
   return (
-    <> 
+    <>
       <div class="navabar__grub">
         <div class="sidebar__navbar active">
           <span onClick={b}></span>
           <div class="px-3 py-4 position-relative">
             <ul class="sidebar__list--menu mt-5">
-              <li><Link to={{pathname:"",categ6ory:""}} class="active">سيارات - مركبات <IoCarSportSharp /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>موبايل - تابليت <ImMobile2 /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>العاب فيديو وملحقاتها<IoGameController /> </Link></li>
-              <li><Link to={{pathname:"",category:""}}>اجهزة - الكترونيات <FaLaptop /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>عقارات للبيع <FaHome /> </Link></li>
-              <li><Link to={{pathname:"",category:""}}>عقارات للايجار <FaHome /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>المنزل والحديقة <GiSofa /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>ازياء - موضة نسائية <GiAmpleDress /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>ازياء - موضة رجالي <RiShirtFill /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>لوازم الاطفال والالعاب <FaBabyCarriage /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>طعام - غذاء <GiCookingPot /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>التعليم والتدريب <GiBookshelf /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>حيوانات للبيع <GiCat /></Link></li>
-              <li><Link to={{pathname:"",category:""}}>الخدمات <GiMechanicGarage /></Link></li>
+              <li><Link to={{ pathname: "", categ6ory: "" }} class="active">سيارات - مركبات <IoCarSportSharp /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>موبايل - تابليت <ImMobile2 /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>العاب فيديو وملحقاتها<IoGameController /> </Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>اجهزة - الكترونيات <FaLaptop /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>عقارات للبيع <FaHome /> </Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>عقارات للايجار <FaHome /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>المنزل والحديقة <GiSofa /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>ازياء - موضة نسائية <GiAmpleDress /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>ازياء - موضة رجالي <RiShirtFill /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>لوازم الاطفال والالعاب <FaBabyCarriage /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>طعام - غذاء <GiCookingPot /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>التعليم والتدريب <GiBookshelf /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>حيوانات للبيع <GiCat /></Link></li>
+              <li><Link to={{ pathname: "", category: "" }}>الخدمات <GiMechanicGarage /></Link></li>
             </ul>
           </div>
         </div>
@@ -91,37 +89,29 @@ setIsLog(false);
             <Nav>
               <NavbarContainer >
                 <NavMenu>
-                <NavItem>
-                <div class="nav-item dropdown">
+                  <NavItem>
+                    <div class="nav-item dropdown">
 
-  <a href="#" data-toggle="dropdown" class="nav-link toggle "><FaUser /></a>
-  <div class="dropdown-menu action-form">   
-                {  isLog ? 
-
-                 <li><a class="dropdown-item" onClick={handleLogOut}>Log Out</a></li>
-                  :
-                  hasAcount ?
-                  <LoginForm setIsLog={setIsLog} setHasAcount={setHasAcount} />
-                  :
-                  <Register setIsLog={setIsLog} setHasAcount={setHasAcount} />
-
-                  
-              }
-              
-            
-                  
-                   </div>
-                   </div>
-                   </NavItem>
-                  <NavItem><AddPost /></NavItem>
+                      <a href="#" data-toggle="dropdown" class="nav-link toggle "><FaUser /></a>
+                      <div class="dropdown-menu action-form">
+                        {Props.isLoged ?
+                          <li><a class="dropdown-item" onClick={handleLogOut}>Log Out</a></li>
+                          :
+                          hasAcount ?
+                            <LoginForm setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount} />
+                            :
+                            <Register setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount} />
+                        }
+                      </div>
+                    </div>
+                  </NavItem>
+                  <NavItem>
+                  {Props.isLoged ? <AddPost />:""}
+                  </NavItem>
                 </NavMenu>
                 <SearchBox>
-                  <SearchInput className="Input" placeholder="إبحـث" text-align="right" onChange={(e)=>{setText(e.target.value)}}></SearchInput>
-
-                  <Link to={{pathname:"/Posts",type:"text" , text:text}} ><SearchIcon><FaSearch   /></SearchIcon> </Link>
-
-
-
+                  <SearchInput className="Input" placeholder="إبحـث" text-align="right" onChange={(e) => { setText(e.target.value) }}></SearchInput>
+                  <Link to={{ pathname: "/Posts", type: "text", text: text }} ><SearchIcon><FaSearch /></SearchIcon> </Link>
                 </SearchBox>
                 <NavLogo to='/index'>Nova </NavLogo>
               </NavbarContainer>
@@ -129,11 +119,10 @@ setIsLog(false);
           </nav>
           <div className="nav2">
             <ul className="navUl">
-            
-            <Fade left big> <Link to={{pathname:"/Posts",type:"product"}}><li>سلع</li></Link ></Fade>
-            <Fade bottom big > <Link to={{pathname:"/Posts",type:"service"}}><li>خدمات</li></Link></Fade>
-              <Fade top big><Link to={{pathname:"/",type:"company"}}> <li>شركات</li></Link></Fade>
-            { localStorage.getItem("user_id") === 0 ? " ":<Fade right big>  <Link to={{pathname:"/Posts",type:"Recommended"}}> <li>تصفح</li> </Link></Fade>}
+              <Fade left big> <Link to={{ pathname: "/Posts", type: "product",isLoged:Props.isLoged } }><li>سلع</li></Link ></Fade>
+              <Fade bottom big > <Link to={{ pathname: "/Posts", type: "service",isLoged:Props.isLoged }}><li>خدمات</li></Link></Fade>
+              <Fade top big><Link to={{ pathname: "/", type: "company" ,isLoged:Props.isLoged}}> <li>شركات</li></Link></Fade>
+              {Props.isLoged ? <Fade right big>  <Link to={{ pathname: "/Posts", type: "Recommended",isLoged:Props.isLoged }}> <li>تصفح</li> </Link></Fade>:" "}
             </ul>
           </div>
         </div>
