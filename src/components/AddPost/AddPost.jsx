@@ -102,7 +102,7 @@ function deleteImage(e){
             <form onSubmit={handleSubmit(Submit)} >
               <div className="select-items">
                 <div ClassName="Row">
- <h3>{localStorage.getItem('user_id')}</h3>
+ <h3>{localStorage.getItem('user_name')}</h3>
                     <div>
                       <label className="label1" > القسم الرئيسي</label>
                       <select class="scrollbar"  name="category_id"  placeholder=" إختر " onChange={idChanged}

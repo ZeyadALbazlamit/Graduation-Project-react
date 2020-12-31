@@ -5,6 +5,9 @@ import Post from '../Posts/posts';
 import axios from 'axios';
 import UserPosts from "./UserPost";
 import { MdAddAPhoto } from 'react-icons/md'
+import ReactStars from "react-rating-stars-component";
+
+
 function editRate(e) {
     axios.put("http://127.0.0.1:8000/api/User/" + localStorage.getItem("user_id"), { rate: e.target.value }).then((res) => {
         console.log(res.data);
@@ -12,22 +15,23 @@ function editRate(e) {
 
 }
 const Profile = (Props) => {
-  
+const [rate,setRate]=useState(0);  
   const [postKind, setKindPost] = useState(true);
   const [profileData, setProfileData] = useState({ user: "", post: [{}], favorite: [{}] });
   useEffect(() => {
+    console.log(Props)
     console.log("user->"+localStorage.getItem('user_id'))
 
       axios.get("http://127.0.0.1:8000/api/User/" + localStorage.getItem('user_id')).
           then((res) => {
+            setRate(res.data.user.rate)
+
               console.log(res.data)
               setProfileData(res.data)
-          })
+            })
   }, []
   )
-
-
-  function convertImage(F) {
+function convertImage(F) {
       Array.from(F).forEach((f) => {
           let fr = new FileReader();
           fr.readAsDataURL(f);
@@ -42,6 +46,15 @@ const Profile = (Props) => {
           }
       })
   }
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+    axios.put("http://127.0.0.1:8000/api/User/" + localStorage.getItem("user_id"), { rate: newRating}).then((res) => {
+      console.log(res.data);
+      setRate(0)
+  })
+
+  };
+   
   return (
     <div>
     <div className="profileContainer">
@@ -66,21 +79,29 @@ alt="Admin" class="rounded-circle" width="150"/>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
           <h6 class="mb-0">{profileData.post.length}</h6>
           <span class="text-secondary " onClick={() => setKindPost(true)}>اللإعلانات</span>            </li>
+         { Props.location.pathname !="/UserProfile" ? 
             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6 class="mb-0">{profileData.favorite.length} </h6>
                   <span class="text-secondary cursor" onClick={() => setKindPost(false)}>المفضله</span>
             </li>
+            :" "
+}
+
             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-              <h6 class="mb-0">
-                <div class="rating" onChange={(e) => { editRate(e) }}>
-                  <input type="radio" name="rating" value="5" id="5"/><label for="5">☆</label> 
-                  <input type="radio" name="rating" value="4" id="4"/><label for="4">☆</label>
-                  <input type="radio" name="rating" value="3" id="3"/><label for="3">☆</label> 
-                  <input type="radio" name="rating" value="2" id="2"/><label for="2">☆</label> 
-                  <input type="radio" name="rating" value="1" id="1"/><label for="1">☆</label>
-                </div>
-              </h6>
-              <span class="text-secondary">التقييم</span>
+           { rate ===0 ? " ":<ReactStars
+
+    count={10}
+    onChange={ratingChanged}
+    value={rate}
+    size={30}
+    isHalf={true}
+    emptyIcon={<i className="far fa-star"></i>}
+    halfIcon={<i className="fa fa-star-half-alt"></i>}
+    fullIcon={<i className="fa fa-star"></i>}
+    activeColor="#ff9642"
+  />
+           }
+      <h1 onClick={()=>setRate(rate+1)}>{rate}</h1>        <span class="text-secondary">التقييم</span>
             </li>
         </ul>
       </div>

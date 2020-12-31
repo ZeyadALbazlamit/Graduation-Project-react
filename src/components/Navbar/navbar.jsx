@@ -90,6 +90,16 @@ const Navbar = (Props) => {
               <NavbarContainer >
                 <NavMenu>
                   <NavItem>
+                    {Props.isLoged ?
+                      <Link to={{ pathname: "/Profile", user_id: localStorage.getItem("user_id") }}>
+                        <img src={Props.isLoged ? localStorage.getItem("user_img") : localStorage.getItem("user_img")} style={{ width: "50px", height: "50px", borderRadius: '50%' }} />
+                      </Link>
+                      :
+                      <img src={Props.isLoged ? localStorage.getItem("user_img") : localStorage.getItem("user_img")} style={{ width: "50px", height: "50px", borderRadius: '50%' }} />
+                    }
+
+                  </NavItem>
+                  <NavItem>
                     <div class="nav-item dropdown">
 
                       <a href="#" data-toggle="dropdown" class="nav-link toggle "><FaUser /></a>
@@ -105,8 +115,9 @@ const Navbar = (Props) => {
                       </div>
                     </div>
                   </NavItem>
+
                   <NavItem>
-                  {Props.isLoged ? <AddPost />:""}
+                    {Props.isLoged ? <AddPost /> : ""}
                   </NavItem>
                 </NavMenu>
                 <SearchBox>
@@ -119,10 +130,10 @@ const Navbar = (Props) => {
           </nav>
           <div className="nav2">
             <ul className="navUl">
-              <Fade left big> <Link to={{ pathname: "/Posts", type: "product",isLoged:Props.isLoged } }><li>سلع</li></Link ></Fade>
-              <Fade bottom big > <Link to={{ pathname: "/Posts", type: "service",isLoged:Props.isLoged }}><li>خدمات</li></Link></Fade>
-              <Fade top big><Link to={{ pathname: "/", type: "company" ,isLoged:Props.isLoged}}> <li>شركات</li></Link></Fade>
-              {Props.isLoged ? <Fade right big>  <Link to={{ pathname: "/Posts", type: "Recommended",isLoged:Props.isLoged }}> <li>تصفح</li> </Link></Fade>:" "}
+              <Fade left big> <Link to={{ pathname: "/Posts", type: "product", isLoged: Props.isLoged }}><li>سلع</li></Link ></Fade>
+              <Fade bottom big > <Link to={{ pathname: "/Posts", type: "service", isLoged: Props.isLoged }}><li>خدمات</li></Link></Fade>
+              <Fade top big><Link to={{ pathname: "/", type: "company", isLoged: Props.isLoged }}> <li>شركات</li></Link></Fade>
+              {Props.isLoged ? <Fade right big>  <Link to={{ pathname: "/Posts", type: "Recommended", isLoged: Props.isLoged }}> <li>تصفح</li> </Link></Fade> : " "}
             </ul>
           </div>
         </div>
