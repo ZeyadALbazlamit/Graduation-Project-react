@@ -21,16 +21,24 @@ const [rate,setRate]=useState(0);
   useEffect(() => {
     console.log(Props)
     console.log("user->"+localStorage.getItem('user_id'))
-
-      axios.get("http://127.0.0.1:8000/api/User/" + localStorage.getItem('user_id')).
+    const id =Props.location.pathname =="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
+      axios.get("http://127.0.0.1:8000/api/User/" + id).
           then((res) => {
-            setRate(res.data.user.rate)
-
               console.log(res.data)
               setProfileData(res.data)
             })
   }, []
   )
+  useEffect(()=>{
+    const id =Props.location.pathname =="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
+
+    axios.get("http://127.0.0.1:8000/api/rate/" +id).
+    then((res) => {
+        console.log(res.data)
+        setRate(res.data.rate)
+      })
+
+  },[])
 function convertImage(F) {
       Array.from(F).forEach((f) => {
           let fr = new FileReader();
@@ -48,9 +56,13 @@ function convertImage(F) {
   }
   const ratingChanged = (newRating) => {
     console.log(newRating);
-    axios.put("http://127.0.0.1:8000/api/User/" + localStorage.getItem("user_id"), { rate: newRating}).then((res) => {
+    const id =Props.location.pathname =="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
+
+    axios.post("http://127.0.0.1:8000/api/rate", { rate: newRating,rater: id,user_id:profileData.user.id})
+    
+    .then((res) => {
       console.log(res.data);
-      setRate(0)
+      setRate(res.data.rate.rate)
   })
 
   };
@@ -87,8 +99,8 @@ alt="Admin" class="rounded-circle" width="150"/>
             :" "
 }
 
-            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-           { rate ===0 ? " ":<ReactStars
+     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+    <ReactStars
 
     count={10}
     onChange={ratingChanged}
@@ -100,7 +112,7 @@ alt="Admin" class="rounded-circle" width="150"/>
     fullIcon={<i className="fa fa-star"></i>}
     activeColor="#ff9642"
   />
-           }
+           
       <h1 onClick={()=>setRate(rate+1)}>{rate}</h1>        <span class="text-secondary">التقييم</span>
             </li>
         </ul>

@@ -184,4 +184,13 @@
   padding: 4px 20px 4px 20px;
   transition : 0.4s ease-in-out;
 }
-
+.navLink:hover{
+  cursor: pointer !important;
+  color: unset !important;
+ text-decoration: none !important;
+ cursor: pointer !important;
+}
+.navLink{
+  cursor: pointer !important;
+  color: unset;
+}

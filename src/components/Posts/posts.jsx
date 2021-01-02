@@ -138,7 +138,7 @@ const Posts = (Props) => {
         {
           posts.map((info) =>
             <div>
-               <Zoom right big>
+               <Zoom bottom big>
               <Post value="Post" post_id={info.id}
               isLoged={Props.location.isLoged}
                 className="item" info={info}
@@ -150,18 +150,16 @@ const Posts = (Props) => {
           )}
       </div>
       <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-end">
+        <ul class="pagination justify-content-center" style={{marginTop:"200px"}}>
           <li class="page-item active "
-            class="page-link" tabindex="-1" onClick={goToPreviousPage}>Previous
+            class="page-link text-warning " tabindex="-1" onClick={goToPreviousPage}>Previous
           </li>
           {
             pages.map((index) =>
-              <li class={index == page ? ' page-item page-link  bg-warning text-white' : 'page-item page-link'} onClick={(e) => goToPage(e.target.value)} value={index}> {index}</li>
+              <li class={index == page ? ' page-item page-link  bg-warning text-white' : 'page-item page-link text-warning  '} onClick={(e) => goToPage(e.target.value)} value={index}> {index}</li>
             )
-
           }
-
-          <li class="page-item page-link" onClick={goToNextPage} >Next</li>
+          <li class="page-item page-link text-warning " onClick={goToNextPage} >Next</li>
         </ul>
       </nav>
     </div>

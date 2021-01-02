@@ -64,20 +64,20 @@ const Navbar = (Props) => {
           <span onClick={b}></span>
           <div class="px-3 py-4 position-relative">
             <ul class="sidebar__list--menu mt-5">
-              <li><Link to={{ pathname: "", categ6ory: "" }} class="active">سيارات - مركبات <IoCarSportSharp /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>موبايل - تابليت <ImMobile2 /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>العاب فيديو وملحقاتها<IoGameController /> </Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>اجهزة - الكترونيات <FaLaptop /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>عقارات للبيع <FaHome /> </Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>عقارات للايجار <FaHome /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>المنزل والحديقة <GiSofa /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>ازياء - موضة نسائية <GiAmpleDress /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>ازياء - موضة رجالي <RiShirtFill /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>لوازم الاطفال والالعاب <FaBabyCarriage /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>طعام - غذاء <GiCookingPot /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>التعليم والتدريب <GiBookshelf /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>حيوانات للبيع <GiCat /></Link></li>
-              <li><Link to={{ pathname: "", category: "" }}>الخدمات <GiMechanicGarage /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:1  }} class="active">سيارات - مركبات <IoCarSportSharp /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:2  }}>موبايل - تابليت <ImMobile2 /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:3  }}>العاب فيديو وملحقاتها<IoGameController /> </Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:4  }}>اجهزة - الكترونيات <FaLaptop /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:5  }}>عقارات للبيع <FaHome /> </Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:6  }}>عقارات للايجار <FaHome /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:7  }}>المنزل والحديقة <GiSofa /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:8  }}>ازياء - موضة نسائية <GiAmpleDress /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:9  }}>ازياء - موضة رجالي <RiShirtFill /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:10  }}>لوازم الاطفال والالعاب <FaBabyCarriage /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:11 }}>طعام - غذاء <GiCookingPot /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:12  }}>التعليم والتدريب <GiBookshelf /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:13 }}>حيوانات للبيع <GiCat /></Link></li>
+              <li><Link to={{pathname:"/Posts" ,category_id:14 }}>الخدمات <GiMechanicGarage /></Link></li>
             </ul>
           </div>
         </div>
@@ -102,7 +102,7 @@ const Navbar = (Props) => {
                   <NavItem>
                     <div class="nav-item dropdown">
 
-                      <a href="#" data-toggle="dropdown" class="nav-link toggle "><FaUser /></a>
+                      <a href="#" data-toggle="dropdown" class="nav-link toggle " className="navLink"><FaUser /></a>
                       <div class="dropdown-menu action-form">
                         {Props.isLoged ?
                           <li><a class="dropdown-item" onClick={handleLogOut}>Log Out</a></li>
@@ -122,7 +122,7 @@ const Navbar = (Props) => {
                 </NavMenu>
                 <SearchBox>
                   <SearchInput className="Input" placeholder="إبحـث" text-align="right" onChange={(e) => { setText(e.target.value) }}></SearchInput>
-                  <Link to={{ pathname: "/Posts", type: "text", text: text }} ><SearchIcon><FaSearch /></SearchIcon> </Link>
+                  <SearchIcon><Link className="navLink"to={{ pathname: "/Posts", type: "text", text: text }} ><FaSearch /></Link></SearchIcon> 
                 </SearchBox>
                 <NavLogo to='/index'>Nova </NavLogo>
               </NavbarContainer>
@@ -130,10 +130,10 @@ const Navbar = (Props) => {
           </nav>
           <div className="nav2">
             <ul className="navUl">
-              <Fade left big> <Link to={{ pathname: "/Posts", type: "product", isLoged: Props.isLoged }}><li>سلع</li></Link ></Fade>
-              <Fade bottom big > <Link to={{ pathname: "/Posts", type: "service", isLoged: Props.isLoged }}><li>خدمات</li></Link></Fade>
-              <Fade top big><Link to={{ pathname: "/", type: "company", isLoged: Props.isLoged }}> <li>شركات</li></Link></Fade>
-              {Props.isLoged ? <Fade right big>  <Link to={{ pathname: "/Posts", type: "Recommended", isLoged: Props.isLoged }}> <li>تصفح</li> </Link></Fade> : " "}
+              <Fade left big> <Link className="navLink" to={{ pathname: "/Posts", type: "product", isLoged: Props.isLoged }}><li>سلع</li></Link ></Fade>
+              <Fade bottom big > <Link className="navLink" to={{ pathname: "/Posts", type: "service", isLoged: Props.isLoged }}><li>خدمات</li></Link></Fade>
+              <Fade top big><Link className="navLink" to={{ pathname: "/Companies", type: "company", isLoged: Props.isLoged }}> <li>شركات</li></Link></Fade>
+              {Props.isLoged ? <Fade right big>  <Link className="navLink"to={{ pathname: "/Posts", type: "Recommended", isLoged: Props.isLoged }}> <li>تصفح</li> </Link></Fade> : " "}
             </ul>
           </div>
         </div>

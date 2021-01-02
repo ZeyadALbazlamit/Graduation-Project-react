@@ -28,7 +28,7 @@ const Post = (Props) => {
         <Card.Img className="postImg" variant="top" src={Props.info.main_img} />
       </Link>
       <Card.Body>
-        <Link to={{ pathname: "/postDetails", post_id: Props.info.id }}>
+        <Link to={{ pathname: "/postDetails", post_id: Props.info.id ,isLoged:Props.isLoged}}>
 
           <Card.Title className="postTitle">{Props.info.title}</Card.Title>
         </Link>
