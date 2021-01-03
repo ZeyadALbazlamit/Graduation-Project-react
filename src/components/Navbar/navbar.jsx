@@ -99,6 +99,7 @@ const Navbar = (Props) => {
                     }
 
                   </NavItem>
+                  <NavItem><Link to="/Cart"> <FaShoppingCart /></Link> </NavItem>
                   <NavItem>
                     <div class="nav-item dropdown">
 

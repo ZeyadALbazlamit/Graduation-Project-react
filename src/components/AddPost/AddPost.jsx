@@ -98,6 +98,7 @@ function deleteImage(e){
       aria-labelledby="example-custom-modal-styling-title" >
       <Modal.Body className="Modal" >
         <h5 className="h51">ما اللذي تود بيعه او الإعلان عنه؟ </h5>
+        <hr/>
           <div className="tableDiv">
             <form onSubmit={handleSubmit(Submit)} >
               <div className="select-items">
@@ -129,6 +130,7 @@ function deleteImage(e){
                     :''))}
                 </div> 
                 {/*///////////////////new//////////////////////*/}
+                <hr className="hr3" />
                 <div>
                   <label  className="label1" > اسم الإعلان</label>
                   <input className="addPostInput" className="addPostInput" placeholder="اسم الإعلان " name="title" ref={register} />

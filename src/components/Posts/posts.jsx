@@ -133,7 +133,7 @@ const Posts = (Props) => {
   return (
     <div className="postsCol " >
       <Filterbox handleOrderChange={handleOrderChange} handleLocationChange={handleLocationChange}  handlePostCount={handlePostCount}postCount={postCount} />
-      <SubCatFilter />
+     
       <div class="postsRow">
         {
           posts.map((info) =>

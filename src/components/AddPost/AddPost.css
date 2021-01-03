@@ -34,10 +34,11 @@ width: 300px;
 height: 40px;
 margin: 2.5px;
 border-color: #ff9642;
-border-radius: 10px;
-color: #ff9642;
+border-radius: 5px;
 }
-
+.hr3{
+max-width: 305px;
+}
 .select-hidden {
 display: none;
 visibility: hidden;
@@ -54,13 +55,13 @@ width: 300px;
 height: 40px;
 margin: 2.5px;
 border-color: #ff9642;
-border-radius: 10px;
-color: #ff9642;
+border-radius: 5px;
 
 }
-select:focus{
-border-color: #ff9642;
-border-radius: 10px;
+select::-ms-fill{
+border-color: #ff9642 !important;
+box-shadow: none !important;
+border-radius: 5px;
 }
 
 
@@ -100,7 +101,7 @@ color: #ff9642;
 }
 
 .Modal{
-background-color: #fffff7;
+background-color: #fff;
 color: #ff9642;
 font-size: 1.1rem;
 }
@@ -108,4 +109,8 @@ font-size: 1.1rem;
 .header{
 background-color: #ff9642;
 height: 30px !important;
+}
+.custom-file-label{
+max-width: 300px;
+margin: 4px 0px 5px 3px;
 }
