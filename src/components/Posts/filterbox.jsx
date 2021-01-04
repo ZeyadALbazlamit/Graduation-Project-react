@@ -24,17 +24,7 @@ function Filterbox(Props) {
                         <option value={"='العقبة'"}>العقبة</option>
                     </select>
                 </div>
-                <div className="priceBox">
-                    <label>السعر المطلوب</label>
-                    <div className="fromTo">
-                        <select onChange={(e) => Props.handlePostCount(e.target.value)}>
-                            {
-                                count.map((el) => <option key={el} >{el}</option>)
-                            }
-
-                        </select>
-                    </div>
-                </div>
+                
                 <div className="orderBox">
                     <label>الترتيب حسب</label>
                     <select name="location" className="filterSelect" onChange={(e) => Props.handleOrderChange(e.target.value)} >
@@ -44,6 +34,17 @@ function Filterbox(Props) {
                         <option value={"price"}>السعر الأقل</option>
                         <option value={"rate"}>الأكثر اعجاب</option>
                     </select>
+                </div>
+                <div className="priceBox">
+                    <label>عدد المنتجات في الصفحة</label>
+                    <div className="fromTo">
+                        <select className="filterSelect" onChange={(e) => Props.handlePostCount(e.target.value)}>
+                            {
+                                count.map((el) => <option key={el} >{el}</option>)
+                            }
+
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>

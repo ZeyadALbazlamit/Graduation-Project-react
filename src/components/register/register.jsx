@@ -3,12 +3,9 @@ import { useForm } from "react-hook-form";
 import _ from "lodash/fp";
 import "./register.css"
 import axios from 'axios';
-import {  useDispatch } from "react-redux";
-import { setUserInfo } from '../Store/actions/actions';
-
 const Register = (Props) => {
 const [Erorr,setErorr]=useState('');
-    const dispatch = useDispatch();
+    
     const { register, handleSubmit, reset, errors } = useForm();
 
   function Submit(data,e){
@@ -23,8 +20,7 @@ const [Erorr,setErorr]=useState('');
           localStorage.setItem("user_id",res.data.user.id);
           console.log(  localStorage.getItem("user_id")); 
           setErorr("")
-          Props.setIsLog(true)
-
+          Props.setIsLoged(true);
         }).catch(function(error) {
             console.log(error);
             if (error.response) {

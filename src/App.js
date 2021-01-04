@@ -14,6 +14,7 @@ import Footer from './components/Footer/footer'
 import Companies from './components/companies/companies'
 import Company from './components/companies/company'
 import Cart from './components/Account/cart'
+import Order from './components/Account/orders'
 function App() {
   const [isLoged, setIsLoged] = useState(localStorage.getItem('user_id') ? true:false   );
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/Companies" component={Companies} />
           <Route path="/Company" component={Company} />
           <Route path="/Cart" component={Cart} isLoged={isLoged} setIsLoged={setIsLoged} />
+          <Route path="/order" component={Order} isLoged={isLoged} setIsLoged={setIsLoged} />
         </Switch>
         <Footer/>
       </div>

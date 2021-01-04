@@ -6,6 +6,8 @@ import axios from 'axios';
 import UserPosts from "./UserPost";
 import { MdAddAPhoto } from 'react-icons/md'
 import ReactStars from "react-rating-stars-component";
+import { FaEdit } from 'react-icons/fa'
+import { useForm } from "react-hook-form";
 
 
 function editRate(e) {
@@ -15,9 +17,12 @@ function editRate(e) {
 
 }
 const Profile = (Props) => {
+  const { register, handleSubmit } = useForm();
+
 const [rate,setRate]=useState(0);  
   const [postKind, setKindPost] = useState(true);
   const [profileData, setProfileData] = useState({ user: "", post: [{}], favorite: [{}] });
+  const [refresh,setrefresh]=useState(0);
   useEffect(() => {
     console.log(Props)
     console.log("user->"+localStorage.getItem('user_id'))
@@ -27,7 +32,7 @@ const [rate,setRate]=useState(0);
               console.log(res.data)
               setProfileData(res.data)
             })
-  }, []
+  }, [refresh]
   )
   useEffect(()=>{
     const id =Props.location.pathname =="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
@@ -39,6 +44,21 @@ const [rate,setRate]=useState(0);
       })
 
   },[])
+  
+  function Submit(data){
+    console.log(data);
+    console.log(8976867)
+  axios.put('http://127.0.0.1:8000/api/User/'+profileData.user.id, data)
+   .then((res)=>{
+console.log(res)
+let p=profileData;
+p.user=res.data;
+setProfileData(p)
+   localStorage["name"]=res.data.name;
+   setrefresh(refresh+1)
+   })
+   
+  }
 function convertImage(F) {
       Array.from(F).forEach((f) => {
           let fr = new FileReader();
@@ -50,6 +70,10 @@ function convertImage(F) {
                       console.log(res.data)
                       setProfileData({ post: profileData.post, favorite: profileData.favorite, user: res.data });
                       localStorage.setItem("user_img", fr.result);
+                      localStorage["user_img"]=fr.result;
+                      window.location.reload(true);
+
+
                   })
           }
       })
@@ -85,7 +109,7 @@ alt="Admin" class="rounded-circle" width="150"/>
         </div>
         <div class="mt-3">
         <h4> {profileData.user.name}  الأسم </h4>
-        <p class="text-muted font-size-sm">079 : رقم الهاتف</p>
+        <p class="text-muted font-size-sm">{profileData.user.phone_number} : رقم الهاتف</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -114,6 +138,76 @@ alt="Admin" class="rounded-circle" width="150"/>
   />
            
       <h1 onClick={()=>setRate(rate+1)}>{rate}</h1>        <span class="text-secondary">التقييم</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+              <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#exampleModalCenter">
+              تعديل الملف الشخصي <FaEdit/>
+              </button>
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div className="tableDiv">
+                        <form  onSubmit={handleSubmit(Submit)}>
+                          <div className="select-items">
+                            <div ClassName="Row">
+                                <div>
+                                  <label  className="label1 label2" > الأسم</label>
+                                  <input className="addPostInput input2"defaultValue={profileData.user.name} placeholder={profileData.user.name } name="name"  ref={register}/>
+                                </div>
+                                <div>
+                                  <label  className="label1 label2" > رقم الهاتف</label>
+                                  <input className="addPostInput input2" defaultValue={profileData.user.phone_number}
+                                   placeholder={profileData.user.phone_number}name="phone_number"  ref={register} />
+                                </div>
+                                <div>
+                                  <label  className="label1 label2" > الأيميل</label>
+                                  <input className="addPostInput input2"placeholder={profileData.user.email} defaultValue={profileData.user.email}name="email"  ref={register} />
+                                </div>
+                                <div>
+                                  <label className="label1 label2" > المدينة</label>
+                                  <select name="location" className="input2" defaultValue={profileData.user.location}  ref={register} >
+                                  <option >{profileData.user.location}</option>
+                                    <option >عمان</option>
+                                    <option >اربد</option>
+                                    <option >الزرقاء</option>
+                                    <option >عجلون</option>
+                                    <option >جرش</option>
+                                    <option >المفرق</option>
+                                    <option >مادبا</option>
+                                    <option >السلط</option>
+                                    <option >الكرك</option>
+                                    <option >الطفيلة</option>
+                                    <option >معان</option>
+                                    <option >العقبة</option>
+                                  </select>  
+                                </div>
+                                <div>
+                                  <label className="label1 label2" > نوع الحساب</label>
+                                  <select name="type" className="input2"  defaultValue={profileData.user.type} ref={register} >
+                                  <option >{profileData.user.type}</option>
+                                    <option >شخصي</option>
+                                    <option >متجر</option>
+                                  </select>  
+                                </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                  <input type="submit" class="btn btn-primary" value="حفظ"/>             
+                    </div>
+                        </form>
+                      </div>
+                    </div>
+                  
+                  </div>
+                </div>
+              </div>
             </li>
         </ul>
       </div>
