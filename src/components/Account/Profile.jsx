@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './profile.css';
-import Post from '../Posts/posts';
 import axios from 'axios';
 import UserPosts from "./UserPost";
 import { MdAddAPhoto } from 'react-icons/md'
 import ReactStars from "react-rating-stars-component";
 import { FaEdit } from 'react-icons/fa'
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2'
 
-
+/*
 function editRate(e) {
     axios.put("http://127.0.0.1:8000/api/User/" + localStorage.getItem("user_id"), { rate: e.target.value }).then((res) => {
         console.log(res.data);
     })
 
-}
+}*/
 const Profile = (Props) => {
   const { register, handleSubmit } = useForm();
 
@@ -26,19 +25,17 @@ const [rate,setRate]=useState(0);
   useEffect(() => {
     console.log(Props)
     console.log("user->"+localStorage.getItem('user_id'))
-    const id =Props.location.pathname =="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
-      axios.get("http://127.0.0.1:8000/api/User/" + id).
-          then((res) => {
+    const id =Props.location.pathname ==="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
+      axios.get("http://127.0.0.1:8000/api/User/" + id).then((res) => {
               console.log(res.data)
               setProfileData(res.data)
             })
   }, [refresh]
   )
   useEffect(()=>{
-    const id =Props.location.pathname =="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
+    const id =Props.location.pathname ==="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
 
-    axios.get("http://127.0.0.1:8000/api/rate/" +id).
-    then((res) => {
+    axios.get("http://127.0.0.1:8000/api/rate/" +id).then((res) => {
         console.log(res.data)
         setRate(res.data.rate)
       })
@@ -56,7 +53,14 @@ p.user=res.data;
 setProfileData(p)
    localStorage["name"]=res.data.name;
    setrefresh(refresh+1)
-   })
+   
+   Swal.fire(
+    'عمل رائع !',
+    'تم التعديل بنجاح',
+    'success'
+  )  
+  
+  })
    
   }
 function convertImage(F) {
@@ -80,7 +84,7 @@ function convertImage(F) {
   }
   const ratingChanged = (newRating) => {
     console.log(newRating);
-    const id =Props.location.pathname =="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
+    const id =Props.location.pathname ==="/UserProfile" ? Props.location.id:localStorage.getItem('user_id')
 
     axios.post("http://127.0.0.1:8000/api/rate", { rate: newRating,rater: id,user_id:profileData.user.id})
     
@@ -100,7 +104,7 @@ function convertImage(F) {
 alt="Admin" class="rounded-circle" width="150"/>
           <MdAddAPhoto className="addImage " /> 
           
-          {localStorage.getItem("user_id") ==profileData.user.id ?
+          {localStorage.getItem("user_id") ===profileData.user.id ?
                       <input type="file" name="image" className="imgInput " onChange={(e) =>convertImage(e.target.files)} />
 
                       : ""
@@ -115,7 +119,7 @@ alt="Admin" class="rounded-circle" width="150"/>
           <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
           <h6 class="mb-0">{profileData.post.length}</h6>
           <span class="text-secondary " onClick={() => setKindPost(true)}>اللإعلانات</span>            </li>
-         { Props.location.pathname !="/UserProfile" ? 
+         { Props.location.pathname !=="/UserProfile" ? 
             <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
             <h6 class="mb-0">{profileData.favorite.length} </h6>
                   <span class="text-secondary cursor" onClick={() => setKindPost(false)}>المفضله</span>
@@ -162,7 +166,7 @@ alt="Admin" class="rounded-circle" width="150"/>
                                 </div>
                                 <div>
                                   <label  className="label1 label2" > رقم الهاتف</label>
-                                  <input className="addPostInput input2" defaultValue={profileData.user.phone_number}
+                                  <input  type="number" className="addPostInput input2" defaultValue={profileData.user.phone_number}
                                    placeholder={profileData.user.phone_number}name="phone_number"  ref={register} />
                                 </div>
                                 <div>
@@ -190,9 +194,9 @@ alt="Admin" class="rounded-circle" width="150"/>
                                 <div>
                                   <label className="label1 label2" > نوع الحساب</label>
                                   <select name="type" className="input2"  defaultValue={profileData.user.type} ref={register} >
-                                  <option >{profileData.user.type}</option>
-                                    <option >شخصي</option>
-                                    <option >متجر</option>
+                                  <option value={profileData.user.type}>{ profileData.user.type =="company" ?"متجر":"شخصي"  }</option>
+                                    <option value={"user"}>شخصي</option>
+                                    <option value={"company"} >متجر</option>
                                   </select>  
                                 </div>
                             </div>

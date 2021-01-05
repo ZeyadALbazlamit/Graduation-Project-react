@@ -9,7 +9,7 @@ import Fade from 'react-reveal/Fade';
 function Companies(Props) {
     const [com,setCom]=useState([ {id:0,name:"",email:"",img:"",phone_number:""}])
     const  [comF,setComF]=useState([ {id:0,name:"",email:"",img:"",phone_number:""}])
-    const [rate,setRate]=useState(0);
+  //  const [rate,setRate]=useState(0);
 useEffect(()=>{
 axios.get('http://127.0.0.1:8000/api/stors',{})
 .then((res)=>{
@@ -23,7 +23,7 @@ axios.get('http://127.0.0.1:8000/api/stors',{})
 },[])
 
 function filterByLocation(location){
-    setComF( com.filter((el)=>el.location ==location) )
+    setComF( com.filter((el)=>el.location ===location) )
 
 }
 
@@ -36,7 +36,7 @@ function filterByLocation(location){
 
                  <Link to={{pathname:"/Company", com_id:el.id,isLoged:Props.location.isLoged,img:el.img,name:el.name }}>
                     <div className="companyPost text-dark ">
-                        <img src={el.img} className="companyImg" />
+                        <img src={el.img} className="companyImg" alt=""/>
                           <div className="companyInfo">
                             <h4>{el.name}</h4>
                             <div className="companyInfo2">

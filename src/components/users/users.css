@@ -1,0 +1,212 @@
+.containerCom{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+
+}
+.companiesContainer{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    justify-content: space-around;
+    margin: 20px 0px 0px 0px;
+}
+.UserPost1{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 15px;
+    justify-self: center;
+    align-items: center;
+    margin: 3px;
+}
+.UserPost1 img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+}
+@media (max-width : 1340px){
+    .companiesContainer{
+        width: 55%;
+    }
+}
+@media (max-width : 1240px){
+    .companiesContainer{
+        width: 60%;
+    }
+}
+@media (max-width : 1140px){
+    .companiesContainer{
+        width: 65%;
+    }
+}
+@media (max-width : 1040px){
+    .companiesContainer{
+        width: 70%;
+    }
+}
+@media (max-width : 940px){
+    .companiesContainer{
+        width: 75%;
+    }
+}
+@media (max-width : 840px){
+    .companiesContainer{
+        width: 80%;
+    }
+}
+@media (max-width : 740px){
+    .companiesContainer{
+        width: 85%;
+    }
+}
+@media (max-width : 640px){
+    .companiesContainer{
+        width: 90%;
+    }
+}
+@media (max-width : 540px){
+    .companiesContainer{
+        width: 95%;
+    }
+}
+
+.userInfo111{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    width: 95%;
+    height: 80%;
+    margin: 0px 10px 0px 0px;
+    border-radius: 20px;
+    background-color: rgba(255, 235, 205, 0.39);
+}
+.userInfo1112{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.userInfo1112 p{
+    margin: 0px 5% 0px 10px;
+    border-left: .8px solid #c4c4c4;
+    padding: 4px;
+    padding-left: 5%;
+}
+.userInfo111 h6{
+    text-align: right;
+    margin: 0px 20px 0px 10px;
+}
+
+/*************************filterBox*************************/
+.filterContainer2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .filterBox2{
+    border: 1px solid #c4c4c4;
+    border-radius: 30px;
+    width: 75%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    background-color:#ff9742f3 ;
+    padding: 2px;
+    margin-top: 5px;
+  }
+  @media (max-width : 720px){
+    .filterBox2{
+      width: 90%;
+    }
+  }
+  .filterSelect2{
+    width: 100px;
+    height: 30px;
+    font-size: .9rem;
+    border-radius: 0px;
+  }
+  .filterSelect22{
+    width: 130px;
+    height: 30px;
+    font-size: .9rem;
+    border-radius: 0px;
+  }
+  .catBox2 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    text-align: right;
+    color: #000;
+    margin: 0px 20px 0px 20px;
+  }
+  .cityBox2 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    text-align: right;
+    color: #000;
+    margin: 0px 20px 0px 20px;
+  }
+  .priceBox2{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    color: #000;
+    margin: 0px 20px 0px 20px;
+  }
+  .priceInput2{
+    width: 70px;
+    height: 30px;
+    border-color: #ff9642;
+    text-align: right;
+    margin: 0px;
+    border: 1px solid #ff9642;
+    font-size: .9rem;
+    margin: 0px 2px 0px 2px;
+  
+  }
+  .fromTo2{
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0px 5px 0px 5px;
+    padding: 2px;
+  
+  }
+  .orderBox2{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    text-align: right;
+    color: #000;
+    margin: 3px 20px 0px 20px;
+  }
+  .order2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    margin: 0px 2px 0px 2px;
+  
+  }
+  
+.userSearch{
+    font-size: .9rem;
+    height: 32px;
+    width: 200px;
+    border-radius: 10px;
+    margin: 2px 5px 0px 2px;
+    text-align: right;
+    border: unset;
+    padding-right:10px ;
+}
+.searchUser{
+    margin-top: 5px;
+}

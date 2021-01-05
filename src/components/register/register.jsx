@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import _ from "lodash/fp";
 import "./register.css"
@@ -18,6 +18,9 @@ const [Erorr,setErorr]=useState('');
     
           console.log(res.data.user);
           localStorage.setItem("user_id",res.data.user.id);
+          localStorage.setItem("user_type", res.data.user.type);
+          Props.setType(res.data.user.type)
+
           console.log(  localStorage.getItem("user_id")); 
           setErorr("")
           Props.setIsLoged(true);

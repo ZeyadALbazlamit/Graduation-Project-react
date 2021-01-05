@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './profile.css';
-import Post from '../Posts/posts';
 import axios from 'axios';
 import UserPosts from "./UserPost";
 import { MdAddAPhoto } from 'react-icons/md'
@@ -13,8 +11,7 @@ const UserProfile = (Props) => {
   useEffect(() => {
     console.log("user->"+localStorage.getItem('user_id'))
 
-      axios.get("http://127.0.0.1:8000/api/User/" + Props.location.id).
-          then((res) => {
+      axios.get("http://127.0.0.1:8000/api/User/" + Props.location.id).then((res) => {
               console.log(res.data)
               setProfileData(res.data)
           })

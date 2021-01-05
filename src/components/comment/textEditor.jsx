@@ -2,7 +2,6 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import React, { useState } from "react"
 //import { parseXML } from 'jquery';
-import ReactHtmlParser from 'react-html-parser';
 
 export function TextEditor(props) {
   const [text, setText] = useState("")

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './posts.css'
-import { IoMdChatbubbles } from 'react-icons/io'
+//import { IoMdChatbubbles } from 'react-icons/io'
 import axios from 'axios';
 import Comment from "../comment/comment"
 import { Link } from "react-router-dom";
@@ -50,18 +50,21 @@ if(localStorage.getItem('user_id')){
               <span class="visually-hidden">Next</span>
             </a>
           </div>
-          <div className="dynamicDetails">
+         
+          <div className="description" style={{display:"inline"}} > 
             {
-              Object.entries(postInfo.post.pro).map((el) => <h1>{el[0]} :{el[1]}</h1>)
+              Object.entries(postInfo.post.pro).map((el) => <p>{el[0]} :{el[1]}</p>)
             }
 
           </div>
-          <div className="description">
+          <div className="description" >
+          <label>العنوان  : {postInfo.post.title}</label>
+          <label>القسم الفرعي  : {postInfo.post.Sub_Category_name}</label>
             <label>المدينة :{postInfo.post.location}</label>
-            <label>القسم الفرعي  : {postInfo.post.Sub_Category_name}</label>
-            <label>الاسم  : {postInfo.post.title}</label>
+        
             <label>الوصف :{postInfo.post.Description} </label>
           </div>
+        
           <div>
           </div>
         </div>

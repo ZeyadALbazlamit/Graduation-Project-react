@@ -8,14 +8,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCategoriesOf } from '../Store/actions/actions'
 import { RiImageAddFill } from 'react-icons/ri'
 import { Alert } from 'react-bootstrap';
+import Swal from 'sweetalert2'
+import { useHistory } from 'react-router-dom';
 
 const AddPost = () => {
-  
+  //const history = useHistory();
+  /*function  goTo(path){
+ 
+  history.push(path);
+  }*/
   const [str,setStr]= useState([]);
 const [img,setImg]=useState({});
   const [row,setRow]=useState("");
-  const { register, handleSubmit, reset, errors } = useForm();
- const [price,setPrice]=useState(10);
+  const { register, handleSubmit, reset } = useForm();
+ //const [price,setPrice]=useState(10);
 function convertImage(F){
   Array.from(F).forEach((f)=>{
     let fr= new FileReader();
@@ -56,14 +62,28 @@ if(Data.user_id !=0){
    axios.post("http://127.0.0.1:8000/api/Post",Data   )
 .then(res => {
   console.log(res);
+  Swal.fire(
+    'عمل رائع !',
+    'تم اضافة اعلانك بنجاح',
+    'success'
+  )
+  e.target.reset();
+
 }).catch(function(error) {
   console.log(error);
+  Swal.fire({
+    icon: 'error',
+    title: 'لقد قمت بخطأ ا>ناء الادخال ',
+    text: 'الرجاء المحاولة في وقت لاحق ',
+    
+  })
+  window.location.reload();
 })
   }
   setStr([])
 }
   function printValue(e){console.log(e.target.value)}
-  const [x, setX] = useState(true); 
+  
 
   const [show, setShow] = useState(false); 
   const categories = useSelector(state => state.categories)
@@ -175,7 +195,7 @@ function deleteImage(e){
                 { str.map((el)=>
                  
 
-                <img className="image"   src={el}/>
+                <img className="image"    alt=""src={el}/>
               
 
                )}

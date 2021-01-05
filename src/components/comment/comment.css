@@ -5,17 +5,19 @@
     display: flex;
     justify-content: flex-end;
  
-    background-color: bisque;
+  /*  background-color: bisque;*/
     padding: 13px;
     align-content: end;
 }
 .color-comment {
     background-color: rgb(255, 255, 255);
     /* justify-content: space-around; */
-    width: 83%;
+    /* width: 83%; */
     border-radius: 40px;
     margin-top: 20px;
     margin-left: 309px;
+    justify-content: center;
+    margin-right: 40px;
 }
 .comment_bubble {
     /* margin-left: 30px; */

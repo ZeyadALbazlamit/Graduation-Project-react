@@ -1,5 +1,5 @@
 import React from 'react'
-import Bounce from 'react-reveal/Bounce';
+//import Bounce from 'react-reveal/Bounce';
 
 
 function SubCatFilter() {

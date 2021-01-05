@@ -21,6 +21,7 @@
     flex-direction: row-reverse;
     margin-right: -50%;
     align-items: center;
+    margin-top: 15px;
 }
 .usreOrderInfo img{
     height: 50px;

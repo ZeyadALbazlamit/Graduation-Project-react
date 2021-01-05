@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import './posts.css'
-import { Card, Button } from 'react-bootstrap'
-import { BsHeartFill, BsList } from 'react-icons/bs'
+import { Card } from 'react-bootstrap'
+//import { BsHeartFill, BsList } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import axios from 'axios';
 
 const Post = (Props) => {
 
-  const [bool, setB] = useState(Props.fill);  
+ // const [bool, setB] = useState(Props.fill);  
   function fav() {
     console.log(Props.fill)
     const d=Props.info.id 

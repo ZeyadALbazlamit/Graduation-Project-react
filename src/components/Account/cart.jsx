@@ -6,6 +6,7 @@ import { BiPlusMedical } from 'react-icons/bi'
 import { ImMinus } from 'react-icons/im'
 import { FaCheck } from 'react-icons/fa'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 
 function Cart(Props) {
@@ -22,8 +23,8 @@ function Cart(Props) {
         axios.get("http://127.0.0.1:8000/api/cart/" + localStorage.getItem("user_id"))
             .then((res) => {
                 console.log(res.data)
-                setPosts(res.data)
-                setTotCount(comuteTotalPrice(res.data))
+                setPosts(res.data.cart)
+                setTotCount(comuteTotalPrice(res.data.cart))
             })
 
 
@@ -34,11 +35,15 @@ function Cart(Props) {
         console.log(i)
        
         const cartId=posts[i].cartId;
-        setPosts(posts.filter((el,index)=>index !=i))
+        setPosts(posts.filter((el,index)=>index !==i))
         axios.put("http://127.0.0.1:8000/api/cart/" + cartId)
             .then((res) => {
                 console.log(res.data)
-              
+                Swal.fire(
+                    'عمل رائع !',
+                    'تم تاكيد طلبك',
+                    'success'
+                  )    
             })
     }
 
@@ -65,7 +70,7 @@ const data={
         console.log(i)
 
         if (posts[i].count == 1) {
-            setPosts(posts.filter((el, index) => index != i))
+            setPosts(posts.filter((el, index) => index !== i))
             setTotCount(totCount - posts[i].count * posts[i].price)
         } else {
 
@@ -87,13 +92,19 @@ const data={
 
     function handleDelete(i) {
         console.log(i)
-        setPosts(posts.filter((el, index) => index != i))
+        setPosts(posts.filter((el, index) => index !== i))
         setTotCount(totCount - posts[i].price * posts[i].count)
         const cartId = posts[i].cartId;
         const post_id = posts[i].id;
         axios.put("http://127.0.0.1:8000/api/cart/" + cartId,{post_id:post_id})
             .then((res) => {
                 console.log(res.data)
+
+                Swal.fire(
+                    'عمل رائع !',
+                    'تم حزف طلبك',
+                    'success'
+                  )  
             })
     }
 
@@ -107,6 +118,11 @@ const data={
                 axios.put("http://127.0.0.1:8000/api/cart/"+localStorage.getItem("user_id"), data)
                     .then((res) => {
                         console.log(res.data)
+                        Swal.fire(
+                            'عمل رائع !',
+                            'تم حزف طلبك',
+                            'success'
+                          )  
                     })
     }
     function submitAll() {
@@ -123,14 +139,26 @@ setPosts(nposts)
                         console.log(res.data)
                     })
 
+                    Swal.fire(
+                        'عمل رائع !',
+                        'تم تاكيد طلبك',
+                        'success'
+                      )             
+
     }
     return (
         <div className="containerCart">
             <div className="cartsContainer">
+                <div className="switch" >
+                    <Link className="navLink" to="/UserOrder"> <button type="button" class="btn btn-link orderBtn" > الطلبات المرسلة </button></Link>
+                    <span class="vl"></span>
+                    <Link className="navLink" to="/Cart"> <button type="button" class="btn btn-link orderBtn" >سلة المشتريات</button></Link>
+                </div>
+                <hr style={{width:'100%'}}/>
                 {posts.map((el, index) =>
                     <div className="cartPost">
                         <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.isLoged }} key={el.cartId}>
-                            <img src={el.main_img} />
+                            <img src={el.main_img} alt=""/>
                         </Link>
                         <h6>{el.title}</h6>
                         <h6 class="mb-0"> {el.price * el.count}  </h6>

@@ -115,7 +115,7 @@
     justify-content: center;
     background-color:#ff9742f3 ;
     padding: 2px;
-    margin-top: 2px;
+    margin-top: 5px;
   }
   @media (max-width : 720px){
     .filterBox2{

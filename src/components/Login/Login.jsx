@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import './login.css'
-import { FaUser } from 'react-icons/fa'
 import GoogleLogin from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 
 const Login = (Props) => {
-	const { register, handleSubmit, reset, errors } = useForm();
+	const { register, handleSubmit, reset } = useForm();
 	const [Erorr, setErorr] = useState('');
 	const responseFacebook = (response) => {
 		console.log(response);
@@ -28,7 +27,9 @@ const Login = (Props) => {
 			localStorage.setItem("user_id", res.data.user.id);
 			localStorage.setItem("user_name", res.data.user.name);
 			localStorage.setItem("user_img", res.data.user.img);
+			localStorage.setItem("user_type", res.data.user.type);
 
+			Props.setType(res.data.user.type)
 			Props.setIsLoged(true);
 			console.log(localStorage.getItem("user_id"));
 
@@ -59,7 +60,8 @@ const Login = (Props) => {
 			localStorage.setItem("user_id", res.data.user.id);
 			localStorage.setItem("user_name", res.data.user.name);
 			localStorage.setItem("user_img", res.data.user.img);
-
+			localStorage.setItem("user_type", res.data.user.type);
+			Props.setType(res.data.user.type)
 			Props.setIsLoged(true);
 			console.log(localStorage.getItem("user_id"));
 
@@ -80,6 +82,9 @@ const Login = (Props) => {
 			console.log(res);
 			localStorage.setItem("user_id", res.data.user.id);
 			localStorage.setItem("user_name", res.data.user.name);
+			localStorage.setItem("user_type", res.data.user.type);
+			Props.setType(res.data.user.type)
+
 			Props.setIsLoged(true);
 			console.log(localStorage.getItem("user_id"));
 
@@ -93,33 +98,42 @@ const Login = (Props) => {
 		e.target.reset()
 
 	}
+	/*
 	function socialLogin() {
 		axios.get("http://127.0.0.1:8000/api/login/google",)
-			.then((res) => console.log(res.data))
-	}
+			.then((res) =>{ console.log(res.data)
+				localStorage.setItem("user_type", res.data.user.type);
+				Props.setType(res.data.user.type)
+
+			})
+			
+
+	}*/
 	return (
 
 
 		<form action="/examples/actions/confirmation.php" method="post" onSubmit={handleSubmit(Submit)}>
 
 			<p class="hint-text">تسجيل الدخول بإستخدام    </p>
-			<div class="form-group social-btn clearfix">
+			<div >
 
-				<GoogleLogin className="google"
+				<GoogleLogin className="google" 
 					clientId="535294813022-p4qebn043gi8ui530r958q7mrdll1tdr.apps.googleusercontent.com"
-					buttonText="Login"
+					buttonText=""
 					onSuccess={responseGoogle}
 					onFailure={responseGoogle}
 					cookiePolicy={'single_host_origin'}
-					cssClass="face"
+					cssClass="google"
 
 				/>
-				<FacebookLogin className="face"
+				<FacebookLogin 
 					appId="860967254640337"
 					autoLoad={false}
 					fields="name,email,picture"
 					onClick={responseFacebook}
 					callback={responseFacebook}
+					icon="fa-facebook"
+					textButton=" "
 					cssClass="face"
 				/>
 			</div>

@@ -6,6 +6,7 @@ import axios from "axios"
 import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade'
 import ReactStars from "react-rating-stars-component"
+import Swal from 'sweetalert2'
 
 
 function Company(Props) {
@@ -72,7 +73,16 @@ function Company(Props) {
             post_id: info.id,
             submit: false
         }
-        axios.post("http://127.0.0.1:8000/api/cart", data).then((res) => console.log(res))
+        axios.post("http://127.0.0.1:8000/api/cart", data)
+        .then((res) =>{console.log(res)
+            Swal.fire(
+                'عمل رائع !',
+                'تم اضافة المنتج',
+                'success'
+              )
+        
+        })
+
     }
     return (
         <div className="companyDetailsContainer1">
