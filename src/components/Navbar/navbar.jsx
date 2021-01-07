@@ -18,24 +18,17 @@ import { IoCarSportSharp } from "@react-icons/all-files/io5/IoCarSportSharp";
 import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade';
 import { useHistory } from 'react-router-dom';
+import NotLoged from '../AddPost/notLoged'
 
 import {
   Nav,
   NavbarContainer,
   NavLogo,
-  //MobileIcon,
   NavMenu,
   NavItem,
-  //NavLinks,
   SearchBox,
   SearchInput,
-  SearchIcon,
-  //SearchIconMenu,
-  //ItemLable,
-  //SearchNav,
-  //SearchNavBox,
-  //SearchNavIcon,
-  //SearchNavInput,
+  SearchIcon
 
 } from './NavbarElement'
 
@@ -98,41 +91,39 @@ const Navbar = (Props) => {
             <Nav>
               <NavbarContainer >
                 <NavMenu>
-                  <NavItem>
-                    {Props.isLoged ?
-                      <Link to={{ pathname: "/Profile", user_id: localStorage.getItem("user_id") }}>
-                        <img src={Props.isLoged ? localStorage.getItem("user_img") : localStorage.getItem("user_img")} alt="" style={{ width: "50px", height: "50px", borderRadius: '50%' }} />
-                      </Link>
-                      :
-                      <img src={Props.isLoged ? localStorage.getItem("user_img") : localStorage.getItem("user_img")} alt="" style={{ width: "50px", height: "50px", borderRadius: '50%' }} />
-                    }
+                
+                  {Props.userType ==="user" ?  <NavItem><Link to="/Cart"> <FaShoppingCart /></Link> </NavItem>:" " } 
 
+                  <NavItem>
+                    {Props.isLoged ? <AddPost /> :<NotLoged/>}
                   </NavItem>
-                 {Props.userType ==="user" ?  <NavItem><Link to="/Cart"> <FaShoppingCart /></Link> </NavItem>:" " } 
                   <NavItem>
                     <div class="nav-item dropdown">
 
                       <a  data-toggle="dropdown" class="nav-link toggle " className="navLink"><FaUser /></a>
-                      <div class="dropdown-menu action-form">
-                        {Props.isLoged ?
-                          <li><a class="dropdown-item" onClick={handleLogOut}>Log Out</a></li>
-                          :
-                          hasAcount ?
-                            <LoginForm setIsLoged={Props.setIsLoged}  setHasAcount={setHasAcount}    userType={Props.userType}  setType={Props.setType}   />
-                            :
-                            <Register setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount}    userType={Props.userType}  setType={Props.setType}  />
-                        }
+                      <div class="dropdown-menu action-form" style={{justifyContent:"center" ,marginLeft:'30px'}}>
+                      {Props.isLoged ?
+                      <Link to={{ pathname: "/Profile", id: localStorage.getItem("user_id") }} >
+                        <img src={Props.isLoged ? localStorage.getItem("user_img") : localStorage.getItem("user_img")} alt="" style={{ width: "60px", height: "60px", borderRadius: '50%',marginLeft:"88px", }} />
+                        <li style={{color:"orange",fontSize:"15px",marginTop:"5px",textAlign:"center" }} >زياد</li>
+                      </Link>
+                      :""
+                    }
+<div class="dropdown-divider"></div>
+                          <li><a class="dropdown-item " style={{width:'100%',textAlign:"center",color:"orange"
+                                     }} onClick={handleLogOut}>تسجيل خروج</a></li>
+                          <li><a class="dropdown-item"> <LoginForm setIsLoged={Props.setIsLoged}  setHasAcount={setHasAcount}    userType={Props.userType}  setType={Props.setType}   /></a></li>
+                          <li><a class="dropdown-item">  <Register setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount}    userType={Props.userType}  setType={Props.setType}  /></a></li>
+                      
                       </div>
                     </div>
                   </NavItem>
-                  
-                  <NavItem>
-                    {Props.isLoged ? <AddPost /> : ""}
-                  </NavItem>
+
+
                 </NavMenu>
                 <SearchBox>
                   <SearchInput className="Input" placeholder="إبحـث" text-align="right" onChange={(e) => { setText(e.target.value) }}></SearchInput>
-                  <SearchIcon><Link className="navLink"to={{ pathname: "/Posts", type: "text", text: text }} ><FaSearch /></Link></SearchIcon> 
+                  <SearchIcon><Link className="navLink"to={{ pathname: "/Posts", type: "text", text: "%" + text + "%" }} ><FaSearch /></Link></SearchIcon> 
                 </SearchBox>
                 <NavLogo to='/index'>Nova </NavLogo>
               </NavbarContainer>
@@ -146,7 +137,7 @@ const Navbar = (Props) => {
               {Props.isLoged ? <Fade right big>  <Link className="navLink"to={{ pathname: "/Posts", type: "Recommended", isLoged: Props.isLoged }}> <li> مقترحات</li> </Link></Fade> : " "}
              {Props.userType ==="company" ?  <Fade top big><Link className="navLink" to={{ pathname: "/Order", type: "company", isLoged: Props.isLoged }}> <li>طلبات</li></Link></Fade>: " "} 
               <Fade left big> <Link className="navLink" to="/Users"><li>الأشخاص</li></Link ></Fade>
-
+              
             </ul>
           </div>
         </div>

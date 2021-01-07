@@ -3,7 +3,22 @@ import { useForm } from "react-hook-form";
 import _ from "lodash/fp";
 import "./register.css"
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2'
+
 const Register = (Props) => {
+
+  const history = useHistory();
+	function  goTo(path){
+   
+	history.push(path);
+	}
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 const [Erorr,setErorr]=useState('');
     
     const { register, handleSubmit, reset, errors } = useForm();
@@ -22,12 +37,27 @@ const [Erorr,setErorr]=useState('');
           Props.setType(res.data.user.type)
 
           console.log(  localStorage.getItem("user_id")); 
-          setErorr("")
+          Swal.fire(
+            'عمل رائع !',
+            'تم التسجيل  بنجاح',
+            'success'
+            )  
+            setShow(false)
+          goTo('/index')
           Props.setIsLoged(true);
         }).catch(function(error) {
             console.log(error);
             if (error.response) {
-                setErorr("error")
+            
+              Swal.fire({
+                icon: 'error',
+                title: "يرجى اعادة المحاولة" ,
+                text: '  لقد قمت بعملية ادخال خاطئة ',
+                
+                })
+                setShow(false)
+                goTo('/index')
+
             console.log(error.response.data);
             }
             
@@ -37,10 +67,20 @@ const [Erorr,setErorr]=useState('');
 e.target.reset()
     }
 return (
+  <>
+  <Button variant="warnin text-warning" style={{width:"100%",textAlign:"center"}} onClick={handleShow}>
+  انشاء حساب   
+  </Button>
 
-    <form onSubmit={handleSubmit(Submit)} >
-                        <div class="alert "style={{justifyContent:"center",width:'110%',textAlign:"center",color:"white", backgroundColor:' #ffc107',borderRadius:"20px" ,marginLeft:'-10px'
+  <Modal show={show} onHide={handleClose}>
+    <Modal.Header closeButton>
+    <div class="alert "style={{justifyContent:"center",width:'110%',textAlign:"center",color:"orange",fontSize:"40px"
 }}>انشاء حساب</div>
+    </Modal.Header>
+    <Modal.Body>
+      
+    <form onSubmit={handleSubmit(Submit)} >
+                     
     { Erorr !="" ? <div class="alert alert-danger" role="alert"> {Erorr}</div>:<p></p> }
           <div class="form-group row">
              
@@ -63,10 +103,14 @@ return (
                   <input id="password-confirm" type="password" class="form-control" ref={register({ min: 6, max: 99 })} name="password_confirmation" required autocomplete="new-password" placeholder="تاكيد الرقم السري "/>       
           </div>
           <div class="form-group row mb-0">
-                  <input type="submit" class="btn btn-secondary btn-block" value="انشاء حساب"/>             
-                  <input type="button"onClick={()=>Props.setHasAcount(true)}  class="btn btn-warning  text-white btn-block" value="الرجوع الى تسجيل الدخول" />           
+                  <input type="submit" class="btn btn-warning btn-block text-white" value="انشاء حساب"/>             
           </div>
       </form>
+    </Modal.Body>
+
+  </Modal>
+</>
+    
 );
 }
  

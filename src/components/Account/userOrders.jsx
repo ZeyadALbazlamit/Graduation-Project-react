@@ -33,8 +33,9 @@ function UserOrder(Props) {
                     <span class="vl"></span>
                     <Link className="navLink" to="/Cart"> <button type="button" class="btn btn-link orderBtn" >سلة المشتريات</button></Link>
                 </div>
+                <hr style={{width:'100%'}}/>
                 {posts.map((el)=>
-                <div>
+                <>
                 <div className="cartPost">
                 <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.isLoged }} key={el.cartId}>
                             <img src={el.main_img} alt="" />
@@ -47,8 +48,8 @@ function UserOrder(Props) {
                     </div>
                 </div>
                 
-                <hr style={{width:'100%'}}/>
-                </div>
+                <hr style={{width:'80%'}}/>
+                </>
                 
                 )}
                 <div className="total">

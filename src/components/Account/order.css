@@ -21,7 +21,7 @@
     flex-direction: row-reverse;
     margin-right: -50%;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 0px;
 }
 .usreOrderInfo img{
     height: 50px;
@@ -92,7 +92,10 @@
     width: 140px;
     border-image: round;
 }
+.orderPost{
+    justify-content: space-between;
 
+}
 
 .orderPost div p{
     font-size: 12px;

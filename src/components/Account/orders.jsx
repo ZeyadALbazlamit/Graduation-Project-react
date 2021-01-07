@@ -53,11 +53,11 @@ function Orders(Props) {
                 <div className="switch">
                         <Link className="navLink" to="/OrdersHistory"> <button type="button" class="btn btn-link orderBtn" >تاريخ الطلبات </button></Link>
                         <span class="vl"></span>
-                        <Link className="navLink" to="/Orders"> <button type="button" class="btn btn-link orderBtn" >الطلبات</button></Link>
+                        <Link className="navLink" to="/Order"> <button type="button" class="btn btn-link orderBtn" >الطلبات</button></Link>
                     </div>
                     <hr style={{width:'100%'}}/>
                 {posts.map((el,index) =>
-                     <div> 
+                     <> 
                     
                     <div className="usreOrderInfo">
                         <Link to={{pathname:"/UserProfile",id:el.userId  }}  key={el.cartId}>
@@ -84,7 +84,7 @@ function Orders(Props) {
                     </div>
                     <hr style={{ width: '90%', marginTop: '40px' }}></hr>
                     
-                     </div>
+                     </>
                      )}
                 </div>
             

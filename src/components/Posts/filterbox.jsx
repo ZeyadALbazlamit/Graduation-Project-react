@@ -36,7 +36,7 @@ function Filterbox(Props) {
                     </select>
                 </div>
                 <div className="priceBox">
-                    <label>عدد المنتجات في الصفحة</label>
+                    <label>عدد المنتجات</label>
                     <div className="fromTo">
                         <select className="filterSelect" onChange={(e) => Props.handlePostCount(e.target.value)}>
                             {

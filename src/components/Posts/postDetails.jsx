@@ -15,74 +15,72 @@ const PostDetails = (Props) => {
       .then(res => {
         console.log(res.data)
         setPostInfo(res.data)
-if(localStorage.getItem('user_id')){
-  axios.post("http://127.0.0.1:8000/api/intrests" ,{user_id:localStorage.getItem("user_id"),category_id:res.data.post.category_id})
-  .then((res)=>console.log(res))
-}
+        if (localStorage.getItem('user_id')) {
+          axios.post("http://127.0.0.1:8000/api/intrests", { user_id: localStorage.getItem("user_id"), category_id: res.data.post.category_id })
+            .then((res) => console.log(res))
+        }
       })
   }, [])
 
   return (
-    <div>
-      <div class="containerPostDetails">
-        <div class="containerDetails">
-          <h2 className="p">اسم الإعلان</h2>
 
-          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src={postInfo.image[0].img} class="d-block w-100" alt="..." />
-              </div>
-              {postInfo.image ? postInfo.image.map((el) =>
-                <div class="carousel-item">
-                  <img src={el.img} class="d-block w-100" alt="fg" />
-                </div>
-              ) : " "}
+    <div class="containerPostDetails">
+      
+      <div class="containerUserInfo" >
+        <Link to={{ pathname: "/UserProfile", id: postInfo.user.id }}>
+          <img src={postInfo.user.img} alt="Admin" class="rounded-circle" width="70" height="70" />
+        </Link>
+        <span className="Info">
+          <p>الأسم : {postInfo.user.name} </p>
+          <p class="text-muted font-size-sm">{postInfo.user.phone_number} : رقم الهاتف</p>
 
+        </span>
+      </div>
+
+      <div class="containerDetails">
+        <h2 className="p">اسم الإعلان</h2>
+
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src={postInfo.image[0].img} class="d-block w-100" alt="..." />
             </div>
-
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </a>
-          </div>
-         
-          <div className="description" style={{display:"inline"}} > 
-            {
-              Object.entries(postInfo.post.pro).map((el) => <p>{el[0]} :{el[1]}</p>)
-            }
+            {postInfo.image ? postInfo.image.map((el) =>
+              <div class="carousel-item">
+                <img src={el.img} class="d-block w-100" alt="fg" />
+              </div>
+            ) : " "}
 
           </div>
-          <div className="description" >
+
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </a>
+        </div>
+
+        <div className="description" style={{ display: "inline" }} >
+          {
+            Object.entries(postInfo.post.pro).map((el) => <p>{el[0]} :{el[1]}</p>)
+          }
+
+        </div>
+        <div className="description" >
           <label>العنوان  : {postInfo.post.title}</label>
           <label>القسم الفرعي  : {postInfo.post.Sub_Category_name}</label>
-            <label>المدينة :{postInfo.post.location}</label>
-        
-            <label>الوصف :{postInfo.post.Description} </label>
-          </div>
-        
-          <div>
-          </div>
+          <label>المدينة :{postInfo.post.location}</label>
+          <label>الوصف :{postInfo.post.Description} </label>
         </div>
-        <div class="containerUserInfo" >
-<Link  to={{pathname:"/UserProfile" ,id:postInfo.user.id }}>
-          <img src={postInfo.user.img} alt="Admin" class="rounded-circle" width="70" height="70" />
-          </Link>
-          <span className="Info">
-            <p>الأسم : {postInfo.user.name} </p>
-            <p class="text-muted font-size-sm">{postInfo.user.phone_number} : رقم الهاتف</p>
+      </div>
 
-          </span>
-        </div>
-      </div>
-      <div>
-        { <Comment  key={postInfo.post.id}  isLoged={Props.location.isLoged} post_id={postInfo.post.id} /> }
-      </div>
+      {<Comment key={postInfo.post.id} isLoged={Props.location.isLoged} post_id={postInfo.post.id} />}
+
     </div>
+
   )
 }
 

@@ -34,7 +34,7 @@ function filterByLocation(location){
                 <div className="companiesContainer">
                 {comF.map((el)=>         <Fade bottom big>
 
-                 <Link to={{pathname:"/Company", com_id:el.id,isLoged:Props.location.isLoged,img:el.img,name:el.name }}>
+                 <Link to={{pathname:"/Company", com_id:el.id,isLoged:Props.location.isLoged,img:el.img,name:el.name,id:el.id }}>
                     <div className="companyPost text-dark ">
                         <img src={el.img} className="companyImg" alt=""/>
                           <div className="companyInfo">

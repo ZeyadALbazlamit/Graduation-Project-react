@@ -7,13 +7,18 @@ import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade'
 import ReactStars from "react-rating-stars-component"
 import Swal from 'sweetalert2'
+import { useHistory } from 'react-router-dom';
 
 
 function Company(Props) {
     const [userInfo, setUserInfo] = useState({ posts: [{ id: 1, name: "لقاء", email: "leqaa@gmail.com", phoneNo: "078888888", img: "/images/4.png", rate: "4" }], fav: [], count: 0 })
     const [fav, setFav] = useState([{ user_id: 0, post_id: 0 }])
     const [rate, setRate] = useState(0);
-
+    const history = useHistory();
+	function  goTo(path){
+   
+	history.push(path);
+	}
     useEffect(() => {
         axios.post("http://127.0.0.1:8000/api/Post/search", { type: "company", user_id: localStorage.getItem("user_id"), com_id: Props.location.com_id })
             .then(res => {
@@ -42,6 +47,13 @@ function Company(Props) {
             .then((res) => {
                 console.log(res.data);
                 setRate(res.data.rate.rate)
+                Swal.fire(
+                    'عمل رائع !',
+                    'تم التقييم بنجاح',
+                    'success'
+                  )
+                  goTo("/index")
+                  
             })
 
     };
@@ -89,7 +101,8 @@ function Company(Props) {
             <div className="companyDetailsContainer2">
                 <div className="companyDetailsInfo">
                     <div className="companyDetailsInfo1">
-                        <img src={Props.location.img} />
+                   < Link to={{pathname:"/UserProfile",id:Props.location.id }}>  <img src={Props.location.img} />
+                        </Link>
                         <h6>{Props.location.name} </h6>
                       {
                         rate !=0 ?  <ReactStars

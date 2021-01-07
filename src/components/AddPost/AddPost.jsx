@@ -10,6 +10,7 @@ import { RiImageAddFill } from 'react-icons/ri'
 import { Alert } from 'react-bootstrap';
 import Swal from 'sweetalert2'
 import { useHistory } from 'react-router-dom';
+import {BiMessageSquareAdd} from 'react-icons/bi'
 
 const AddPost = () => {
   //const history = useHistory();
@@ -108,8 +109,8 @@ function deleteImage(e){
 }
   return (
     <>
-    <Button variant="" onClick={() => setShow(true)} >
-      أضف إعلانك 
+    <Button  variant="warning" onClick={() => setShow(true)} >
+      أضف إعلانك <BiMessageSquareAdd/>
     </Button>
     <Modal
       show={show}

@@ -34,9 +34,11 @@ function OrdersHistory(Props) {
                 <div className="switch">
                     <Link className="navLink" to="/OrdersHistory"> <button type="button" class="btn btn-link orderBtn" >تاريخ الطلبات </button></Link>
                     <span class="vl"></span>
-                    <Link className="navLink" to="/Orders"> <button type="button" class="btn btn-link orderBtn" >الطلبات</button></Link>
+                    <Link className="navLink" to="/Order"> <button type="button" class="btn btn-link orderBtn" >الطلبات</button></Link>
                 </div>
-                {posts.map((el,index) =><div>
+                <hr style={{width:'100%'}}/>
+                {posts.map((el,index) =>
+                    <>
                         <div className="orderPost">
                             <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.isLoged }}>
                                 <img src={el.main_img} alt=" " />
@@ -51,8 +53,8 @@ function OrdersHistory(Props) {
                                 <button type="button" class="btn btn-danger" onClick={()=>submitOrder(index,'forceSingleDelete')} ><RiDeleteBin5Line /> </button>
                             </div>
                         </div>
-                        <hr style={{ width: '90%', marginTop: '40px' }}></hr>
-                    </div>
+                        <hr style={{ width: '80%',  }}></hr>
+                    </>
                 )}
             </div>
         </div>
