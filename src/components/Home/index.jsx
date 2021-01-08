@@ -12,24 +12,27 @@ import { IoCarSportSharp } from "@react-icons/all-files/io5/IoCarSportSharp";
 import Fade from 'react-reveal/Fade';
 
 
-function index() {
+function index(Props) {
+    
     return (
         <div className="Col">
             <div class="Row">
 
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:1  }}><Fade  top big><ImMobile2 className ="mobileIcon"/></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:2  }}><Fade  top big><FaHome className ="homeIcon"/> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:3 }}> <Fade   top big><GiAmpleDress className ="dressIcon"/> </Fade > </Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:4  }}><Fade  top big><RiShirtFill className ="shirtIcon" /></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:5  }}><Fade  top big><GiCookingPot className ="potIcon" /> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:6  }}><Fade  top big><IoCarSportSharp className ="carIcon"/> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:7  }}><Fade  top big><GiSofa className ="sofaIcon" /></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:8  }}><Fade  top big><IoGameController className ="gamesIcon" /> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:9  }}><Fade  top big><GiBookshelf className ="bookIcon" /></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:10 }}><Fade  top big><GiCat className ="catIcon"/> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:11 }}><Fade  top big><FaLaptop className ="laptopIcon"/> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:12 }}><Fade  top big><FaBabyCarriage className ="babyIcon" /></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:13 }}><Fade  top big><GiMechanicGarage className ="workerIcon" /></Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:2 , isLoged:Props.location.isLoged  }}><Fade  top big><ImMobile2 className ="mobileIcon"/></Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:6 , isLoged:Props.location.isLoged  }}><Fade  top big><FaHome className ="homeIcon"/> </Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:8, isLoged:Props.location.isLoged  }}> <Fade   top big><GiAmpleDress className ="dressIcon"/> </Fade > </Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:9 , isLoged:Props.location.isLoged  }}><Fade  top big><RiShirtFill className ="shirtIcon" /></Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:11 , isLoged:Props.location.isLoged  }}><Fade  top big><GiCookingPot className ="potIcon" /> </Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:1 , isLoged:Props.location.isLoged  }}><Fade  top big><IoCarSportSharp className ="carIcon"/> </Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:7 , isLoged:Props.location.isLoged  }}><Fade  top big><GiSofa className ="sofaIcon" /></Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:3 , isLoged:Props.location.isLoged  }}><Fade  top big><IoGameController className ="gamesIcon" /> </Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:12 , isLoged:Props.location.isLoged  }}><Fade  top big><GiBookshelf className ="bookIcon" /></Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:14, isLoged:Props.location.isLoged  }}><Fade  top big><GiCat className ="catIcon"/> </Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:4, isLoged:Props.location.isLoged  }}><Fade  top big><FaLaptop className ="laptopIcon"/> </Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:10, isLoged:Props.location.isLoged  }}><Fade  top big><FaBabyCarriage className ="babyIcon" /></Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:13, isLoged:Props.location.isLoged  }}><Fade  top big><GiMechanicGarage className ="workerIcon" /></Fade ></Link>
+   <Link className="Link" to={{pathname:"/Posts" ,category_id:5 , isLoged:Props.location.isLoged  }}><Fade  top big><FaHome className ="homeIcon2"/> </Fade ></Link>
+<button onClick={()=>console.log(Props)}>props</button>
             </div>
 
         </div>

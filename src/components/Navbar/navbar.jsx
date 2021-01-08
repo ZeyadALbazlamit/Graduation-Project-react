@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import "./Navbar.css"
 import LoginForm from '../Login/Login'
 import Register from "../register/register";
@@ -34,10 +34,10 @@ import {
 
 const Navbar = (Props) => {
   const history = useHistory();
- function  handleClick  (path){
+  function handleClick(path) {
 
- history.push(path);
- }
+    history.push(path);
+  }
   function a() {
     $(".sidebar__navbar").toggleClass("active");
   }
@@ -66,55 +66,56 @@ const Navbar = (Props) => {
           <span onClick={b}></span>
           <div class="px-3 py-4 position-relative">
             <ul class="sidebar__list--menu mt-5">
-              <li><Link to={{pathname:"/Posts" ,category_id:1  }} class="active">سيارات - مركبات <IoCarSportSharp /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:2  }}>موبايل - تابليت <ImMobile2 /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:3  }}>العاب فيديو وملحقاتها<IoGameController /> </Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:4  }}>اجهزة - الكترونيات <FaLaptop /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:5  }}>عقارات للبيع <FaHome /> </Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:6  }}>عقارات للايجار <FaHome /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:7  }}>المنزل والحديقة <GiSofa /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:8  }}>ازياء - موضة نسائية <GiAmpleDress /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:9  }}>ازياء - موضة رجالي <RiShirtFill /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:10  }}>لوازم الاطفال والالعاب <FaBabyCarriage /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:11 }}>طعام - غذاء <GiCookingPot /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:12  }}>التعليم والتدريب <GiBookshelf /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:13 }}>حيوانات للبيع <GiCat /></Link></li>
-              <li><Link to={{pathname:"/Posts" ,category_id:14 }}>الخدمات <GiMechanicGarage /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 1 ,isLoged:Props.isLoged }} class="active">سيارات - مركبات <IoCarSportSharp /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 2 ,isLoged:Props.isLoged }}>موبايل - تابليت <ImMobile2 /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 3 ,isLoged:Props.isLoged }}>العاب فيديو وملحقاتها<IoGameController /> </Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 4 ,isLoged:Props.isLoged }}>اجهزة - الكترونيات <FaLaptop /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 5 ,isLoged:Props.isLoged }}>عقارات للبيع <FaHome /> </Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 6 ,isLoged:Props.isLoged }}>عقارات للايجار <FaHome /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 7 ,isLoged:Props.isLoged }}>المنزل والحديقة <GiSofa /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 8 ,isLoged:Props.isLoged }}>ازياء - موضة نسائية <GiAmpleDress /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 9 ,isLoged:Props.isLoged }}>ازياء - موضة رجالي <RiShirtFill /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 10 ,isLoged:Props.isLoged }}>لوازم الاطفال والالعاب <FaBabyCarriage /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 11 ,isLoged:Props.isLoged }}>طعام - غذاء <GiCookingPot /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 12 ,isLoged:Props.isLoged }}>التعليم والتدريب <GiBookshelf /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 14 ,isLoged:Props.isLoged }}>حيوانات للبيع <GiCat /></Link></li>
+              <li><Link to={{ pathname: "/Posts", category_id: 13 ,isLoged:Props.isLoged }}>الخدمات <GiMechanicGarage /></Link></li>
             </ul>
           </div>
         </div>
         <div class="sidebar__content">
           <nav class="navbar navbar-expand-md sidebar__side p-3 ">
-            <a class="navabar__menu position-relative d-inline-block"  onClick={a}>
+            <a class="navabar__menu position-relative d-inline-block" onClick={a}>
               <i class="fa fa-bars" aria-hidden="true"></i>
             </a>
             <Nav>
               <NavbarContainer >
                 <NavMenu>
-                
-                  {Props.userType ==="user" ?  <NavItem><Link to="/Cart"> <FaShoppingCart /></Link> </NavItem>:" " } 
+
+                  {Props.userType === "user" ? <NavItem><Link to="/Cart"> <FaShoppingCart /></Link> </NavItem> : " "}
 
                   <NavItem>
-                    {Props.isLoged ? <AddPost /> :<NotLoged/>}
+                    {Props.isLoged ? <AddPost /> : <NotLoged />}
                   </NavItem>
                   <NavItem>
                     <div class="nav-item dropdown">
 
-                      <a  data-toggle="dropdown" class="nav-link toggle " className="navLink"><FaUser /></a>
-                      <div class="dropdown-menu action-form" style={{justifyContent:"center" ,marginLeft:'30px'}}>
-                      {Props.isLoged ?
-                      <Link to={{ pathname: "/Profile", id: localStorage.getItem("user_id") }} >
-                        <img src={Props.isLoged ? localStorage.getItem("user_img") : localStorage.getItem("user_img")} alt="" style={{ width: "60px", height: "60px", borderRadius: '50%',marginLeft:"88px", }} />
-                        <li style={{color:"orange",fontSize:"15px",marginTop:"5px",textAlign:"center" }} >زياد</li>
-                      </Link>
-                      :""
-                    }
-<div class="dropdown-divider"></div>
-                          <li><a class="dropdown-item " style={{width:'100%',textAlign:"center",color:"orange"
-                                     }} onClick={handleLogOut}>تسجيل خروج</a></li>
-                          <li><a class="dropdown-item"> <LoginForm setIsLoged={Props.setIsLoged}  setHasAcount={setHasAcount}    userType={Props.userType}  setType={Props.setType}   /></a></li>
-                          <li><a class="dropdown-item">  <Register setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount}    userType={Props.userType}  setType={Props.setType}  /></a></li>
-                      
+                      <a data-toggle="dropdown" class="nav-link toggle " className="navLink"><FaUser /></a>
+                      <div class="dropdown-menu action-form" style={{ justifyContent: "center", marginLeft: '30px' }}>
+                        {Props.isLoged ?
+                          <Link to={{ pathname: "/Profile", id: localStorage.getItem("user_id") }} >
+                            <img src={Props.isLoged ? localStorage.getItem("user_img") : localStorage.getItem("user_img")} alt="" style={{ width: "60px", height: "60px", borderRadius: '50%', marginLeft: "88px", }} />
+                            <li style={{ color: "orange", fontSize: "15px", marginTop: "5px", textAlign: "center" }} >{localStorage.getItem("user_name")}</li>
+                          </Link>
+                          : ""
+                        }
+                        <div class="dropdown-divider"></div>
+                        <li><a class="dropdown-item " style={{
+                          width: '100%', textAlign: "center", color: "orange"
+                        }} onClick={handleLogOut}>تسجيل خروج</a></li>
+                        <li><a class="dropdown-item"> <LoginForm setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount} userType={Props.userType} setType={Props.setType} /></a></li>
+                        <li><a class="dropdown-item">  <Register setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount} userType={Props.userType} setType={Props.setType} /></a></li>
+
                       </div>
                     </div>
                   </NavItem>
@@ -123,9 +124,9 @@ const Navbar = (Props) => {
                 </NavMenu>
                 <SearchBox>
                   <SearchInput className="Input" placeholder="إبحـث" text-align="right" onChange={(e) => { setText(e.target.value) }}></SearchInput>
-                  <SearchIcon><Link className="navLink"to={{ pathname: "/Posts", type: "text", text: "%" + text + "%" }} ><FaSearch /></Link></SearchIcon> 
+                  <SearchIcon><Link className="navLink" to={{ pathname: "/Posts", type: "text", text: "%" + text + "%" }} ><FaSearch /></Link></SearchIcon>
                 </SearchBox>
-                <NavLogo to='/index'>Nova </NavLogo>
+                <NavLogo to={{pathname:'/index',isLoged:Props.isLoged}}>Nova </NavLogo>
               </NavbarContainer>
             </Nav>
           </nav>
@@ -134,10 +135,10 @@ const Navbar = (Props) => {
               <Fade left big> <Link className="navLink" to={{ pathname: "/Posts", type: "product", isLoged: Props.isLoged }}><li>سلع</li></Link ></Fade>
               <Fade bottom big > <Link className="navLink" to={{ pathname: "/Posts", type: "service", isLoged: Props.isLoged }}><li>خدمات</li></Link></Fade>
               <Fade top big><Link className="navLink" to={{ pathname: "/Companies", type: "company", isLoged: Props.isLoged }}> <li>اسواق</li></Link></Fade>
-              {Props.isLoged ? <Fade right big>  <Link className="navLink"to={{ pathname: "/Posts", type: "Recommended", isLoged: Props.isLoged }}> <li> مقترحات</li> </Link></Fade> : " "}
-             {Props.userType ==="company" ?  <Fade top big><Link className="navLink" to={{ pathname: "/Order", type: "company", isLoged: Props.isLoged }}> <li>طلبات</li></Link></Fade>: " "} 
+              {Props.isLoged ? <Fade right big>  <Link className="navLink" to={{ pathname: "/Posts", type: "Recommended", isLoged: Props.isLoged }}> <li> مقترحات</li> </Link></Fade> : " "}
+              {Props.userType === "company" ? <Fade top big><Link className="navLink" to={{ pathname: "/Order", type: "company", isLoged: Props.isLoged }}> <li>طلبات</li></Link></Fade> : " "}
               <Fade left big> <Link className="navLink" to="/Users"><li>الأشخاص</li></Link ></Fade>
-              
+
             </ul>
           </div>
         </div>

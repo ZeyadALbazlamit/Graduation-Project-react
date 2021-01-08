@@ -24,11 +24,11 @@
     text-decoration: unset;
   }
 .postImg{
-  width: 15rem;
-  height: 11rem;
-  padding: 10px;
-  text-align: center;
  
+  max-height: 13rem;
+ margin: 0px;
+ padding: 0px;
+  width: 100%;
 }
 .postImg:hover{
 animation-name: inOut;

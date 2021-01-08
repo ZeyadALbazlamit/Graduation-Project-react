@@ -114,3 +114,7 @@ height: 30px !important;
 max-width: 300px;
 margin: 4px 0px 5px 3px;
 }
+.addpostIcon{
+  font-size: 1.8rem;
+  margin-top: -7px;
+}

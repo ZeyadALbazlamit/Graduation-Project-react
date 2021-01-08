@@ -22,19 +22,19 @@ const Post = (Props) => {
   }
 
   return (
-    <Card style={{ width: '18rem', height: '18rem' }} className="Post col-md-11 mb-3" >
+    <Card style={{ width: '18rem', height: '20rem' }} className="Post col-md-11 mb-3" >
       
       <Link to={{ pathname: "/postDetails", post_id: Props.info.id ,isLoged:Props.isLoged}}>
-        <Card.Img className="postImg" variant="top" src={Props.info.main_img} />
+        <Card.Img className="postImg" variant="top" src={Props.info.main_img}  />
       </Link>
       <Card.Body>
         <Link to={{ pathname: "/postDetails", post_id: Props.info.id ,isLoged:Props.isLoged}}>
 
-          <Card.Title className="postTitle">{Props.info.title}</Card.Title>
+          <p className="postTitle">{ Props.info.title ? Props.info.title.length<15? Props.info.title:Props.info.title.substr(0,15)+"more..."  :""}</p>
         </Link>
 
         <hr />
-        <div className="icons"><span className="price">{Props.info.price}$</span>
+        <div className="icons"><span className="price" >{Props.info.price ? Props.info.price+'$' :" Rang"} </span>
           <i className={Props.fill ? "heart icon fa fa-heart" : "heart icon fa fa-heart-o"} onClick={fav}></i>
 
         </div>

@@ -2,14 +2,13 @@ import React ,{useState} from 'react'
 import {BiMessageSquareAdd} from 'react-icons/bi'
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
+import {MdAddToPhotos} from 'react-icons/md'
 
 function NotLoged() {
     const [show, setShow] = useState(false); 
     return (
         <>
-            <Button variant="warning" onClick={() => setShow(true)} >
-                أضف اعلانك <BiMessageSquareAdd/>
-            </Button>
+             <MdAddToPhotos className="addpostIcon" onClick={() => setShow(true)}/>
             <Modal
             show={show}
             onHide={() => setShow(false)}

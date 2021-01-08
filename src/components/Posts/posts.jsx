@@ -11,7 +11,7 @@ const Posts = (Props) => {
   const [fill, setFill] = useState(false);
   const [pages, setPages] = useState([1, 2, 3, 4]);
   const [page, setPage] = useState(1);
-  const [postCount, setPostCount] = useState(3);
+  const [postCount, setPostCount] = useState(5);
   const [userInfo, setUserInfo] = useState({ posts: [{ id: 1, name: "لقاء", email: "leqaa@gmail.com", phoneNo: "078888888", img: "/images/4.png", rate: "4" }], fav: [], count: 0 })
   const [posts, setPosts] = useState(userInfo.posts)
   const [fav, setFav] = useState([{ user_id: 0, post_id: 0 }])
@@ -79,7 +79,7 @@ const Posts = (Props) => {
 
   }
   useEffect(() => {
-    console.log("render")
+    console.log(Props)
   
     
     if (Props.location.hasOwnProperty("category_id"))

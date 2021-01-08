@@ -19,7 +19,6 @@ const Register = (Props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-const [Erorr,setErorr]=useState('');
     
     const { register, handleSubmit, reset, errors } = useForm();
 
@@ -81,7 +80,6 @@ return (
       
     <form onSubmit={handleSubmit(Submit)} >
                      
-    { Erorr !="" ? <div class="alert alert-danger" role="alert"> {Erorr}</div>:<p></p> }
           <div class="form-group row">
              
                   <input id="name" type="text" class="form-control " name="name" ref={register} required autocomplete="name" autofocus placeholder="الاسم"/>

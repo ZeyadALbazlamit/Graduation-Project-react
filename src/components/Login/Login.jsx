@@ -23,7 +23,6 @@ const Login = (Props) => {
   
 
 	const { register, handleSubmit, reset } = useForm();
-	const [Erorr, setErorr] = useState('');
 	const responseFacebook = (response) => {
 		console.log(response);
 
@@ -59,7 +58,7 @@ const Login = (Props) => {
 		}).catch(function (error) {
 			console.log(error);
 			if (error.response) {
-				setErorr(error.response.data.message)
+			
 				console.log(error.response.data);
 			}
 		})
@@ -97,7 +96,7 @@ const Login = (Props) => {
 		}).catch(function (error) {
 			console.log(error);
 			if (error.response) {
-				setErorr(error.response.data.message)
+				
 				console.log(error.response.data);
 			}
 		})
@@ -107,7 +106,7 @@ const Login = (Props) => {
 		axios.post('http://127.0.0.1:8000/api/login', data, {
 			headers: { 'Accept': 'application/json' }
 		}).then(res => {
-			setErorr("")
+			
 			console.log(res);
 			localStorage.setItem("user_id", res.data.user.id);
 			localStorage.setItem("user_name", res.data.user.name);
@@ -190,12 +189,7 @@ const Login = (Props) => {
 	/>
 </div>
 <div class="or-seperator"><b>أو</b></div>
-{ Erorr != "" ?
-	<div class="alert alert-danger" role="alert">
-		{Erorr}
-	</div>
 
-	: " "}
 <div class="form-group">
 	<input type="text" class="form-control" placeholder="بريد المستخدم" required="required" name="email" ref={register} />
 </div>

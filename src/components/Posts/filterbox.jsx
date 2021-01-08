@@ -2,7 +2,7 @@ import React, {  useState } from 'react'
 import './posts.css'
 
 function Filterbox(Props) {
-    const [count, setCount] = useState([1, 2, 3,4,5,6,7,8,9,10,11,12,13]);
+    const [count, setCount] = useState([5,10,15,20,30]);
     return (
         <div className="filterContainer  "  >
             <div className="filterBox alert alert-warning " >
