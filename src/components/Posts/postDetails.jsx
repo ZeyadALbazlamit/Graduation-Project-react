@@ -27,7 +27,7 @@ const PostDetails = (Props) => {
     <div class="containerPostDetails">
       
       <div class="containerUserInfo" >
-        <Link to={{ pathname: "/UserProfile", id: postInfo.user.id }}>
+        <Link to={{ pathname: "/UserProfile", id: postInfo.user.id ,isLoged:Props.location.isLoged }}>
           <img src={postInfo.user.img} alt="Admin" class="rounded-circle" width="70" height="70" />
         </Link>
         <span className="Info">

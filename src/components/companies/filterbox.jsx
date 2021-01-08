@@ -8,40 +8,25 @@ function Filterbox(Props) {
             <div className="filterBox2" >
                 <div className="cityBox2">
                     <label>المدينة</label>
-                    <select name="location" className="filterSelect2"  onChange={(e)=>Props.filterByLocation(e.target.value)} >
-                        <option >كل المدن</option>
-                        <option >عمان</option>
-                        <option >اربد</option>
-                        <option >الزرقاء</option>
-                        <option >عجلون</option>
-                        <option >جرش</option>
-                        <option >المفرق</option>
-                        <option >مادبا</option>
-                        <option >السلط</option>
-                        <option >الكرك</option>
-                        <option >الطفيلة</option>
-                        <option >معان</option>
-                        <option >العقبة</option>
+                    <select name="location" style={{width:"100px" }}  className="userSearch" onChange={(e)=>Props.setLocation(e.target.value)} >
+                        <option value="is not null">كل المدن</option>
+                        <option value="عمان"   > عمان</option>
+                        <option value="اربد"   > اربد</option>
+                        <option value="الزرقاء"   > الزرقاء</option>
+                        <option value="عجلون"   > عجلون</option>
+                        <option value="جرش"   > جرش</option>
+                        <option value="المفرق"   > المفرق</option>
+                        <option value="مادبا"   > مادبا</option>
+                        <option value="السلط"   > السلط</option>
+                        <option value="الكرك"   > الكرك</option>
+                        <option value="الطفيلة"   > الطفيلة</option>
+                        <option value="معان"   > معان</option>
+                        <option value="العقبة"   > العقبة</option>
                     </select>  
                 </div>
                 <div className="catBox2">
-                    <label>القسم</label>
-                    <select name="location" className="filterSelect22"   onChange={(e)=>Props.filterByLocation(e.target.value)}>
-                        <option >سيارات - مركبات </option>
-                        <option >موبايل - تابليت </option>
-                        <option >العاب فيديو وملحقاتها</option>
-                        <option >اجهزة - الكترونيات</option>
-                        <option >عقارات للبيع</option>
-                        <option >عقارات للايجار</option>
-                        <option >المنزل والحديقة</option>
-                        <option >ازياء - موضة نسائية</option>
-                        <option >ازياء - موضة رجالي</option>
-                        <option >لوازم الاطفال والالعاب</option>
-                        <option >طعام - غذاء </option>
-                        <option >التعليم والتدريب</option>
-                        <option >حيوانات للبيع</option>
-                        <option >الخدمات</option>
-                    </select>  
+                    <label>ابحث</label>
+                     <input   className="userSearch"     placeholder="...ادخل اسم السوق "  onChange={(e)=>Props.setName(e.target.value)} style={{textAlign:"end"}} />
                 </div>
                 
             </div>

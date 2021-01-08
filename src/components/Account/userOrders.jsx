@@ -29,9 +29,9 @@ function UserOrder(Props) {
         <div className="containerCart">
             <div className="cartsContainer">
                 <div className="switch" >
-                    <Link className="navLink" to="/UserOrder"> <button type="button" class="btn btn-link orderBtn" > الطلبات المرسلة </button></Link>
+                    <Link className="navLink" to={{pathname:"/UserOrder",isLoged:Props.location.isLoged}}> <button type="button" class="btn btn-link orderBtn" > الطلبات المرسلة </button></Link>
                     <span class="vl"></span>
-                    <Link className="navLink" to="/Cart"> <button type="button" class="btn btn-link orderBtn" >سلة المشتريات</button></Link>
+                    <Link className="navLink" to={{pathname:"/Cart",isLoged:Props.location.isLoged}}> <button type="button" class="btn btn-link orderBtn" >سلة المشتريات</button></Link>
                 </div>
                 <hr style={{width:'100%'}}/>
                 {posts.map((el)=>

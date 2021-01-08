@@ -261,8 +261,8 @@ alt="Admin"  style={{borderRadius:"50%" ,width:"150px",height:"150px"}}/>
         </ul>
       </div>
       <div className="userPostContainer">
-      {postKind ? profileData.post.map((info) => <UserPosts key={info.id} info={info} />) :
-                   profileData.favorite.map((info) => <UserPosts key={info.id} info={info} />)}
+      {postKind ? profileData.post.map((info) => <UserPosts key={info.id} info={info}  isLoged={ Props.location.isLoged}/>) :
+                   profileData.favorite.map((info) => <UserPosts key={info.id} info={info} isLoged={ Props.location.isLoged} />)}
       </div>
     </div>
   </div>

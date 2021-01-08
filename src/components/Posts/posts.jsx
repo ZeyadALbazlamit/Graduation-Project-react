@@ -79,7 +79,7 @@ const Posts = (Props) => {
 
   }
   useEffect(() => {
-    console.log(Props)
+    console.log()
   
     
     if (Props.location.hasOwnProperty("category_id"))

@@ -103,7 +103,7 @@ const Navbar = (Props) => {
                       <a data-toggle="dropdown" class="nav-link toggle " className="navLink"><FaUser /></a>
                       <div class="dropdown-menu action-form" style={{ justifyContent: "center", marginLeft: '30px' }}>
                         {Props.isLoged ?
-                          <Link to={{ pathname: "/Profile", id: localStorage.getItem("user_id") }} >
+                          <Link to={{ pathname: "/Profile", isLoged:Props.isLoged,id: localStorage.getItem("user_id") }} >
                             <img src={Props.isLoged ? localStorage.getItem("user_img") : localStorage.getItem("user_img")} alt="" style={{ width: "60px", height: "60px", borderRadius: '50%', marginLeft: "88px", }} />
                             <li style={{ color: "orange", fontSize: "15px", marginTop: "5px", textAlign: "center" }} >{localStorage.getItem("user_name")}</li>
                           </Link>
@@ -124,7 +124,7 @@ const Navbar = (Props) => {
                 </NavMenu>
                 <SearchBox>
                   <SearchInput className="Input" placeholder="إبحـث" text-align="right" onChange={(e) => { setText(e.target.value) }}></SearchInput>
-                  <SearchIcon><Link className="navLink" to={{ pathname: "/Posts", type: "text", text: "%" + text + "%" }} ><FaSearch /></Link></SearchIcon>
+                  <SearchIcon><Link className="navLink" to={{ pathname: "/Posts", type: "text", text: "%" + text + "%", isLoged:Props.isLoged }} ><FaSearch /></Link></SearchIcon>
                 </SearchBox>
                 <NavLogo to={{pathname:'/index',isLoged:Props.isLoged}}>Nova </NavLogo>
               </NavbarContainer>
@@ -137,7 +137,7 @@ const Navbar = (Props) => {
               <Fade top big><Link className="navLink" to={{ pathname: "/Companies", type: "company", isLoged: Props.isLoged }}> <li>اسواق</li></Link></Fade>
               {Props.isLoged ? <Fade right big>  <Link className="navLink" to={{ pathname: "/Posts", type: "Recommended", isLoged: Props.isLoged }}> <li> مقترحات</li> </Link></Fade> : " "}
               {Props.userType === "company" ? <Fade top big><Link className="navLink" to={{ pathname: "/Order", type: "company", isLoged: Props.isLoged }}> <li>طلبات</li></Link></Fade> : " "}
-              <Fade left big> <Link className="navLink" to="/Users"><li>الأشخاص</li></Link ></Fade>
+              <Fade left big> <Link className="navLink" to={{pathname:"/Users",isLoged: Props.isLoged }}><li>الأشخاص</li></Link ></Fade>
 
             </ul>
           </div>

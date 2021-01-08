@@ -8,7 +8,7 @@ function Filterbox(Props) {
             <div className="filterBox alert alert-warning " >
                 <div className="cityBox">
                     <label>المدينة</label>
-                    <select name="location" className="filterSelect" onChange={(e) => Props.handleLocationChange(e.target.value)} >
+                    <select  style={{width:"100px"}} name="location" className="userSearch" onChange={(e) => Props.handleLocationChange(e.target.value)} >
                         <option value={"is not null"}>كل المدن</option>
                         <option value={"='عمان'"}>عمان</option>
                         <option value={"='اربد'"}>اربد</option>
@@ -27,7 +27,7 @@ function Filterbox(Props) {
                 
                 <div className="orderBox">
                     <label>الترتيب حسب</label>
-                    <select name="location" className="filterSelect" onChange={(e) => Props.handleOrderChange(e.target.value)} >
+                    <select  style={{width:"120px"}} name="location" className="userSearch" onChange={(e) => Props.handleOrderChange(e.target.value)} >
                         <option value={"id "}>التاريخ الاقدم </option>
                         <option value={"id desc"}>التاريخ الاحدث</option>
                         <option value={"price desc"} >السعر الأعلى</option>
@@ -38,7 +38,7 @@ function Filterbox(Props) {
                 <div className="priceBox">
                     <label>عدد المنتجات</label>
                     <div className="fromTo">
-                        <select className="filterSelect" onChange={(e) => Props.handlePostCount(e.target.value)}>
+                        <select  style={{width:"50px"}} className="userSearch" onChange={(e) => Props.handlePostCount(e.target.value)}>
                             {
                                 count.map((el) => <option key={el} >{el}</option>)
                             }

@@ -67,7 +67,7 @@ const Comment = (Props) => {
                                 <h5 className="mt-1 user_name">{text.name ? text.name : localStorage.getItem("user_name")}</h5>
                                 <p   className="comment-body">{ReactHtmlParser(text.body)}</p>
                             </div>
-                            <Link to={{pathname:"/UserProfile",id:text.user_id , }}><img src={text.img ? text.img : localStorage.getItem("user_img")} className="avatar" /></Link>
+                            <Link to={{pathname:"/UserProfile",id:text.user_id ,isLoged:Props.isLoged  }}><img src={text.img ? text.img : localStorage.getItem("user_img")} className="avatar" /></Link>
 
                         </div>
                         <p className=" timeBorder">

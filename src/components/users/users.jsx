@@ -5,15 +5,18 @@ import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade';
 import './users.css'
 import axios from "axios"
-function Users(name) {
+function Users(Props) {
     const [users, setUsers] = useState([]);
     function findUsers(name) {
-        if (name !== "" || name !== " ") {
+        console.log(name)
+        if (name.length >0  && name !=" ") {
             axios.post("http://127.0.0.1:8000/api/Post/search", { name: "%" + name + "%", type: 'user' })
                 .then((res) => {
                     console.log(res.data)
                     setUsers(res.data.users)
                 })
+        }else{
+            setUsers([])
         }
     }
     return (
@@ -24,7 +27,7 @@ function Users(name) {
                     {users.map((el) => <Fade bottom big>
 
                         <div className="UserPost1 text-dark ">
-                            <Link to={{ pathname: "/UserProfile", id: el.id }}>
+                            <Link to={{ pathname: "/UserProfile", id: el.id ,isLoged: Props.location.isLoged}}>
                                 <img src={el.img} style={{ borderRadius: "50%" }} />
                             </Link>
                             <div className="userInfo111">

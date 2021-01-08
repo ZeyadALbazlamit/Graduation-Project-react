@@ -11,7 +11,7 @@ function Orders(Props) {
     const [posts, setPosts] = useState([{ id: 0, title: "", price: 4, main_img: "", count: "", submit: 0 }]);
    
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/cart/" + localStorage.getItem("user_id"))
+        axios.get("http://127.0.0.1:8000/api/cart/showOrder/" + localStorage.getItem("user_id"))
             .then((res) => {
                 console.log(res.data)
                 setPosts(res.data.order)
@@ -41,7 +41,7 @@ function Orders(Props) {
                 else{
                     Swal.fire(
                         'عمل رائع !',
-                        ' تم حزف طلب الزبون نهائيا',
+                        ' تم حذف طلب الزبون نهائيا',
                         'success'
                       )  
                 }
@@ -51,22 +51,22 @@ function Orders(Props) {
         <div className="containerOrders">
                 <div className="ordersContainer">
                 <div className="switch">
-                        <Link className="navLink" to="/OrdersHistory"> <button type="button" class="btn btn-link orderBtn" >تاريخ الطلبات </button></Link>
+                        <Link className="navLink" to={{pathname:"/OrdersHistory",isLoged:Props.location.isLoged }}> <button type="button" class="btn btn-link orderBtn" >تاريخ الطلبات </button></Link>
                         <span class="vl"></span>
-                        <Link className="navLink" to="/Order"> <button type="button" class="btn btn-link orderBtn" >الطلبات</button></Link>
+                        <Link className="navLink" to={{pathname:"/Order",    isLoged:Props.location.isLoged}}> <button type="button" class="btn btn-link orderBtn" >الطلبات</button></Link>
                     </div>
                     <hr style={{width:'100%'}}/>
                 {posts.map((el,index) =>
                      <> 
                     
                     <div className="usreOrderInfo">
-                        <Link to={{pathname:"/UserProfile",id:el.userId  }}  key={el.cartId}>
+                        <Link to={{pathname:"/UserProfile",id:el.userId,isLoged:Props.location.isLoged  }}  key={el.cartId}>
                             <img src={el.userImg} alt="" style={{borderRadius:"50%"}} />
                         </Link>
                         <h6>{el.userName} </h6>
                     </div>
                     <div className="orderPost">
-                    <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.isLoged }}>
+                    <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged:Props.location.isLoged }}>
                          <img src={el.main_img} alt="" />
                          </Link>
 

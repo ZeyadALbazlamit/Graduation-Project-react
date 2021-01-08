@@ -96,13 +96,16 @@ const data={
         setTotCount(totCount - posts[i].price * posts[i].count)
         const cartId = posts[i].cartId;
         const post_id = posts[i].id;
-        axios.put("http://127.0.0.1:8000/api/cart/" + cartId,{post_id:post_id})
+//forceSingleDelete
+
+
+        axios.put("http://127.0.0.1:8000/api/cart/" + cartId,{post_id:post_id, type:"forceSingleDelete"})
             .then((res) => {
                 console.log(res.data)
 
                 Swal.fire(
                     'عمل رائع !',
-                    'تم حزف طلبك',
+                    'تم حذف من السلة',
                     'success'
                   )  
             })
@@ -120,7 +123,7 @@ const data={
                         console.log(res.data)
                         Swal.fire(
                             'عمل رائع !',
-                            'تم حزف طلبك',
+                            'تم حذف طلبك',
                             'success'
                           )  
                     })
@@ -150,21 +153,21 @@ setPosts(nposts)
         <div className="containerCart">
             <div className="cartsContainer">
                 <div className="switch" >
-                    <Link className="navLink" to="/UserOrder"> <button type="button" class="btn btn-link orderBtn" > الطلبات المرسلة </button></Link>
+                    <Link className="navLink" to={{pathname:"/UserOrder",isLoged:Props.location.isLoged}}> <button type="button" class="btn btn-link orderBtn" > الطلبات المرسلة </button></Link>
                     <span class="vl"></span>
-                    <Link className="navLink" to="/Cart"> <button type="button" class="btn btn-link orderBtn" >سلة المشتريات</button></Link>
+                    <Link className="navLink" to={{pathname:"/Cart",isLoged:Props.location.isLoged}}> <button type="button" class="btn btn-link orderBtn" >سلة المشتريات</button></Link>
                 </div>
                 <hr style={{width:'100%'}}/>
                 {posts.map((el, index) =>
                     <div className="cartPost">
-                        <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.isLoged }} key={el.cartId}>
+                        <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged:Props.location.isLoged }} key={el.cartId}>
                             <img src={el.main_img} alt=""/>
                         </Link>
                         <h6>{el.title}</h6>
                         <h6 class="mb-0"> {el.price * el.count}  </h6>
                         <div className="count">
                             <div className="cartPostInfo3">
-                                <button type="button" class="btn btn-success" onClick={() => handleSingleSubmit(index)} disabled= {el.submit==0 ? false:true }  ><FaCheck /></button>
+                                <button type="button" class="btn btn-success" onClick={() => handleSingleSubmit(index)}   ><FaCheck /></button>
                                 <button type="button" class="btn btn-danger" onClick={() => handleDelete(index)}><RiDeleteBin5Line /> </button>
                             </div>
 

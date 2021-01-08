@@ -78,7 +78,7 @@ const AddPost = () => {
           console.log(error);
           Swal.fire({
             icon: 'error',
-            title: 'لقد قمت بخطأ ا>ناء الادخال ',
+            title: 'لقد قمت بخطأ اثناء الادخال ',
             text: 'الرجاء المحاولة في وقت لاحق ',
 
           })

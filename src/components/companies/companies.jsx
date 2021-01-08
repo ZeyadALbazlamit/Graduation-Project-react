@@ -7,32 +7,31 @@ import axios from "axios";
 import Fade from 'react-reveal/Fade';
 
 function Companies(Props) {
+const [location,setLocation]=useState("is not null");
+const [name,setName]=useState("is not null");
+
     const [com,setCom]=useState([ {id:0,name:"",email:"",img:"",phone_number:""}])
-    const  [comF,setComF]=useState([ {id:0,name:"",email:"",img:"",phone_number:""}])
   //  const [rate,setRate]=useState(0);
 useEffect(()=>{
-axios.get('http://127.0.0.1:8000/api/stors',{})
+    console.log("company name -> "+ name + "in ->" +location)
+    const n= name ==="is not null" ? name :" like \"%"+name+"%\"" ;
+    const l= location ==="is not null" ? name :" like  \"%"+location+"%\"" ;
+
+axios.post('http://127.0.0.1:8000/api/stors',{name:n,location:l})
 .then((res)=>{
     
     console.log(res.data)
     setCom(res.data)
-    setComF(res.data)
 
 })
 
-},[])
-
-function filterByLocation(location){
-    setComF( com.filter((el)=>el.location ===location) )
-
-}
-
+},[location,name,Props.location])
     return (
         <div>
-            <Filterbox  filterByLocation={filterByLocation}  />
+            <Filterbox    setName={setName}  setLocation={setLocation} />
             <div className="containerCom">
                 <div className="companiesContainer">
-                {comF.map((el)=>         <Fade bottom big>
+                {com.map((el)=><Fade bottom big>
 
                  <Link to={{pathname:"/Company", com_id:el.id,isLoged:Props.location.isLoged,img:el.img,name:el.name,id:el.id }}>
                     <div className="companyPost text-dark ">
@@ -40,8 +39,8 @@ function filterByLocation(location){
                           <div className="companyInfo">
                             <h4>{el.name}</h4>
                             <div className="companyInfo2">
-                                <p class="mb-0"> الموقع <MdLocationOn /> </p>
-                                <p class="mb-0">القسم </p>
+                                <p class="mb-0"> {el.location} <MdLocationOn /> </p>
+                                <p class="mb-0">{el.phone_number} </p>
                                 <p class="mb-0"></p>
                             </div>
                         </div>

@@ -10,7 +10,7 @@ function OrdersHistory(Props) {
     const [posts, setPosts] = useState([{ id: 0, title: "", price: 4, main_img: "", count: "", submit: 0 }]);
    
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/cart/" + localStorage.getItem("user_id"))
+        axios.get("http://127.0.0.1:8000/api/cart/showOrder/" + localStorage.getItem("user_id"))
             .then((res) => {
                 console.log(res.data)
                 setPosts(res.data.history)
@@ -32,14 +32,14 @@ function OrdersHistory(Props) {
         <div className="containerOrders">
             <div className="ordersContainer">
                 <div className="switch">
-                    <Link className="navLink" to="/OrdersHistory"> <button type="button" class="btn btn-link orderBtn" >تاريخ الطلبات </button></Link>
+                    <Link className="navLink" to={{pathname:"/OrdersHistory",isLoged:Props.location.isLoged}}> <button type="button" class="btn btn-link orderBtn" >تاريخ الطلبات </button></Link>
                     <span class="vl"></span>
-                    <Link className="navLink" to="/Order"> <button type="button" class="btn btn-link orderBtn" >الطلبات</button></Link>
+                    <Link className="navLink" to={{pathname:"/Order" ,isLoged:Props.location.isLoged}}> <button type="button" class="btn btn-link orderBtn" >الطلبات</button></Link>
                 </div>
                 <hr style={{width:'100%'}}/>
                 {posts.map((el,index) =>
                     <>
-                        <div className="orderPost">
+                        <div className="orderPost" key={index}>
                             <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.isLoged }}>
                                 <img src={el.main_img} alt=" " />
                             </Link>
