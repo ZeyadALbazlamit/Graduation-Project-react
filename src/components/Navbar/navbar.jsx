@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade';
 import { useHistory } from 'react-router-dom';
 import NotLoged from '../AddPost/notLoged'
-
+import {img} from "../img"
 import {
   Nav,
   NavbarContainer,
@@ -49,7 +49,8 @@ const Navbar = (Props) => {
 
   function handleLogOut() {
     localStorage['user_id'] = 0;
-    localStorage['user_img'] = "https://thumbs.dreamstime.com/z/creative-illustration-default-avatar-profile-placeholder-isolated-background-art-design-grey-photo-blank-template-mockup-144849704.jpg";
+    localStorage['user_img'] = img;
+    
     localStorage['user_type'] = " ";
     console.log(localStorage.getItem("user_id"))
     Props.setType(" ")
@@ -92,7 +93,7 @@ const Navbar = (Props) => {
               <NavbarContainer >
                 <NavMenu>
 
-                  {Props.userType === "user" ? <NavItem><Link to="/Cart"> <FaShoppingCart /></Link> </NavItem> : " "}
+                  {Props.userType !== "company" ? Props.isLoged ? <NavItem><Link to="/Cart"> <FaShoppingCart /></Link> </NavItem>:"" : " "}
 
                   <NavItem>
                     {Props.isLoged ? <AddPost /> : <NotLoged />}
@@ -110,11 +111,12 @@ const Navbar = (Props) => {
                           : ""
                         }
                         <div class="dropdown-divider"></div>
-                        <li><a class="dropdown-item " style={{
+                        {Props.isLoged ?  <li><a class="dropdown-item " style={{
                           width: '100%', textAlign: "center", color: "orange"
-                        }} onClick={handleLogOut}>تسجيل خروج</a></li>
-                        <li><a class="dropdown-item"> <LoginForm setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount} userType={Props.userType} setType={Props.setType} /></a></li>
-                        <li><a class="dropdown-item">  <Register setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount} userType={Props.userType} setType={Props.setType} /></a></li>
+                        }} onClick={handleLogOut}>تسجيل خروج</a></li>:""}
+
+                       {Props.isLoged ?"":  <li><a class="dropdown-item"> <LoginForm setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount} userType={Props.userType} setType={Props.setType} /></a></li>}
+                       {Props.isLoged ? "": <li><a class="dropdown-item">  <Register setIsLoged={Props.setIsLoged} setHasAcount={setHasAcount} userType={Props.userType} setType={Props.setType} /></a></li>}
 
                       </div>
                     </div>
@@ -138,7 +140,7 @@ const Navbar = (Props) => {
               {Props.isLoged ? <Fade right big>  <Link className="navLink" to={{ pathname: "/Posts", type: "Recommended", isLoged: Props.isLoged }}> <li> مقترحات</li> </Link></Fade> : " "}
               {Props.userType === "company" ? <Fade top big><Link className="navLink" to={{ pathname: "/Order", type: "company", isLoged: Props.isLoged }}> <li>طلبات</li></Link></Fade> : " "}
               <Fade left big> <Link className="navLink" to={{pathname:"/Users",isLoged: Props.isLoged }}><li>الأشخاص</li></Link ></Fade>
-              <Fade left big> <Link className="navLink" to={{pathname:"/Dashboard",isLoged: Props.isLoged }}><li>احصائيات</li></Link ></Fade>
+           {Props.userType === "admin" ?   <Fade left big> <Link className="navLink" to={{pathname:"/Dashboard",isLoged: Props.isLoged }}><li>احصائيات</li></Link ></Fade>:""}
             </ul>
           </div>
         </div>

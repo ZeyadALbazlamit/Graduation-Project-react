@@ -5,7 +5,7 @@ import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
 import Pusher from 'pusher-js';
 import { Link } from "react-router-dom";
-
+import {img} from "../img"
 //import { TextEditor } from './textEditor';
 const Comment = (Props) => {
     const [comment, setComment] = useState('');//value of text area 
@@ -61,16 +61,18 @@ const Comment = (Props) => {
             <div className="color-comment">
                 {comments.map((text, index) =>
                     <div>
-                        <div className="main-comment-div"
+                        <div className="main-comment-div" 
                             key={text.id} >
-                            <div className=" comment_bubble">
+                            <div className=" comment_bubble" style={ Props.postOwner==text.user_id ?{background:'#ffc107'}:{background:'#f3f4f1'}}>
                                 <h5 className="mt-1 user_name">{text.name ? text.name : localStorage.getItem("user_name")}</h5>
-                                <p   className="comment-body">{ReactHtmlParser(text.body)}</p>
+                                <p   className="comment-body" style={ Props.postOwner==text.user_id ?{color:'white'}:{color:'black'}}>{ReactHtmlParser(text.body)}</p>
                             </div>
-                            <Link to={{pathname:"/UserProfile",id:text.user_id ,isLoged:Props.isLoged  }}><img src={text.img ? text.img : localStorage.getItem("user_img")} className="avatar" /></Link>
+                            <Link to={{pathname:"/UserProfile",id:text.user_id ,isLoged:Props.isLoged  }}>
+                                <img src={text.img ? text.img : localStorage.getItem("user_img")} className="avatar" />
+                            </Link>
 
                         </div>
-                        <p className=" timeBorder">
+                        <p className=" timeBorder" style={ Props.postOwner==text.user_id ?{color:'black'}:{color:'black'}}>
                             {text.created_at ?text.created_at.slice(11, 16) : ' '}
                         </p>
                     </div>

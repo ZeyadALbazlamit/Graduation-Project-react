@@ -77,7 +77,10 @@ const PostDetails = (Props) => {
         </div>
       </div>
 
-      {<Comment key={postInfo.post.id} isLoged={Props.location.isLoged} post_id={postInfo.post.id} />}
+      {
+        <Comment key={postInfo.post.id} isLoged={Props.location.isLoged} post_id={postInfo.post.id} postOwner={postInfo.user.id} />
+        
+        }
 
     </div>
 
