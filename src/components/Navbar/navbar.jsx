@@ -138,7 +138,7 @@ const Navbar = (Props) => {
               {Props.isLoged ? <Fade right big>  <Link className="navLink" to={{ pathname: "/Posts", type: "Recommended", isLoged: Props.isLoged }}> <li> مقترحات</li> </Link></Fade> : " "}
               {Props.userType === "company" ? <Fade top big><Link className="navLink" to={{ pathname: "/Order", type: "company", isLoged: Props.isLoged }}> <li>طلبات</li></Link></Fade> : " "}
               <Fade left big> <Link className="navLink" to={{pathname:"/Users",isLoged: Props.isLoged }}><li>الأشخاص</li></Link ></Fade>
-
+              <Fade left big> <Link className="navLink" to={{pathname:"/Dashboard",isLoged: Props.isLoged }}><li>احصائيات</li></Link ></Fade>
             </ul>
           </div>
         </div>

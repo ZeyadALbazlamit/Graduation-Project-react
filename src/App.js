@@ -17,6 +17,12 @@ import UserOrder from './components/Account/userOrders'
 import OrdersHistory from './components/Account/orderHistory'
 import Users from './components/users/users'
 import NotLoged from './components/AddPost/notLoged'
+import Dashboard from './components/Dashboard/dashboard'
+import PostsDash from './components/Dashboard/postsDash'
+import CompaniesDash from './components/Dashboard/companiesDash'
+import CompanyDash from './components/Dashboard/companyDash'
+import UsersDash from './components/Dashboard/usersDash'
+import ReportDash from './components/Dashboard/reportDash'
 function App() {
   const [isLoged, setIsLoged] = useState(localStorage.getItem('user_id') ? true:false   );
   const [userType, setType] = useState(localStorage.getItem('user_type')    );
@@ -40,6 +46,12 @@ function App() {
           <Route path="/OrdersHistory"component={OrdersHistory} />
           <Route path="/Users" component={Users} />
           <Route path="/NotLoged" component={NotLoged} />
+          <Route path="/Dashboard" component={Dashboard} />
+          <Route path="/PostsDash" component={PostsDash} />
+          <Route path="/CompaniesDash" component={CompaniesDash} />
+          <Route path="/CompanyDash" component={CompanyDash} />
+          <Route path="/UsersDash" component={UsersDash} />
+          <Route path="/ReportDash" component={ReportDash} />
         </Switch>
         <Footer/>
       </div>

@@ -169,12 +169,24 @@
   justify-content: center;
 }
 .nav2 ul li{
-  margin: 7px 50px 7px 50px;
+  margin: 7px 30px 7px 30px;
 }
-@media (max-width : 700px){
+@media (max-width : 915px){
   .nav2 ul li{
-    margin: 7px 30px 7px 30px;
-    font-size: 1.05rem;
+    margin: 7px 15px 7px 15px;
+    font-size: 1rem;
+  }
+}
+@media (max-width : 815px){
+  .nav2 ul li{
+    margin: 7px 10px 7px 10px;
+    font-size: .85rem;
+  }
+}
+@media (max-width : 715px){
+  .nav2 ul li{
+    margin: 7px 10px 7px 10px;
+    font-size: .8rem;
   }
 }
 .nav2 ul li:hover{

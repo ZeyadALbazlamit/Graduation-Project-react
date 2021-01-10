@@ -1,0 +1,413 @@
+.containerCom{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+
+}
+.companiesContainer{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-around;
+    margin: 20px 0px 0px 0px;
+}
+.companyPost{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: flex-start;
+    border: 2px solid #ff9642;
+    border-radius: 5px;
+    padding: 15px;
+    justify-self: center;
+    margin: 3px;
+}
+@media (max-width : 1340px){
+    .companiesContainer{
+        width: 55%;
+    }
+}
+@media (max-width : 1240px){
+    .companiesContainer{
+        width: 60%;
+    }
+}
+@media (max-width : 1140px){
+    .companiesContainer{
+        width: 65%;
+    }
+}
+@media (max-width : 1040px){
+    .companiesContainer{
+        width: 70%;
+    }
+}
+@media (max-width : 940px){
+    .companiesContainer{
+        width: 75%;
+    }
+}
+@media (max-width : 840px){
+    .companiesContainer{
+        width: 80%;
+    }
+}
+@media (max-width : 740px){
+    .companiesContainer{
+        width: 85%;
+    }
+}
+@media (max-width : 640px){
+    .companiesContainer{
+        width: 90%;
+    }
+}
+@media (max-width : 540px){
+    .companiesContainer{
+        width: 95%;
+    }
+}
+.companyImg{
+    height: 110px;
+    width: 160px;
+    border-radius: 5px;
+}
+.companyInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    width: 95%;
+    margin: 0px 10px 0px 0px;
+    border-radius: 5px;
+    background-color: rgba(255, 235, 205, 0.39);
+}
+.companyInfo2{
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+.companyInfo2 p{
+    margin: 0px 5% 0px 10px;
+    border-left: .8px solid #c4c4c4;
+    padding: 4px;
+    padding-left: 5%;
+}
+.companyInfo h4{
+    text-align: right;
+    margin: 0px 20px 0px 10px;
+}
+
+/*************************filterBox*************************/
+.filterContainer2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .filterBox2{
+    border: 1px solid #c4c4c4;
+    border-radius: 30px;
+    width: 75%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    background-color:#ff9742f3 ;
+    padding: 2px;
+    margin-top: 5px;
+  }
+  @media (max-width : 720px){
+    .filterBox2{
+      width: 90%;
+    }
+  }
+  .filterSelect2{
+    width: 100px;
+    height: 30px;
+    font-size: .9rem;
+    border-radius: 0px;
+  }
+  .filterSelect22{
+    width: 130px;
+    height: 30px;
+    font-size: .9rem;
+    border-radius: 0px;
+  }
+  .catBox2 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    text-align: right;
+    color: #000;
+    margin: 0px 20px 0px 20px;
+  }
+  .cityBox2 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    text-align: right;
+    color: #000;
+    margin: 0px 20px 0px 20px;
+  }
+  .priceBox2{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    color: #000;
+    margin: 0px 20px 0px 20px;
+  }
+  .priceInput2{
+    width: 70px;
+    height: 30px;
+    border-color: #ff9642;
+    text-align: right;
+    margin: 0px;
+    border: 1px solid #ff9642;
+    font-size: .9rem;
+    margin: 0px 2px 0px 2px;
+  
+  }
+  .fromTo2{
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0px 5px 0px 5px;
+    padding: 2px;
+  
+  }
+  .orderBox2{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    text-align: right;
+    color: #000;
+    margin: 3px 20px 0px 20px;
+  }
+  .order2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    margin: 0px 2px 0px 2px;
+  
+  }
+  
+
+  /***************************Company*********************/
+
+.companyDetailsContainer1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+
+}
+.companyDetailsContainer2{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: space-around;
+    margin: 20px 0px 0px 0px;
+}
+@media (max-width : 1340px){
+    .companyDetailsContainer2{
+        width: 55%;
+    }
+}
+@media (max-width : 1240px){
+    .companyDetailsContainer2{
+        width: 60%;
+    }
+}
+@media (max-width : 1140px){
+    .companyDetailsContainer2{
+        width: 65%;
+    }
+}
+@media (max-width : 1040px){
+    .companyDetailsContainer2{
+        width: 70%;
+    }
+}
+@media (max-width : 940px){
+    .companyDetailsContainer2{
+        width: 75%;
+    }
+}
+@media (max-width : 840px){
+    .companyDetailsContainer2{
+        width: 80%;
+    }
+}
+@media (max-width : 740px){
+    .companyDetailsContainer2{
+        width: 85%;
+    }
+}
+@media (max-width : 640px){
+    .companyDetailsContainer2{
+        width: 90%;
+    }
+}
+@media (max-width : 540px){
+    .companyDetailsContainer2{
+        width: 95%;
+    }
+}
+.companyDetailsInfo{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.companyDetailsInfo1{
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    width: 190px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+
+}
+.companyDetailsInfo1 img{
+    height: 150px;
+    width: 170px;
+    text-align: center;
+}
+.companyDetailsInfo1 h6{
+    margin: 15px 10px 20px 0px;
+}
+.companyDetailsInfo2 {
+    background-color: #fff;
+
+}
+    
+.companyDetailsInfo2 img{
+    width: 95%;
+    height: 85%;
+    border-radius: 5px;
+    margin: 5px;
+
+}
+.companyDiscription{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+}
+.aboutCompany{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    width: 70%;
+}
+.aboutCompany p{
+    font-size: .7rem;
+    border: .1rem solid #6e6e6e;
+    padding: 20px;
+}
+.CompanyPostsContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+}
+.companyPosts{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: flex-start;
+    border: 1px solid #ff9642;
+    border-radius: 5px;
+    padding: 8px;
+    justify-self: center;
+    margin: 3px;
+}
+.companyPosts img{
+    height: 140px;
+    width: 190px;
+}
+.companyPosts div p{
+    font-size: 12px;
+}
+.companyPosts h6{
+    text-align: right;
+}
+.companyPostInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+    width: 95%;
+    margin: 0px 10px 0px 0px;
+    border-radius: 5px;
+    background-color: rgba(255, 235, 205, 0.39);
+}
+.companyPostInfo2{
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+.companyPostInfo2 p{
+    margin: 0px 1% 0px 10px;
+    padding: 4px;
+    padding-left: 2%;
+}
+.companyPostInfo3{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.companyPostInfo3 p{
+    margin: 0px 1% 0px 10px;
+    padding: 4px;
+    padding-left: 2%;
+}
+.companyPostInfo3 button{
+    width: 32%;
+    margin: 2px;
+    font-size: 13px;
+}  
+
+/****************rating***********/
+
+.ratingCompany {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.ratingCompany>input {
+    display: none
+}
+
+.ratingCompany>label {
+    position: relative;
+    width: 1em;
+    font-size: 1.5rem;
+    color: #ff9642;
+    cursor: pointer
+}
+
+.ratingCompany>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.ratingCompany>label:hover:before,
+.ratingCompany>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.ratingCompany>input:checked~label:before {
+    opacity: 1
+}
+
+.ratingCompany:hover>input:checked~label:before {
+    opacity: 0.4
+}

@@ -33,6 +33,8 @@ const Register = (Props) => {
           console.log(res.data.user);
           localStorage.setItem("user_id",res.data.user.id);
           localStorage.setItem("user_type", res.data.user.type);
+          localStorage.setItem("user_name", res.data.user.name);
+
           Props.setType(res.data.user.type)
 
           console.log(  localStorage.getItem("user_id")); 
