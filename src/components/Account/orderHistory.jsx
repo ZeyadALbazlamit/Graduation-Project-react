@@ -40,7 +40,7 @@ function OrdersHistory(Props) {
                 {posts.map((el,index) =>
                     <>
                         <div className="orderPost" key={index}>
-                            <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.isLoged }}>
+                            <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.location.isLoged }}>
                                 <img src={el.main_img} alt=" " />
                             </Link>
                             <h6>{el.title}</h6>

@@ -7,7 +7,17 @@ import Pusher from 'pusher-js';
 import { Link } from "react-router-dom";
 import {img} from "../img"
 //import { TextEditor } from './textEditor';
+import { useHistory } from 'react-router-dom';
+
 const Comment = (Props) => {
+    const history = useHistory();
+	function  goTo(path){
+   
+	history.push(path);
+    }
+    console.log("render comments")
+    console.log(Props)
+  
     const [comment, setComment] = useState('');//value of text area 
     const [comments, setComments] = useState([{}]);
     function addComment() {//add Comment and make comment() event
@@ -24,12 +34,15 @@ const Comment = (Props) => {
         }
     }
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/Comment/` + Props.post_id)
+        if(Props.post_id){
+            axios.get(`http://127.0.0.1:8000/api/Comment/` + Props.post_id)
             .then(res => {
                 console.log(res);
                 setComments(() => [...res.data]);
                 console.log("post id->" + Props.post_id);
             })
+        }
+      
 
     }, []);
 
@@ -68,7 +81,7 @@ const Comment = (Props) => {
                                 <p   className="comment-body" style={ Props.postOwner==text.user_id ?{color:'white'}:{color:'black'}}>{ReactHtmlParser(text.body)}</p>
                             </div>
                             <Link to={{pathname:"/UserProfile",id:text.user_id ,isLoged:Props.isLoged  }}>
-                                <img src={text.img ? text.img : localStorage.getItem("user_img")} className="avatar" />
+                                <img src={text.img ? text.img : img} className="avatar" />
                             </Link>
 
                         </div>

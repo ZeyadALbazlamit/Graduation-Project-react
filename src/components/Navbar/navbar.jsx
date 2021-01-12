@@ -50,7 +50,8 @@ const Navbar = (Props) => {
   function handleLogOut() {
     localStorage['user_id'] = 0;
     localStorage['user_img'] = img;
-    
+    localStorage['user_name'] = "";
+
     localStorage['user_type'] = " ";
     console.log(localStorage.getItem("user_id"))
     Props.setType(" ")
@@ -93,7 +94,7 @@ const Navbar = (Props) => {
               <NavbarContainer >
                 <NavMenu>
 
-                  {Props.userType !== "company" ? Props.isLoged ? <NavItem><Link to="/Cart"> <FaShoppingCart /></Link> </NavItem>:"" : " "}
+                  {Props.userType !== "company" ? Props.isLoged ? <NavItem><Link to={{pathname:"/Cart",isLoged: Props.isLoged}}> <FaShoppingCart /></Link> </NavItem>:"" : " "}
 
                   <NavItem>
                     {Props.isLoged ? <AddPost /> : <NotLoged />}

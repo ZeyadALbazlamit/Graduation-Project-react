@@ -35,7 +35,7 @@ const Post = (Props) => {
 
         <hr />
         <div className="icons"><span className="price" >{Props.info.price ? Props.info.price+'$' :" Rang"} </span>
-          <i className={Props.fill ? "heart icon fa fa-heart" : "heart icon fa fa-heart-o"} onClick={fav}></i>
+       {Props.isLoged ? <i className={Props.fill ? "heart icon fa fa-heart" : "heart icon fa fa-heart-o"} onClick={fav}></i>:"" }  
 
         </div>
       </Card.Body>

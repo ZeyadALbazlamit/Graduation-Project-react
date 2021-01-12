@@ -20,6 +20,7 @@ function Company(Props) {
 	history.push(path);
 	}
     useEffect(() => {
+    if ( !Props.location.isLoged) goTo('/Companies')
         axios.post("http://127.0.0.1:8000/api/Post/search", { type: "company", user_id: localStorage.getItem("user_id"), com_id: Props.location.com_id })
             .then(res => {
                 console.log(res.data)
@@ -119,7 +120,6 @@ function Company(Props) {
                       }
                     </div>
                     <div className="companyDetailsInfo2">
-                        <img src="/images/4.png" />
                     </div>
                 </div>
                 <div className="CompanyPostsContainer">

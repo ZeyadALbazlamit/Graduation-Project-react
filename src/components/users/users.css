@@ -8,7 +8,7 @@
 .companiesContainer{
     display: flex;
     flex-direction: column;
-    width: 45%;
+    width: 50%;
     justify-content: space-around;
     margin: 20px 0px 0px 0px;
 }
@@ -85,20 +85,21 @@
     border-radius: 20px;
     background-color: rgba(255, 235, 205, 0.39);
 }
+.userInfo111 h6{
+    text-align: right;
+    margin: 0px 20px 0px 10px;
+}
 .userInfo1112{
     display: flex;
     flex-direction: row-reverse;
 }
 .userInfo1112 p{
-    margin: 0px 5% 0px 10px;
+    margin: 0px 4% 0px 10px;
     border-left: .8px solid #c4c4c4;
     padding: 4px;
     padding-left: 5%;
 }
-.userInfo111 h6{
-    text-align: right;
-    margin: 0px 20px 0px 10px;
-}
+
 
 /*************************filterBox*************************/
 .filterContainer2{
@@ -209,4 +210,52 @@
 }
 .searchUser{
     margin-top: 5px;
+}
+
+/****************report******/
+.UserReport{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 15px;
+    justify-self: center;
+    align-items: center;
+    margin: 3px;
+}
+.UserReport img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+.userReport2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    width: 95%;
+    height: 80%;
+    margin: 0px 10px 0px 0px;
+    border-radius: 20px;
+    background-color: rgba(255, 235, 205, 0.39);
+}
+.userReport2 h6{
+    text-align: right;
+    margin: 0px 20px 0px 10px;
+}
+.userReport3{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.userReport3 p{
+    margin: 0px 4% 0px 10px;
+    padding: 4px;
+    padding-left: 5%;
+}
+.reportContainer{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
 }

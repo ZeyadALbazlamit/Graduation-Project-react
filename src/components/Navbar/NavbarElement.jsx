@@ -53,28 +53,12 @@ export const NavLogo = styled(Link)`
     }
     @media screen and (max-width : 700px) {
         font-size:2.2rem;
-        margin-top:-35px;
+        margin-top:-40px;
     }
     
 `
 
-export const MobileIcon = styled.div`
-    display : none;
-    @media screen and (max-width : 700px ){
-        display : block;
-        position : absolute;
-        top: 1;
-        left : 0;
-        margin-right:50px;
-        transform : translate(50% ,60% );
-        font-size : 1.8rem;
-        cursor: pointer;
-    }
-    @media screen and (max-width : 700px) {
-        font-size:1.7rem;
-        margin-top:4px;
-    }
-`
+
 
 export const NavMenu = styled.ul`
     display: flex;
@@ -112,23 +96,11 @@ export const NavItem = styled.li`
         font-size:1.4rem;
     }
    @media screen and (max-width : 700px) {
-        margin:-5px;
+        
+        margin-top:30px;
     }
 `
 
-export const NavLinks = styled(Link)`
-    
-`
-export const ItemLable = styled.h6 `
-    color:#ff9642;
-    font-style:normal;
-    font-size:.8rem;
-    margin-right:-15px;
-    cursor: pointer;
-    @media screen and (max-width : 700px) {
-        display:none;
-    }
-`
 
 export const SearchBox = styled.form`
     display: flex;
@@ -184,54 +156,3 @@ export const SearchIcon = styled.div`
 `
 
 
-export const SearchNav = styled.nav `
-    display: flex;
-    height: 80px;
-    margin-top:-20px;
-    justify-content: right ;
-    flex-direction:row-reverse;
-    @media screen and ( min-width : 1010px){
-        display:none;
-    }
-`
-
-export const SearchNavBox = styled.form`
-    display: flex;
-    align-items:right;
-    text-align :center;
-    height: 80%;
-    font-style:normal;
-    flex-direction:row-reverse;
-    width:100%;
-    padding-left:20px;
-    padding-right:10px;
-`
-
-export const SearchNavInput = styled.input`
-    width:400px;
-    height:33px;
-    display:flex;
-    align-items: right;
-    border-width:1.5px 1.5px;
-    border-style:solid;
-    border-color :black ;
-    border-right:unset;
-    padding-right:10px;
-    font-size:1rem;
-    text-align: right;
-`
-export const SearchNavIcon = styled.div`
-    border-color :black ;
-    border-style:solid;
-    border-left:unset;
-    border-width:1.5px 1.5px;
-    border-top-right-radius:3px;
-    border-bottom-right-radius:3px;
-    width:60px;
-    height:33px;
-    padding-top:0px;
-    margin-top: 5px;
-    font-size : 1rem;
-    cursor: pointer;
-    background-color:rgb(230, 232, 235); 
-`

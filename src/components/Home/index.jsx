@@ -18,20 +18,20 @@ function index(Props) {
         <div className="Col">
             <div class="Row">
 
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:2   ,isLoged:Props.isLoged }}><Fade  top big><ImMobile2 className ="mobileIcon"/></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:6   ,isLoged:Props.isLoged }}><Fade  top big><FaHome className ="homeIcon"/> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:8  ,isLoged:Props.isLoged }}> <Fade   top big><GiAmpleDress className ="dressIcon"/> </Fade > </Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:9   ,isLoged:Props.isLoged }}><Fade  top big><RiShirtFill className ="shirtIcon" /></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:11   ,isLoged:Props.isLoged }}><Fade  top big><GiCookingPot className ="potIcon" /> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:1   ,isLoged:Props.isLoged }}><Fade  top big><IoCarSportSharp className ="carIcon"/> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:7   ,isLoged:Props.isLoged }}><Fade  top big><GiSofa className ="sofaIcon" /></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:3   ,isLoged:Props.isLoged }}><Fade  top big><IoGameController className ="gamesIcon" /> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:12   ,isLoged:Props.isLoged }}><Fade  top big><GiBookshelf className ="bookIcon" /></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:14  ,isLoged:Props.isLoged }}><Fade  top big><GiCat className ="catIcon"/> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:4  ,isLoged:Props.isLoged }}><Fade  top big><FaLaptop className ="laptopIcon"/> </Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:10  ,isLoged:Props.isLoged }}><Fade  top big><FaBabyCarriage className ="babyIcon" /></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:13  ,isLoged:Props.isLoged }}><Fade  top big><GiMechanicGarage className ="workerIcon" /></Fade ></Link>
-   <Link className="Link" to={{pathname:"/Posts" ,category_id:5   ,isLoged:Props.isLoged }}><Fade  top big><FaHome className ="homeIcon2"/> </Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:2   ,isLoged:Props.isLoged }}><Fade  top big><ImMobile2 className ="mobileIcon"/></Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:6   ,isLoged:Props.isLoged }}><Fade  top big><FaHome className ="homeIcon"/> </Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:8  ,isLoged:Props.isLoged }}> <Fade   top big><GiAmpleDress className ="dressIcon"/> </Fade > </Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:9   ,isLoged:Props.isLoged }}><Fade  top big><RiShirtFill className ="shirtIcon" /></Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:11   ,isLoged:Props.isLoged }}><Fade  top big><GiCookingPot className ="potIcon" /> </Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:1   ,isLoged:Props.isLoged }}><Fade  top big><IoCarSportSharp className ="carIcon"/> </Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:7   ,isLoged:Props.isLoged }}><Fade  top big><GiSofa className ="sofaIcon" /></Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:3   ,isLoged:Props.isLoged }}><Fade  top big><IoGameController className ="gamesIcon" /> </Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:12   ,isLoged:Props.isLoged }}><Fade  top big><GiBookshelf className ="bookIcon" /></Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:14  ,isLoged:Props.isLoged }}><Fade  top big><GiCat className ="catIcon"/> </Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:4  ,isLoged:Props.isLoged }}><Fade  top big><FaLaptop className ="laptopIcon"/> </Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:10  ,isLoged:Props.isLoged }}><Fade  top big><FaBabyCarriage className ="babyIcon" /></Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:13  ,isLoged:Props.isLoged }}><Fade  top big><GiMechanicGarage className ="workerIcon" /></Fade ></Link>
+   <Link className="Link" style={{background:"white"}} to={{pathname:"/Posts" ,category_id:5   ,isLoged:Props.isLoged }}><Fade  top big><FaHome className ="homeIcon2"/> </Fade ></Link>
             </div>
 
         </div>

@@ -77,16 +77,17 @@ function deletePost(i){
             <div className="filterBox2" >
                 <div className="catBox2">
                     <label className="searchUser">إبحث</label>
-                    <input className="userSearch" placeholder="أسم المستخدم"  onChange={(e)=>findPosts(e.target.value)}/>
+                    <input className="userSearch" placeholder="إبحث"  onChange={(e)=>findPosts(e.target.value)}/>
                 </div>
             </div>
         </div>      
 
      {posts.map((info,index)=> <div class="postsRow">
+      
+      <Card style={{ width: '18rem', height: '20rem' }} className="Post col-md-11 mb-3" >
       <button type="button" onClick={()=>deletePost(index)} class="close" aria-label="Close" style={{textAlign:'left',marginTop:'5px'}}>
           <span aria-hidden="true">&times;</span>
       </button>
-      <Card style={{ width: '18rem', height: '20rem' }} className="Post col-md-11 mb-3" >
         <Link to={{ pathname: "/postDetails", post_id: info.id ,isLoged:Props.isLoged}}>
           <Card.Img className="postImg" variant="top" src={info.main_img}  />
         </Link>

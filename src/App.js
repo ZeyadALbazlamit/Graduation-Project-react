@@ -24,7 +24,7 @@ import CompanyDash from './components/Dashboard/companyDash'
 import UsersDash from './components/Dashboard/usersDash'
 import ReportDash from './components/Dashboard/reportDash'
 function App() {
-  const [isLoged, setIsLoged] = useState(localStorage.getItem('user_id') ? true:false   );
+  const [isLoged, setIsLoged] = useState(localStorage.getItem('user_id')==0 ? false:true   );
   const [userType, setType] = useState(localStorage.getItem('user_type')    );
   return (
     <Router >

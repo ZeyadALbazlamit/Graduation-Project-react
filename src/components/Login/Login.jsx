@@ -111,6 +111,8 @@ const Login = (Props) => {
 			localStorage.setItem("user_id", res.data.user.id);
 			localStorage.setItem("user_name", res.data.user.name);
 			localStorage.setItem("user_type", res.data.user.type);
+			localStorage.setItem("user_img", res.data.user.img);
+
 			Props.setType(res.data.user.type)
 
 			Props.setIsLoged(true);

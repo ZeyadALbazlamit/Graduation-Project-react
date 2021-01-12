@@ -59,17 +59,22 @@ function deleteUser(id){
         }
       })
 }
-function editType(type,index){
+function editType(type,i){
 
-let data=users[index];
+let data=users[i];
 data.type=type;
 console.log(data)
     axios.put('http://127.0.0.1:8000/api/User/'+data.id,data)
     .then((res)=>{
     console.log(res.data);
     let Users=users;
-    Users[index].type=type;
-    setUsers(Users);
+    if(type=="admin")
+    {
+        setUsers(users.filter((el,index)=>index !==i  ))
+    }else{
+        Users[i].type=type;
+        setUsers(Users);
+    }
 })
 }
     return (

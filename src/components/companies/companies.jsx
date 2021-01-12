@@ -39,9 +39,8 @@ axios.post('http://127.0.0.1:8000/api/stors',{name:n,location:l})
                           <div className="companyInfo">
                             <h4>{el.name}</h4>
                             <div className="companyInfo2">
-                                <p class="mb-0"> {el.location} <MdLocationOn /> </p>
-                                <p class="mb-0">{el.phone_number} </p>
-                                <p class="mb-0"></p>
+                                <p > {el.location} <MdLocationOn /> </p>
+                                <p >{el.phone_number} </p>
                             </div>
                         </div>
                     </div>

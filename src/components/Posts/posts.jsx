@@ -4,10 +4,12 @@ import Post from './post'
 import './posts.css'
 import axios from 'axios';
 import Zoom from 'react-reveal/Zoom';
+import { useHistory } from 'react-router-dom';
 
 import Filterbox from './filterbox'
 import SubCatFilter from './subCatFilter'
 const Posts = (Props) => {
+  const history = useHistory();
   const [fill, setFill] = useState(false);
   const [pages, setPages] = useState([1, 2, 3, 4]);
   const [page, setPage] = useState(1);
@@ -79,9 +81,15 @@ const Posts = (Props) => {
 
   }
   useEffect(() => {
-    console.log()
-  
-    
+    console.log(Props)
+ 
+
+    function  goTo(path){
+   
+      history.push(path);
+      }
+      if(!Props.location.type && !Props.location.category_id) goTo('/index');
+      
     if (Props.location.hasOwnProperty("category_id"))
       catId(page, postCount)
     else

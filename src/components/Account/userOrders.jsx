@@ -37,7 +37,7 @@ function UserOrder(Props) {
                 {posts.map((el)=>
                 <>
                 <div className="cartPost">
-                <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.isLoged }} key={el.cartId}>
+                <Link to={{ pathname: "/postDetails", post_id: el.id, isLoged: Props.location.isLoged }} key={el.cartId}>
                             <img src={el.main_img} alt="" />
                         </Link>
                     <h6>{el.title}</h6>

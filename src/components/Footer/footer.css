@@ -2,9 +2,79 @@
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
-    padding: 50px 30px 50px 30px;
+    padding: 40px 30px 10px 30px;
     border-top: 9px double #ff9642;
     border-radius: 7px;
     background-color: #ff974213;
     margin-top: 200px;
+}
+.footerIcon1{
+    background-color: #fff;
+    color: rgb(241, 56, 56);
+    padding: 4px;
+    border-radius: 50px;
+    margin: 7px;
+    font-size: 1.7rem;
+}
+.li12{
+    border-radius: 10px;
+    color: #fff;
+    margin: 2px;
+}
+.li12 a{
+    
+}
+.li13{
+    border-radius: 10px;
+    color: #fff;
+    margin: 2px;
+}
+.li13 a{
+    
+}
+.li14{
+    border-radius: 10px;
+    color: #fff;
+    margin: 2px;
+}
+.li14 a{
+}
+.footerIcon2{
+    background-color: #fff;
+    color: rgb(56, 152, 241);
+    padding: 4px;
+    border-radius: 50px;
+    margin: 7px;
+    font-size: 1.7rem;
+    margin-right: 20px;
+}
+.footerIcon3{
+    background-color: #fff;
+    color: rgb(42, 209, 98);
+    padding: 4px;
+    border-radius: 50px;
+    margin: 7px;
+    font-size: 1.7rem;
+    margin-right: 20px;
+}
+.fIcon{
+    color: rgb(52, 50, 214);
+    font-size: 2.6rem;
+    margin-top: 10px;
+}
+.iIcon{
+    color: #fff ;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    font-size: 2.6rem;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.tIcon{
+    color: rgb(69, 150, 241);
+    font-size: 2.6rem;
+    margin-top: 5px;
+}
+.footerp{
+    margin-top: 35px;
+    font-size: .9rem;
 }

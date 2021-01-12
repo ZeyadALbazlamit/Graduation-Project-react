@@ -4,10 +4,21 @@ import './posts.css'
 import axios from 'axios';
 import Comment from "../comment/comment"
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const PostDetails = (Props) => {
+  const history = useHistory();
+  console.log("render postDetails")
+  console.log(Props)
+  function goTo(path) {
+
+    history.push(path);
+  }
+  if (!Props.location.post_id) goTo('/index');
+const [report,setReport]=useState("");
   const [userInfo, setUserInfo] = useState(
-    { id: 1, name: "لقاء", email: "leqaa@gmail.com", phoneNo: "078888888", img: "/images/4.png", rate: "4" })
+    { id: -1, name: "زياد", email: "zeyad@gmail.com", phoneNo: "078888888", img: "/images/4.png", rate: "4" })
   const [postInfo, setPostInfo] = useState({ post: { id: 0, pro: {}, Sub_Category_name: "", location: "", price: 0, title: "" }, image: [{ img: "" }], comment: [], user: { img: "", name: "", phone_number: "" } })
   useEffect(() => {
     console.log(Props.location.post_id);
@@ -22,12 +33,24 @@ const PostDetails = (Props) => {
       })
   }, [])
 
+  function sendReport(){
+
+    axios.post("http://127.0.0.1:8000/api/report", { user_id: localStorage.getItem("user_id"), post_id:postInfo.post.id,report:report  })
+    .then((res) =>{
+      console.log(res)
+      Swal.fire(
+        'Good job!',
+        'تم ارسال بلاغك سوف يقوم فريق العمل بنظر به',
+        'success'
+      )
+    } )
+  }
   return (
 
     <div class="containerPostDetails">
-      
+
       <div class="containerUserInfo" >
-        <Link to={{ pathname: "/UserProfile", id: postInfo.user.id ,isLoged:Props.location.isLoged }}>
+        <Link to={{ pathname: "/UserProfile", id: postInfo.user.id, isLoged: Props.location.isLoged }}>
           <img src={postInfo.user.img} alt="Admin" class="rounded-circle" width="70" height="70" />
         </Link>
         <span className="Info">
@@ -74,13 +97,31 @@ const PostDetails = (Props) => {
           <label>القسم الفرعي  : {postInfo.post.Sub_Category_name}</label>
           <label>المدينة :{postInfo.post.location}</label>
           <label>الوصف :{postInfo.post.Description} </label>
-        </div>
-      </div>
+          <div>
+            <p>
+              <button class="btn btn-danger" style={{ borderRadius: "20%" }} type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                بلاغ
+  </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="form-floating">
+                <div style={{display:"flex"}}>
+                <textarea  onChange={(e)=>setReport(e.target.value)} class="form-control"  placeholder="... زودنا بالبلاغ  الموجه للشخص او للاعلان " id="floatingTextarea">
 
+                </textarea>
+                <button className="btn btn-success" onClick={()=>sendReport()}>
+                  ارسال
+                </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
       {
         <Comment key={postInfo.post.id} isLoged={Props.location.isLoged} post_id={postInfo.post.id} postOwner={postInfo.user.id} />
-        
-        }
+      }
 
     </div>
 
